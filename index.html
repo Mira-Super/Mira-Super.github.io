@@ -1,293 +1,647 @@
-<!DOCTYPE html>
-<html lang="zh-HK">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miranda Li — ESG & Sustainability</title>
-<meta name="description" content="Miranda Li — ESG and Sustainability strategist with executive background across aviation, real estate, energy and finance.">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miranda Li — ESG &amp; Sustainability</title>
+    <meta name="description" content="Miranda Li — ESG and Sustainability strategist. Executive background across aviation, real estate, energy and finance." />
 
-  :root {
-    --bg: #f5f5f7;
-    --white: #ffffff;
-    --black: #1d1d1f;
-    --gray1: #6e6e73;
-    --gray2: #a1a1a6;
-    --gray3: #d2d2d7;
-    --accent: #2d6a4f;
-    --accent-light: #e8f5e9;
-    --serif: "Georgia", "Times New Roman", serif;
-    --sans: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-  }
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
 
-  html { scroll-behavior: smooth; }
+    <style>
+      :root {
+        --c-bg: #1c1c1c;
+        --c-bg-alt: #242422;
+        --c-bg-light: #f5d200;
+        --c-bg-light-alt: #f0cc00;
 
-  body {
-    font-family: var(--sans);
-    background: var(--bg);
-    color: var(--black);
-    -webkit-font-smoothing: antialiased;
-  }
+        --c-fg: #f5d200;
+        --c-fg-2: rgba(245, 210, 0, 0.58);
+        --c-fg-3: rgba(245, 210, 0, 0.32);
+        --c-fg-light: #1c1c1c;
+        --c-fg-light-2: rgba(28, 28, 28, 0.62);
+        --c-fg-light-3: rgba(28, 28, 28, 0.35);
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(245,245,247,0.85);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--gray3);
-    height: 52px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 40px;
-  }
-  nav .logo { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--black); text-decoration: none; }
-  nav ul { list-style: none; display: flex; gap: 32px; }
-  nav ul a { font-size: 13px; color: var(--gray1); text-decoration: none; transition: color 0.2s; }
-  nav ul a:hover { color: var(--black); }
+        --c-accent: #f5d200;
+        --c-border: #2e2e2c;
+        --c-border-light: rgba(28, 28, 28, 0.18);
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 100px 40px 60px;
-    background: var(--white);
-  }
-  .hero-inner {
-    max-width: 900px; width: 100%;
-    display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: center;
-  }
-  .hero-tag {
-    display: inline-block;
-    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); background: var(--accent-light);
-    padding: 4px 12px; border-radius: 20px; margin-bottom: 20px;
-  }
-  .hero h1 {
-    font-size: clamp(42px, 6vw, 64px);
-    font-weight: 700; letter-spacing: -0.03em; line-height: 1.05;
-    color: var(--black); margin-bottom: 20px;
-  }
-  .hero h1 span { color: var(--accent); }
-  .hero p {
-    font-size: 18px; line-height: 1.7; color: var(--gray1);
-    max-width: 480px; margin-bottom: 36px;
-  }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--black); color: var(--white);
-    font-size: 14px; font-weight: 500; padding: 12px 24px;
-    border-radius: 980px; text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .btn:hover { background: #3a3a3c; transform: translateY(-1px); }
-  .btn-ghost {
-    background: transparent; color: var(--black);
-    border: 1px solid var(--gray3); margin-left: 12px;
-  }
-  .btn-ghost:hover { background: var(--bg); }
+        --f-display: "Barlow", "Noto Sans SC", sans-serif;
+        --f-heading: "Barlow", "Noto Sans SC", sans-serif;
+        --f-body: "Barlow", "Noto Sans SC", system-ui, sans-serif;
+        --f-mono: "IBM Plex Mono", monospace;
 
-  .hero-photo {
-    width: 340px; height: 400px;
-    border-radius: 20px; overflow: hidden;
-    background: linear-gradient(135deg, #1a1a2e 0%, #2d6a4f 100%);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 32px 64px rgba(0,0,0,0.12);
-    flex-shrink: 0;
-  }
-  .hero-photo .initials {
-    font-size: 72px; font-weight: 300; color: rgba(255,255,255,0.9);
-    letter-spacing: -0.02em; font-family: var(--serif);
-  }
+        --sz-display: 12vw;
+        --sz-h1: 7.5vw;
+        --sz-h2: 4.8vw;
+        --sz-h3: 2.8vw;
+        --sz-lead: 1.6vw;
+        --sz-body: 1.15vw;
+        --sz-caption: 0.85vw;
+        --sz-label: 0.72vw;
 
-  /* SECTIONS */
-  section { padding: 100px 40px; }
-  .section-inner { max-width: 900px; margin: 0 auto; }
-  .section-label {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 12px;
-  }
-  .section-title {
-    font-size: clamp(28px, 4vw, 40px); font-weight: 700;
-    letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px;
-  }
-  .section-sub { font-size: 17px; color: var(--gray1); line-height: 1.7; max-width: 560px; margin-bottom: 52px; }
+        --pad-x: 5vw;
+        --pad-y: 5vh;
+        --gap-lg: 3.5vh;
+        --gap-md: 2vh;
+        --gap-sm: 1vh;
 
-  /* ABOUT */
-  .about { background: var(--bg); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .about-card {
-    background: var(--white); border-radius: 16px; padding: 32px;
-    border: 1px solid var(--gray3);
-  }
-  .about-card .icon { font-size: 28px; margin-bottom: 14px; }
-  .about-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-  .about-card p { font-size: 14px; color: var(--gray1); line-height: 1.7; }
+        --ease-slide: cubic-bezier(0.77, 0, 0.175, 1);
+        --dur-slide: 0.75s;
+        --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+        --dur-enter: 0.5s;
+      }
 
-  /* FOCUS */
-  .focus { background: var(--white); }
-  .focus-list { display: flex; flex-direction: column; gap: 1px; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray3); }
-  .focus-item {
-    display: flex; align-items: flex-start; gap: 20px;
-    padding: 24px 28px; background: var(--white);
-    transition: background 0.2s;
-  }
-  .focus-item:hover { background: var(--bg); }
-  .focus-item + .focus-item { border-top: 1px solid var(--gray3); }
-  .focus-num { font-size: 13px; font-weight: 600; color: var(--gray2); min-width: 24px; padding-top: 2px; }
-  .focus-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-  .focus-item p { font-size: 14px; color: var(--gray1); line-height: 1.6; }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 100%; height: 100%; overflow: hidden; background: var(--c-bg); -webkit-font-smoothing: antialiased; }
 
-  /* CONTACT */
-  .contact { background: var(--black); }
-  .contact .section-label { color: #68d391; }
-  .contact .section-title { color: var(--white); }
-  .contact .section-sub { color: var(--gray2); }
-  .contact-links { display: flex; gap: 16px; flex-wrap: wrap; }
-  .contact-link {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.08); color: var(--white);
-    font-size: 14px; padding: 12px 20px; border-radius: 12px;
-    text-decoration: none; border: 1px solid rgba(255,255,255,0.1);
-    transition: background 0.2s;
-  }
-  .contact-link:hover { background: rgba(255,255,255,0.14); }
+      #deck { display: flex; height: 100vh; transition: transform var(--dur-slide) var(--ease-slide); will-change: transform; }
 
-  /* FOOTER */
-  footer {
-    background: var(--black); border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 24px 40px; text-align: center;
-    font-size: 13px; color: var(--gray2);
-  }
+      .slide {
+        flex: 0 0 100vw; width: 100vw; height: 100vh; position: relative;
+        padding: var(--pad-y) var(--pad-x); display: grid;
+        grid-template-rows: auto 1fr auto; overflow: hidden;
+      }
+      .slide-body { min-height: 0; }
+      .slide.dark { background: var(--c-bg); color: var(--c-fg); }
+      .slide.light { background: var(--c-bg-light); color: var(--c-fg-light); }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    nav ul { gap: 20px; }
-    .hero { padding: 90px 20px 60px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .hero-photo { width: 100%; height: 260px; order: -1; }
-    section { padding: 70px 20px; }
-    .about-grid { grid-template-columns: 1fr; }
-    .contact-links { flex-direction: column; }
-  }
-</style>
-</head>
-<body>
+      [data-anim] { opacity: 0; }
+      .slide.is-active [data-anim] { animation-duration: var(--dur-enter); animation-timing-function: var(--ease-enter); animation-fill-mode: forwards; }
+      .slide.is-active [data-anim="fade-up"] { animation-name: kFadeUp; }
+      .slide.is-active [data-anim="fade-in"] { animation-name: kFadeIn; }
+      .slide.is-active [data-anim="reveal-right"] { animation-name: kRevealRight; }
+      .slide.is-active [data-anim="reveal-left"] { animation-name: kRevealLeft; }
+      .slide.is-active [data-anim="scale-in"] { animation-name: kScaleIn; }
 
-<nav>
-  <a class="logo" href="/">Miranda Li</a>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#focus">Focus</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+      [data-delay="0"] { animation-delay: 0s; }
+      [data-delay="1"] { animation-delay: 0.08s; }
+      [data-delay="2"] { animation-delay: 0.18s; }
+      [data-delay="3"] { animation-delay: 0.3s; }
+      [data-delay="4"] { animation-delay: 0.44s; }
+      [data-delay="5"] { animation-delay: 0.6s; }
+      [data-delay="6"] { animation-delay: 0.78s; }
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-tag">ESG &amp; Sustainability</div>
-      <h1>Strategy meets<br><span>sustainability.</span></h1>
-      <p>Executive background across aviation, real estate, energy and finance — now focused on driving long-term ESG transformation.</p>
-      <a href="#contact" class="btn">Get in touch</a>
-      <a href="#about" class="btn btn-ghost">Learn more</a>
-    </div>
-    <div class="hero-photo">
-      <span class="initials">ML</span>
-    </div>
-  </div>
-</section>
+      @keyframes kFadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+      @keyframes kFadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes kRevealRight { from { clip-path: inset(0 100% 0 0); opacity: 1; } to { clip-path: inset(0 0% 0 0); opacity: 1; } }
+      @keyframes kRevealLeft { from { clip-path: inset(0 0 0 100%); opacity: 1; } to { clip-path: inset(0 0 0 0%); opacity: 1; } }
+      @keyframes kScaleIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: none; } }
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="section-inner">
-    <div class="section-label">Background</div>
-    <h2 class="section-title">Cross-industry executive<br>turned ESG strategist.</h2>
-    <p class="section-sub">Formerly Executive Director (Chairman's Office) across five industries. Now applying that breadth to sustainability strategy and ESG transition.</p>
+      #nav-dots { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; z-index: 100; }
+      .nav-dot { width: 5px; height: 5px; border-radius: 50%; border: none; background: rgba(255,255,255,0.22); cursor: pointer; transition: background 0.3s, transform 0.3s; padding: 0; }
+      .nav-dot.is-active { background: rgba(255,255,255,0.8); transform: scale(1.4); }
 
-    <div class="about-grid">
-      <div class="about-card">
-        <div class="icon">✈️</div>
-        <h3>Aviation</h3>
-        <p>Liaised with airlines, Civil Aviation Administration of China (CAAC), and regulatory bodies on policy and compliance matters.</p>
-      </div>
-      <div class="about-card">
-        <div class="icon">🏙️</div>
-        <h3>Real Estate</h3>
-        <p>Strategic planning and government relations for property development projects across mainland China and Hong Kong.</p>
-      </div>
-      <div class="about-card">
-        <div class="icon">⚡</div>
-        <h3>New Energy &amp; Materials</h3>
-        <p>Engaged with research institutions, universities and government agencies to advance industry-academia-government collaboration.</p>
-      </div>
-      <div class="about-card">
-        <div class="icon">💼</div>
-        <h3>Finance &amp; Investment</h3>
-        <p>Supported investment decision-making and managed relationships with institutional counterparts across the financial sector.</p>
-      </div>
-    </div>
-  </div>
-</section>
+      #slide-counter { position: fixed; bottom: 20px; right: 28px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); z-index: 100; user-select: none; }
 
-<!-- FOCUS -->
-<section class="focus" id="focus">
-  <div class="section-inner">
-    <div class="section-label">Current Focus</div>
-    <h2 class="section-title">ESG as a long-term<br>strategic direction.</h2>
-    <p class="section-sub">Building deep expertise in sustainability — from disclosure frameworks to net-zero pathways.</p>
+      .display { font-size: var(--sz-display); font-weight: 900; line-height: 0.9; letter-spacing: -0.02em; text-transform: uppercase; font-family: var(--f-display); }
+      .h1 { font-size: var(--sz-h1); font-weight: 900; line-height: 0.92; letter-spacing: -0.02em; text-transform: uppercase; font-family: var(--f-heading); }
+      .h2 { font-size: var(--sz-h2); font-weight: 900; line-height: 0.95; letter-spacing: -0.01em; text-transform: uppercase; font-family: var(--f-heading); }
+      .h3 { font-size: var(--sz-h3); font-weight: 700; line-height: 1.1; text-transform: uppercase; font-family: var(--f-heading); }
+      .lead { font-size: var(--sz-lead); font-weight: 500; line-height: 1.45; font-family: var(--f-body); }
+      .body { font-size: var(--sz-body); font-weight: 400; line-height: 1.6; font-family: var(--f-body); }
+      .caption { font-size: var(--sz-caption); font-weight: 400; line-height: 1.5; font-family: var(--f-body); }
+      .label { font-size: var(--sz-label); font-weight: 500; letter-spacing: 0.06em; font-family: var(--f-mono); }
 
-    <div class="focus-list">
-      <div class="focus-item">
-        <div class="focus-num">01</div>
-        <div>
-          <h4>ESG Strategy &amp; Disclosure</h4>
-          <p>Corporate sustainability strategy, ESG reporting frameworks (GRI, TCFD, ISSB) and stakeholder communication.</p>
+      .muted { color: var(--c-fg-2); }
+      .light .muted { color: var(--c-fg-light-2); }
+      .accent { color: var(--c-accent); }
+      .light .accent { color: var(--c-fg-light); }
+
+      .bullet-list { list-style: none; display: flex; flex-direction: column; gap: var(--gap-sm); font-family: var(--f-body); font-size: var(--sz-body); font-weight: 400; line-height: 1.5; padding-left: 1em; }
+      .bullet-list li::before { content: "\2014"; margin-left: -1em; margin-right: 0.5em; color: var(--c-accent); }
+      .light .bullet-list li::before { color: var(--c-fg-light); }
+
+      .cover-footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; padding-top: var(--gap-md); border-top: 1px solid var(--c-fg-3); margin-top: auto; }
+      .cover-footer-col { font-family: var(--f-mono); font-size: var(--sz-caption); font-weight: 400; line-height: 1.5; }
+      .cover-footer-col:last-child { text-align: right; }
+
+      .img-placeholder { background: var(--c-bg-alt); display: flex; align-items: center; justify-content: center; font-family: var(--f-mono); font-size: var(--sz-label); letter-spacing: 0.1em; color: var(--c-fg-3); width: 100%; flex: 1; }
+      .light .img-placeholder { background: var(--c-bg-light-alt); color: var(--c-fg-light-3); border: 1px solid var(--c-border-light); }
+
+      .slide-chrome, .slide-foot { display: flex; justify-content: space-between; align-items: center; }
+      .slide-chrome { padding-bottom: var(--gap-sm); border-bottom: 1px solid var(--c-border); margin-bottom: var(--gap-md); }
+      .slide-foot { padding-top: var(--gap-sm); border-top: 1px solid var(--c-border); margin-top: var(--gap-md); }
+      .light .slide-chrome, .light .slide-foot { border-color: var(--c-border-light); }
+
+      .slide--cover .slide-chrome, .slide--cover .slide-foot,
+      .slide--chapter .slide-chrome, .slide--chapter .slide-foot,
+      .slide--quote .slide-chrome, .slide--quote .slide-foot,
+      .slide--statement .slide-chrome, .slide--statement .slide-foot,
+      .slide--end .slide-chrome, .slide--end .slide-foot { display: none; }
+
+      /* COVER */
+      .slide--cover { display: flex; flex-direction: column; justify-content: space-between; padding: 0; position: relative; }
+      .cover-img-area { position: absolute; inset: 0; background: var(--c-bg-alt); display: flex; align-items: center; justify-content: center; font-family: var(--f-mono); font-size: var(--sz-label); letter-spacing: 0.1em; color: var(--c-fg-3); }
+      .cover-type { position: relative; z-index: 1; padding: var(--pad-y) var(--pad-x) 0; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 5vh; }
+      .cover-meta { position: relative; z-index: 1; padding: var(--gap-md) var(--pad-x) var(--pad-y); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid rgba(245,210,0,0.25); }
+      .cover-meta-col { font-family: var(--f-mono); font-size: var(--sz-caption); font-weight: 400; line-height: 1.6; color: var(--c-fg-2); }
+      .cover-meta-col:last-child { text-align: right; }
+
+      /* CHAPTER */
+      .slide--chapter { display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: calc(var(--pad-y) * 1.5); }
+      .chapter-num { font-family: var(--f-mono); font-size: var(--sz-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--c-fg-2); margin-bottom: var(--gap-lg); }
+      .light .chapter-num { color: var(--c-fg-light-2); }
+
+      /* STATEMENT */
+      .slide--statement { display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: calc(var(--pad-y) * 1.5); }
+      .statement-body { display: flex; flex-direction: column; gap: var(--gap-md); }
+
+      /* SPLIT */
+      .slide--split .slide-body { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--pad-x) * 0.8); align-items: center; }
+      .split-text { display: flex; flex-direction: column; gap: var(--gap-md); }
+      .split-image { display: flex; flex-direction: column; gap: var(--gap-sm); height: 100%; }
+
+      /* STATS */
+      .slide--stats { display: flex; flex-direction: column; justify-content: center; }
+      .slide--stats .slide-body { display: flex; flex-direction: column; justify-content: center; gap: var(--gap-lg); }
+      .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+      .stat-card { display: flex; flex-direction: column; gap: var(--gap-sm); padding: var(--gap-md) var(--gap-md) var(--gap-md) 0; border-top: 2px solid var(--c-fg-light); }
+      .dark .stat-card { border-top-color: var(--c-fg-3); }
+      .stat-value { font-family: var(--f-display); font-size: 5.5vw; font-weight: 900; line-height: 0.9; color: var(--c-fg-light); letter-spacing: -0.03em; text-transform: uppercase; }
+      .dark .stat-value { color: var(--c-fg); }
+      .stat-label { font-family: var(--f-body); font-size: var(--sz-body); font-weight: 500; line-height: 1.4; }
+      .stat-note { font-family: var(--f-mono); font-size: var(--sz-caption); letter-spacing: 0.05em; color: var(--c-fg-light-3); }
+      .dark .stat-note { color: var(--c-fg-3); }
+
+      /* LIST */
+      .slide--list { display: flex; flex-direction: column; justify-content: center; }
+      .slide--list .slide-body { display: grid; grid-template-columns: 2fr 3fr; gap: calc(var(--pad-x) * 0.8); align-items: center; }
+      .list-head { display: flex; flex-direction: column; gap: var(--gap-md); }
+
+      /* QUOTE */
+      .slide--quote { display: flex; flex-direction: column; justify-content: center; }
+      .quote-text { font-family: var(--f-heading); font-size: 3.8vw; font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; text-transform: uppercase; max-width: 82%; margin-bottom: var(--gap-lg); }
+      .quote-attr { display: flex; flex-direction: column; gap: 0.4vh; }
+
+      /* COMPARE */
+      .slide--compare .slide-body { display: grid; grid-template-columns: 1fr 1fr; height: 100%; }
+      .compare-panel { display: flex; flex-direction: column; gap: var(--gap-md); padding: var(--gap-md) 0; }
+      .compare-panel.left { padding-right: calc(var(--pad-x) * 0.55); border-right: 2px solid var(--c-fg-light); }
+      .compare-panel.right { padding-left: calc(var(--pad-x) * 0.55); }
+      .dark .compare-panel.left { border-right-color: var(--c-fg-3); }
+      .compare-label { font-family: var(--f-mono); font-size: var(--sz-label); letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: var(--gap-sm); border-bottom: 1px solid var(--c-border-light); }
+      .dark .compare-label { border-bottom-color: var(--c-border); }
+      .compare-label.after { color: var(--c-accent); }
+      .light .compare-label.after { color: var(--c-fg-light); font-weight: 700; }
+
+      /* CHART */
+      .slide--chart .slide-body { display: flex; flex-direction: column; gap: var(--gap-md); min-height: 0; }
+      .chart-header { display: flex; justify-content: space-between; align-items: baseline; flex-shrink: 0; }
+      .chart-wrapper { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; min-height: 0; }
+      .bar-track { height: 30vh; display: flex; align-items: flex-end; gap: 4vw; border-left: 2px solid var(--c-fg-3); padding-left: 0.5vw; }
+      .light .bar-track { border-left-color: var(--c-border-light); }
+      .bar-col { flex: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 1vh; height: 100%; }
+      .bar-fill { width: 100%; background: var(--c-fg-3); }
+      .bar-fill.accent { background: var(--c-accent); }
+      .light .bar-fill { background: var(--c-fg-light-3); }
+      .light .bar-fill.accent { background: var(--c-fg-light); }
+      .bar-x-label { font-family: var(--f-mono); font-size: var(--sz-caption); letter-spacing: 0.1em; color: var(--c-fg-3); white-space: nowrap; text-transform: uppercase; }
+      .light .bar-x-label { color: var(--c-fg-light-3); }
+      .bar-val { font-family: var(--f-body); font-size: var(--sz-body); font-weight: 700; color: var(--c-fg-2); }
+      .bar-val.hi { color: var(--c-accent); font-weight: 900; }
+      .light .bar-val { color: var(--c-fg-light-2); }
+      .light .bar-val.hi { color: var(--c-fg-light); }
+      .chart-baseline { height: 2px; background: var(--c-fg-3); flex-shrink: 0; margin-top: 1px; }
+      .light .chart-baseline { background: var(--c-border-light); }
+      .chart-source { flex-shrink: 0; font-family: var(--f-mono); font-size: var(--sz-caption); color: var(--c-fg-3); letter-spacing: 0.06em; margin-top: var(--gap-sm); }
+      .light .chart-source { color: var(--c-fg-light-3); }
+
+      /* END */
+      .slide--end { display: flex; flex-direction: column; justify-content: space-between; }
+    </style>
+  </head>
+
+  <body>
+    <nav id="nav-dots"></nav>
+    <div id="slide-counter"></div>
+
+    <div id="deck">
+
+      <!-- SLIDE 1 · COVER dark -->
+      <section class="slide dark slide--cover">
+        <div class="cover-img-area" data-anim="fade-in" data-delay="0">
+          <!-- background texture -->
         </div>
-      </div>
-      <div class="focus-item">
-        <div class="focus-num">02</div>
-        <div>
-          <h4>Carbon Neutrality Pathways</h4>
-          <p>Net-zero target setting, carbon accounting, Scope 1/2/3 emissions management and reduction roadmaps.</p>
-        </div>
-      </div>
-      <div class="focus-item">
-        <div class="focus-num">03</div>
-        <div>
-          <h4>ESG Rating Improvement</h4>
-          <p>MSCI, Sustainalytics, S&P Global ESG ratings — understanding methodologies and driving score improvement.</p>
-        </div>
-      </div>
-      <div class="focus-item">
-        <div class="focus-num">04</div>
-        <div>
-          <h4>Government &amp; Regulatory Engagement</h4>
-          <p>Navigating ESG-related regulatory requirements across Mainland China, Hong Kong and international markets.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="section-inner">
-    <div class="section-label">Contact</div>
-    <h2 class="section-title">Let's connect.</h2>
-    <p class="section-sub">Open to ESG advisory, sustainability strategy roles, and meaningful conversations about the transition ahead.</p>
-    <div class="contact-links">
-      <a href="mailto:yan.goo@gmail.com" class="contact-link">✉️ yan.goo@gmail.com</a>
-      <a href="https://www.linkedin.com/in/" class="contact-link" target="_blank">LinkedIn</a>
-    </div>
-  </div>
-</section>
+        <div class="cover-type">
+          <div>
+            <h1 class="display" style="color: var(--c-fg); line-height: 0.88" data-anim="fade-up" data-delay="1">
+              MIRANDA<br>LI
+            </h1>
+            <p class="lead" style="color: var(--c-fg-2); margin-top: 2.5vh; text-transform: none; font-weight: 400; max-width: 48vw" data-anim="fade-up" data-delay="2">
+              ESG &amp; Sustainability Strategist. Executive background across five industries — now focused on long-term sustainability transition.
+            </p>
+          </div>
+        </div>
 
-<footer>
-  © 2026 Miranda Li · miranda-li.net
-</footer>
+        <div class="cover-meta" data-anim="fade-in" data-delay="4">
+          <div class="cover-meta-col">
+            ESG · Sustainability<br />
+            2026
+          </div>
+          <div class="cover-meta-col" style="text-align: center">
+            Strategy &amp; Transition
+          </div>
+          <div class="cover-meta-col" style="text-align: right">
+            miranda-li.net
+          </div>
+        </div>
+      </section>
 
-</body>
+      <!-- SLIDE 2 · CHAPTER light -->
+      <section class="slide light slide--chapter">
+        <div class="chapter-num" data-anim="fade-in" data-delay="0">
+          01 / BACKGROUND
+        </div>
+        <h1 class="h1" style="max-width: 90%; color: var(--c-fg-light)" data-anim="fade-up" data-delay="1">
+          EXECUTIVE<br>TURNED<br>STRATEGIST
+        </h1>
+      </section>
+
+      <!-- SLIDE 3 · STATEMENT dark -->
+      <section class="slide dark slide--statement">
+        <div class="statement-body" style="justify-content: flex-end; height: 100%; display: flex; flex-direction: column; padding-bottom: calc(var(--pad-y) * 0.5);">
+          <h1 class="h1" style="max-width: 88%" data-anim="fade-up" data-delay="0">
+            STRATEGY IS ONLY AS GOOD AS ITS LONG-TERM IMPACT
+          </h1>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 · SPLIT light — background detail -->
+      <section class="slide light slide--split">
+        <div class="slide-chrome">
+          <span class="label" style="color: var(--c-fg-light-2)" data-anim="fade-in" data-delay="0">Background</span>
+          <span class="label" style="color: var(--c-fg-light-2)" data-anim="fade-in" data-delay="0">04 / 12</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="split-text" data-anim="fade-up" data-delay="1">
+            <p class="label" style="color: var(--c-fg-light-2); letter-spacing: 0.12em">EXECUTIVE DIRECTOR · CHAIRMAN'S OFFICE</p>
+            <h2 class="h2" style="color: var(--c-fg-light)">FIVE INDUSTRIES. ONE OFFICE.</h2>
+            <p class="lead" style="color: var(--c-fg-light-2); font-weight: 400; text-transform: none;">
+              Served as Executive Director in the Chairman's Office across five sectors — bridging government, industry and capital at the highest level.
+            </p>
+            <ul class="bullet-list">
+              <li>Aviation — airlines, CAAC &amp; regulatory bodies</li>
+              <li>Real estate — strategic planning &amp; government relations</li>
+              <li>New energy &amp; materials — academia-industry-government</li>
+              <li>Finance &amp; investment — institutional relationships</li>
+              <li>Defense &amp; research — scientific institutions, universities</li>
+            </ul>
+          </div>
+
+          <div data-anim="fade-in" data-delay="3" style="display: flex; flex-direction: column; gap: var(--gap-sm); height: 100%;">
+            <div class="img-placeholder" style="min-height: 40vh; font-size: var(--sz-h2); font-family: var(--f-display); font-weight: 900; letter-spacing: -0.02em; color: var(--c-fg-light-3);">
+              ML
+            </div>
+            <p class="caption" style="color: var(--c-fg-light-3); font-family: var(--f-mono)">
+              Miranda Li · Executive Director · Chairman's Office
+            </p>
+          </div>
+        </div>
+
+        <div class="slide-foot">
+          <span class="label" style="color: var(--c-fg-light-3)">Miranda Li · 2026</span>
+          <span class="label" style="color: var(--c-fg-light-2)">04 / 12</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 · STATS light — career numbers -->
+      <section class="slide light slide--stats">
+        <div class="slide-chrome">
+          <span class="label" style="color: var(--c-fg-light-2)" data-anim="fade-in" data-delay="0">By the Numbers</span>
+          <span class="label" style="color: var(--c-fg-light-2)" data-anim="fade-in" data-delay="0">05 / 12</span>
+        </div>
+
+        <div class="slide-body">
+          <h2 class="h2" style="color: var(--c-fg-light)" data-anim="fade-up" data-delay="1">THE CAREER</h2>
+
+          <div class="stats-grid" data-anim="fade-up" data-delay="2">
+            <div class="stat-card">
+              <div class="stat-value">5</div>
+              <div class="stat-label" style="color: var(--c-fg-light)">Sectors covered</div>
+              <div class="stat-note">Aviation · Real Estate · New Energy · Finance · Defense</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">10+</div>
+              <div class="stat-label" style="color: var(--c-fg-light)">Years executive</div>
+              <div class="stat-note">Chairman's Office · cross-industry</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">1</div>
+              <div class="stat-label" style="color: var(--c-fg-light)">Long-term direction</div>
+              <div class="stat-note">ESG &amp; Sustainability transition</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-foot">
+          <span class="label" style="color: var(--c-fg-light-3)">Miranda Li · 2026</span>
+          <span class="label" style="color: var(--c-fg-light-2)">05 / 12</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 · LIST dark — ESG focus areas -->
+      <section class="slide dark slide--list">
+        <div class="slide-chrome">
+          <span class="label muted" data-anim="fade-in" data-delay="0">ESG Focus</span>
+          <span class="label muted" data-anim="fade-in" data-delay="0">06 / 12</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="list-head" data-anim="fade-up" data-delay="1">
+            <h2 class="h2" style="color: var(--c-fg)">CURRENT FOCUS</h2>
+            <p class="lead muted" style="text-transform: none; font-weight: 400; max-width: 90%">
+              Building deep expertise in ESG — from disclosure frameworks to net-zero pathways.
+            </p>
+          </div>
+
+          <ul class="bullet-list" style="font-size: var(--sz-lead); font-weight: 500" data-anim="fade-up" data-delay="2">
+            <li>ESG strategy &amp; disclosure (GRI, TCFD, ISSB)</li>
+            <li>Carbon neutrality pathways &amp; Scope 1/2/3</li>
+            <li>ESG rating improvement (MSCI, Sustainalytics)</li>
+            <li>Regulatory navigation — CN, HK &amp; international</li>
+            <li>Industry-government-academia engagement</li>
+          </ul>
+        </div>
+
+        <div class="slide-foot">
+          <span class="label muted">Miranda Li · 2026</span>
+          <span class="label muted">06 / 12</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 · QUOTE dark -->
+      <section class="slide dark slide--quote">
+        <p class="quote-text" style="color: var(--c-fg)" data-anim="fade-up" data-delay="0">
+          SUSTAINABILITY IS NOT A TREND. IT IS THE ONLY STRATEGY THAT SURVIVES.
+        </p>
+
+        <div class="quote-attr" data-anim="fade-in" data-delay="2">
+          <span class="label" style="color: var(--c-fg); letter-spacing: 0.1em">MIRANDA LI</span>
+          <span class="label muted">ESG &amp; Sustainability · 2026</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 8 · COMPARE light — then vs now -->
+      <section class="slide light slide--compare">
+        <div class="slide-chrome">
+          <span class="label" style="color: var(--c-fg-light-2)" data-anim="fade-in" data-delay="0">The Transition</span>
+          <span class="label" style="color: var(--c-fg-light-2)" data-anim="fade-in" data-delay="0">08 / 12</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="compare-panel left" data-anim="fade-up" data-delay="1">
+            <div class="compare-label" style="color: var(--c-fg-light-2)">THEN</div>
+            <h3 class="h3" style="color: var(--c-fg-light)">EXECUTIVE DIRECTOR, CHAIRMAN'S OFFICE</h3>
+            <p class="lead" style="color: var(--c-fg-light-2); text-transform: none; font-weight: 400;">
+              Cross-industry executive role bridging aviation, real estate, energy and finance at the highest strategic level.
+            </p>
+            <ul class="bullet-list">
+              <li>Regulatory liaison &amp; government relations</li>
+              <li>Academia-industry-government collaboration</li>
+              <li>Investment decision support</li>
+            </ul>
+          </div>
+
+          <div class="compare-panel right" data-anim="fade-up" data-delay="2">
+            <div class="compare-label after" style="font-weight: 700">NOW</div>
+            <h3 class="h3" style="color: var(--c-fg-light)">ESG &amp; SUSTAINABILITY STRATEGIST</h3>
+            <p class="lead" style="color: var(--c-fg-light-2); text-transform: none; font-weight: 400;">
+              Applying cross-industry executive experience to drive ESG transformation and long-term sustainability strategy.
+            </p>
+            <ul class="bullet-list">
+              <li>ESG disclosure &amp; reporting frameworks</li>
+              <li>Net-zero pathway design</li>
+              <li>ESG rating &amp; regulatory strategy</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="slide-foot">
+          <span class="label" style="color: var(--c-fg-light-3)">Miranda Li · 2026</span>
+          <span class="label" style="color: var(--c-fg-light-2)">08 / 12</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 9 · CHAPTER dark -->
+      <section class="slide dark slide--chapter">
+        <div class="chapter-num" data-anim="fade-in" data-delay="0">02 / ESG LANDSCAPE</div>
+        <h1 class="h1" style="max-width: 90%; color: var(--c-fg)" data-anim="fade-up" data-delay="1">
+          THE SHIFT IS<br>ALREADY HERE
+        </h1>
+      </section>
+
+      <!-- SLIDE 10 · STATEMENT light -->
+      <section class="slide light slide--statement">
+        <div class="statement-body" style="justify-content: flex-end; height: 100%; display: flex; flex-direction: column; padding-bottom: calc(var(--pad-y) * 0.5);">
+          <h1 class="h1" style="max-width: 95%; color: var(--c-fg-light)" data-anim="fade-up" data-delay="0">
+            NET ZERO IS NOT A DESTINATION. IT IS A DISCIPLINE.
+          </h1>
+        </div>
+      </section>
+
+      <!-- SLIDE 11 · CHART dark — ESG disclosure adoption -->
+      <section class="slide dark slide--chart">
+        <div class="slide-chrome">
+          <span class="label muted" data-anim="fade-in" data-delay="0">Global ESG Disclosure Adoption</span>
+          <span class="label muted" data-anim="fade-in" data-delay="0">11 / 12</span>
+        </div>
+
+        <div class="slide-body">
+          <div class="chart-header">
+            <h2 class="h2" style="color: var(--c-fg)" data-anim="fade-up" data-delay="0">S&amp;P 500 ESG<br>REPORTING RATE</h2>
+            <span class="caption muted" style="font-family: var(--f-mono); text-transform: uppercase; letter-spacing: 0.08em;" data-anim="fade-in" data-delay="1">
+              % of companies · by year
+            </span>
+          </div>
+
+          <div class="chart-wrapper" data-anim="fade-up" data-delay="2">
+            <div class="bar-track">
+              <div class="bar-col">
+                <span class="bar-val">52%</span>
+                <div class="bar-fill" style="height: 5.5vh"></div>
+                <span class="bar-x-label">2019</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-val">65%</span>
+                <div class="bar-fill" style="height: 9vh"></div>
+                <span class="bar-x-label">2020</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-val">72%</span>
+                <div class="bar-fill" style="height: 14vh"></div>
+                <span class="bar-x-label">2021</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-val">80%</span>
+                <div class="bar-fill" style="height: 19vh"></div>
+                <span class="bar-x-label">2022</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-val">86%</span>
+                <div class="bar-fill" style="height: 24vh"></div>
+                <span class="bar-x-label">2023</span>
+              </div>
+              <div class="bar-col">
+                <span class="bar-val hi">90%</span>
+                <div class="bar-fill accent" style="height: 30vh"></div>
+                <span class="bar-x-label">2024</span>
+              </div>
+            </div>
+            <div class="chart-baseline"></div>
+          </div>
+
+          <p class="chart-source" data-anim="fade-in" data-delay="3">
+            Source: Governance &amp; Accountability Institute · S&amp;P 500 Sustainability Reporting 2024
+          </p>
+        </div>
+
+        <div class="slide-foot">
+          <span class="label muted">Miranda Li · 2026</span>
+          <span class="label muted">11 / 12</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 12 · END light -->
+      <section class="slide light slide--end">
+        <h1 class="h1" style="max-width: 85%; line-height: 0.9; font-size: var(--sz-display); color: var(--c-fg-light);" data-anim="fade-up" data-delay="0">
+          LET'S CONNECT.
+        </h1>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-lg); margin-top: var(--gap-lg);" data-anim="fade-up" data-delay="2">
+          <div>
+            <p class="body" style="color: var(--c-fg-light-2)">
+              Open to ESG advisory roles, sustainability strategy<br />
+              positions, and conversations about the transition ahead.
+            </p>
+            <p class="body" style="color: var(--c-fg-light); margin-top: 1.5vh; font-weight: 700;">
+              yan.goo@gmail.com
+            </p>
+          </div>
+          <div>
+            <p class="body" style="color: var(--c-fg-light-2)">
+              Background in aviation, real estate, new energy,<br />
+              finance and defense — now fully focused on ESG.
+            </p>
+            <p class="body" style="color: var(--c-fg-light); margin-top: 1.5vh; font-weight: 700;">
+              miranda-li.net
+            </p>
+          </div>
+        </div>
+
+        <div class="cover-footer" style="border-top-color: var(--c-border-light);" data-anim="fade-in" data-delay="4">
+          <span class="cover-footer-col" style="color: var(--c-fg-light-2)">
+            Miranda Li<br />ESG &amp; Sustainability
+          </span>
+          <span class="cover-footer-col" style="text-align: center; color: var(--c-fg-light-2)">
+            Strategy &amp; Transition
+          </span>
+          <span class="cover-footer-col" style="color: var(--c-fg-light-2); text-align: right;">
+            miranda-li.net · 2026
+          </span>
+        </div>
+      </section>
+
+    </div><!-- /deck -->
+
+    <script>
+      (function () {
+        "use strict";
+        const deck = document.getElementById("deck");
+        const slides = Array.from(document.querySelectorAll(".slide"));
+        const dotsEl = document.getElementById("nav-dots");
+        const counter = document.getElementById("slide-counter");
+        const total = slides.length;
+        let current = 0;
+        let animating = false;
+
+        function init() {
+          deck.style.width = total + "00vw";
+          slides.forEach(function (_, i) {
+            const btn = document.createElement("button");
+            btn.className = "nav-dot";
+            btn.setAttribute("aria-label", "Go to slide " + (i + 1));
+            btn.addEventListener("click", function () { goTo(i); });
+            dotsEl.appendChild(btn);
+          });
+          goTo(0, true);
+        }
+
+        function goTo(index, instant) {
+          index = Math.max(0, Math.min(total - 1, index));
+          if (index === current && !instant) return;
+          animating = true;
+          const prev = slides[current];
+          prev.classList.remove("is-active");
+          void prev.offsetWidth;
+          if (instant) {
+            deck.style.transition = "none";
+            deck.style.transform = "translateX(-" + index + "00vw)";
+            void deck.offsetWidth;
+            deck.style.transition = "";
+          } else {
+            deck.style.transform = "translateX(-" + index + "00vw)";
+          }
+          current = index;
+          const next = slides[current];
+          next.classList.add("is-active");
+          Array.from(dotsEl.children).forEach(function (dot, i) {
+            dot.classList.toggle("is-active", i === current);
+          });
+          counter.textContent = current + 1 + " / " + total;
+          const delay = instant ? 0 : parseFloat(getComputedStyle(deck).transitionDuration) * 1000;
+          setTimeout(function () { animating = false; }, delay);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (animating) return;
+          if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
+            e.preventDefault(); goTo(current + 1);
+          } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+            e.preventDefault(); goTo(current - 1);
+          } else if (e.key === "Home") {
+            e.preventDefault(); goTo(0);
+          } else if (e.key === "End") {
+            e.preventDefault(); goTo(total - 1);
+          }
+        });
+
+        let wheelCooldown = false;
+        document.addEventListener("wheel", function (e) {
+          e.preventDefault();
+          if (animating || wheelCooldown) return;
+          wheelCooldown = true;
+          setTimeout(function () { wheelCooldown = false; }, 900);
+          if (e.deltaY > 0 || e.deltaX > 0) { goTo(current + 1); } else { goTo(current - 1); }
+        }, { passive: false });
+
+        let touchStartX = null;
+        let touchStartY = null;
+        document.addEventListener("touchstart", function (e) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        document.addEventListener("touchend", function (e) {
+          if (touchStartX === null) return;
+          const dx = touchStartX - e.changedTouches[0].clientX;
+          const dy = touchStartY - e.changedTouches[0].clientY;
+          if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+            if (animating) return;
+            if (dx > 0) { goTo(current + 1); } else { goTo(current - 1); }
+          }
+          touchStartX = null;
+          touchStartY = null;
+        }, { passive: true });
+
+        init();
+      })();
+    </script>
+  </body>
 </html>
