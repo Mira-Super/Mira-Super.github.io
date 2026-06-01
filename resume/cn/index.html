@@ -239,78 +239,9 @@
 
   @page { margin: 0; size: A4; }
 
-  /* Password gate */
-  #gate-overlay {
-    position: fixed; inset: 0; z-index: 9999;
-    background: #1c1c1c;
-    display: flex; align-items: center; justify-content: center;
-    font-family: "IBM Plex Mono", monospace;
-  }
-  #gate-overlay.hidden { display: none; }
-  .gate-box {
-    display: flex; flex-direction: column; align-items: center; gap: 20px;
-    width: 100%; max-width: 320px; padding: 0 24px;
-  }
-  .gate-label {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 11px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: rgba(245,210,0,0.55);
-  }
-  .gate-input {
-    width: 100%; background: transparent;
-    border: 1px solid rgba(245,210,0,0.3); border-radius: 0;
-    color: #f5d200; font-family: "IBM Plex Mono", monospace;
-    font-size: 13px; letter-spacing: 0.08em;
-    padding: 10px 14px; outline: none; transition: border-color 0.2s;
-  }
-  .gate-input:focus { border-color: rgba(245,210,0,0.75); }
-  .gate-btn {
-    width: 100%; background: transparent;
-    border: 1px solid rgba(245,210,0,0.45); border-radius: 0;
-    color: rgba(245,210,0,0.7); font-family: "IBM Plex Mono", monospace;
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 10px 14px; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
-  }
-  .gate-btn:hover { background: #f5d200; color: #1c1c1c; border-color: #f5d200; }
-  .gate-error {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: rgba(245,210,0,0.45); min-height: 14px;
-  }
 </style>
 </head>
 <body>
-<div id="gate-overlay">
-  <div class="gate-box">
-    <span class="gate-label">Access Restricted</span>
-    <input id="gate-input" class="gate-input" type="password" placeholder="Enter password" autocomplete="off" />
-    <button class="gate-btn" id="gate-btn">Enter</button>
-    <span class="gate-error" id="gate-error"></span>
-  </div>
-</div>
-<script>
-  (function () {
-    var overlay = document.getElementById('gate-overlay');
-    var input = document.getElementById('gate-input');
-    var btn = document.getElementById('gate-btn');
-    var errEl = document.getElementById('gate-error');
-    if (sessionStorage.getItem('site_unlocked') === '1') {
-      overlay.classList.add('hidden');
-    }
-    function attempt() {
-      if (input.value === 'miranda2026') {
-        sessionStorage.setItem('site_unlocked', '1');
-        overlay.classList.add('hidden');
-      } else {
-        errEl.textContent = 'Incorrect password. Try again.';
-        input.value = '';
-        input.focus();
-      }
-    }
-    btn.addEventListener('click', attempt);
-    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') attempt(); });
-  })();
-</script>
 <div class="page">
 
   <!-- ══ HEADER ══ -->
