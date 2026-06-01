@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miranda Li — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --c-bg: #1c1c1c;
+      --c-bg-alt: #242422;
+      --c-bg-light: #f5d200;
+      --c-fg: #f5d200;
+      --c-fg-2: rgba(245,210,0,0.58);
+      --c-fg-3: rgba(245,210,0,0.28);
+      --c-fg-light: #1c1c1c;
+      --c-fg-light-2: rgba(28,28,28,0.62);
+      --c-border: #2e2e2c;
+      --c-border-light: rgba(28,28,28,0.18);
+      --f-display: "Barlow","Noto Sans SC",sans-serif;
+      --f-mono: "IBM Plex Mono",monospace;
+      --f-body: "Barlow","Noto Sans SC",system-ui,sans-serif;
+      --ease-enter: cubic-bezier(0.16,1,0.3,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--c-bg); color: var(--c-fg); font-family: var(--f-body); -webkit-font-smoothing: antialiased; }
+
+    /* TOP BAR */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      background: var(--c-bg);
+      border-bottom: 1px solid var(--c-border);
+      z-index: 100;
+    }
+    .back-btn {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--c-fg-2);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .back-btn:hover { color: var(--c-fg); }
+    .topbar-label {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--c-fg-3);
+    }
+
+    /* LAYOUT */
+    .page { padding-top: 52px; }
+
+    /* HERO — light */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8vh 5vw 6vh;
+      background: var(--c-bg-light);
+      border-bottom: 1px solid rgba(28,28,28,0.12);
+    }
+    .hero-eyebrow {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-fg-light-2);
+      margin-bottom: 3vh;
+    }
+    .hero-title {
+      font-family: var(--f-display);
+      font-size: clamp(3.5rem, 10vw, 11rem);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--c-fg-light);
+    }
+    .hero-desc {
+      margin-top: 4vh;
+      font-size: clamp(1rem, 1.4vw, 1.3rem);
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--c-fg-light-2);
+      max-width: 52ch;
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 7vh 5vw;
+      border-bottom: 1px solid var(--c-border);
+    }
+    .section-label {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-fg-3);
+      margin-bottom: 4vh;
+    }
+    .section-title {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 4vw, 4.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 0.95;
+      color: var(--c-fg);
+      margin-bottom: 3vh;
+    }
+    .section-body {
+      font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+      line-height: 1.7;
+      color: var(--c-fg-2);
+      max-width: 60ch;
+    }
+
+    /* PROJECT CARDS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 4vh;
+    }
+    .project-card {
+      background: var(--c-bg-alt);
+      border: 1px solid var(--c-border);
+      padding: 3.5vh 2.8vw;
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.35s;
+      cursor: default;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--c-fg);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s var(--ease-enter);
+    }
+    .project-card:hover { border-color: var(--c-fg-2); }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-tag {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--c-fg-3);
+    }
+    .project-title {
+      font-family: var(--f-display);
+      font-size: clamp(1.2rem, 2vw, 2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--c-fg);
+      line-height: 1;
+    }
+    .project-desc {
+      font-size: clamp(0.82rem, 0.95vw, 0.95rem);
+      line-height: 1.6;
+      color: var(--c-fg-2);
+    }
+    .project-meta {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--c-fg-3);
+      margin-top: auto;
+    }
+
+    /* PLACEHOLDER */
+    .placeholder {
+      margin-top: 4vh;
+      background: var(--c-bg-alt);
+      border: 1px dashed var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6vh 3vw;
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-fg-3);
+    }
+
+    @media (max-width: 768px) {
+      .project-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: clamp(3rem, 14vw, 6rem); }
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 4vh 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-text {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-fg-3);
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <a href="/" class="back-btn">← Miranda Li</a>
+    <span class="topbar-label">Portfolio</span>
+  </nav>
+
+  <div class="page">
+
+    <section class="hero">
+      <p class="hero-eyebrow">02 · Portfolio</p>
+      <h1 class="hero-title">Portfolio</h1>
+      <p class="hero-desc">Selected work across ESG strategy, responsible investment, sustainability governance and cross-industry executive practice.</p>
+    </section>
+
+    <section class="section">
+      <p class="section-label">01 · ESG Investment</p>
+      <h2 class="section-title">ESG &amp;<br>Investment</h2>
+      <p class="section-body">Responsible investment, supply chain ESG transformation and LP active engagement case studies.</p>
+      <div class="project-grid">
+        <div class="project-card">
+          <span class="project-tag">Private Equity · Supply Chain</span>
+          <span class="project-title">IoT Wearable ESG Transformation</span>
+          <p class="project-desc">18-month LP active engagement: sustainable materials upgrade, Sustainalytics Medium → Low Risk, EU market expansion 5 → 11 countries.</p>
+          <span class="project-meta">GF Group · 2024–2025</span>
+        </div>
+        <div class="project-card">
+          <span class="project-tag">New Energy · Military-Civil</span>
+          <span class="project-title">Xinjiang New Energy Base</span>
+          <p class="project-desc">Coordinated 14-company joint inspection, 10+ strategic agreements across PV, storage and hydrogen energy; aligned with national desert base policy.</p>
+          <span class="project-meta">YiGui TongFeng · 2022–2023</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="section-label">02 · Aviation ESG</p>
+      <h2 class="section-title">Aviation<br>Sustainability</h2>
+      <p class="section-body">Carbon management, green operations and regulatory compliance in civil aviation.</p>
+      <div class="project-grid">
+        <div class="project-card">
+          <span class="project-tag">Aviation · Carbon</span>
+          <span class="project-title">CAAC MRV Carbon Verification</span>
+          <p class="project-desc">Among China's first airlines to complete CAAC carbon emissions verification. EFB fleet rollout: 1,200+ tonnes fuel saved annually.</p>
+          <span class="project-meta">Donghai Airlines · 2018–2021</span>
+        </div>
+        <div class="project-card">
+          <span class="project-tag">Aviation · Green Flight</span>
+          <span class="project-title">ASPIRE SQ11 Green Demo Flight</span>
+          <p class="project-desc">World's first dual-sector continuous green flight. Optimised routing + CDA: 10,686 kg fuel saved, 33,769 kg CO₂ reduced, 6% fuel savings rate.</p>
+          <span class="project-meta">Singapore Airlines · 2010–2015</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="section-label">03 · Governance &amp; Philanthropy</p>
+      <h2 class="section-title">Governance &amp;<br>Philanthropy</h2>
+      <p class="section-body">ESG governance frameworks, board-level committee coordination and philanthropic fund management.</p>
+      <div class="placeholder">Case studies coming soon</div>
+    </section>
+
+    <footer class="footer">
+      <span class="footer-text">Miranda Li · Portfolio</span>
+      <span class="footer-text">miranda-li.net · 2026</span>
+    </footer>
+
+  </div>
+</body>
+</html>
