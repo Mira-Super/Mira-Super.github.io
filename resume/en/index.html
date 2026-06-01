@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miranda Li · ESG Resume 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    color: #1d1d1f;
+    background: #fff;
+    font-size: 9.2pt;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 52px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1d1d1f;
+    margin-bottom: 22px;
+  }
+
+  .header-left { flex: 1; padding-top: 4px; text-align: center; }
+
+  .name {
+    font-size: 30pt;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #1d1d1f;
+    line-height: 1.05;
+  }
+
+  .name-cn {
+    font-size: 11pt;
+    font-weight: 400;
+    color: #6e6e73;
+    letter-spacing: 1px;
+    margin-top: 3px;
+  }
+
+  .tagline {
+    font-size: 10pt;
+    font-weight: 500;
+    color: #3a3a3c;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+
+  .contact {
+    margin-top: 10px;
+    font-size: 8.2pt;
+    color: #6e6e73;
+    line-height: 1.8;
+  }
+
+  .contact span { margin-right: 18px; }
+
+  .photo {
+    width: 108px;
+    height: 148px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 5px;
+    margin-right: 28px;
+    flex-shrink: 0;
+    filter: grayscale(8%);
+  }
+
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 18px; }
+
+  .section-title {
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: #6e6e73;
+    padding-bottom: 5px;
+    border-bottom: 0.5px solid #d2d2d7;
+    margin-bottom: 10px;
+  }
+
+  /* ── PROFILE ── */
+  .profile-text {
+    font-size: 9pt;
+    color: #3a3a3c;
+    line-height: 1.7;
+  }
+
+  /* ── COMPETENCIES ── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px 32px;
+  }
+
+  .comp-item { font-size: 8.5pt; }
+
+  .comp-label {
+    font-weight: 600;
+    color: #1d1d1f;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .comp-detail {
+    color: #6e6e73;
+    font-size: 7.8pt;
+    line-height: 1.5;
+  }
+
+  /* ── JOB ENTRIES ── */
+  .job { margin-bottom: 16px; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1px;
+  }
+
+  .company-name {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #1d1d1f;
+  }
+
+  .job-date {
+    font-size: 8pt;
+    color: #8e8e93;
+    white-space: nowrap;
+    margin-left: 16px;
+  }
+
+  .job-title {
+    font-size: 9pt;
+    font-weight: 500;
+    color: #3a3a3c;
+    margin-bottom: 2px;
+  }
+
+  .company-desc {
+    font-size: 7.8pt;
+    color: #aeaeb2;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .sub-head {
+    font-size: 7.8pt;
+    font-weight: 700;
+    color: #1d1d1f;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin: 6px 0 3px;
+  }
+
+  ul { padding-left: 13px; }
+
+  li {
+    font-size: 8.5pt;
+    color: #3a3a3c;
+    line-height: 1.58;
+    margin-bottom: 2.5px;
+  }
+
+  li::marker { color: #aeaeb2; }
+
+  strong { color: #1d1d1f; font-weight: 600; }
+
+  /* ── EDUCATION ── */
+  .edu-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 2px 14px;
+    margin-bottom: 5px;
+    font-size: 8.5pt;
+  }
+
+  .edu-date { color: #8e8e93; padding-top: 1px; }
+  .edu-school { font-weight: 600; color: #1d1d1f; }
+  .edu-prog { color: #6e6e73; font-size: 8pt; }
+
+  /* ── CERTS ── */
+  .cert-group { margin-bottom: 8px; }
+
+  .cert-group-title {
+    font-size: 7.8pt;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 4px;
+  }
+
+  .cert-row {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2px 10px;
+    font-size: 8pt;
+    margin-bottom: 3px;
+    align-items: baseline;
+  }
+
+  .cert-name { color: #1d1d1f; font-weight: 500; }
+  .cert-body { color: #6e6e73; }
+
+  /* ── SKILLS ── */
+  .skills-block { margin-bottom: 5px; font-size: 8.2pt; }
+  .skills-label { font-weight: 600; color: #1d1d1f; }
+  .skills-val { color: #6e6e73; }
+
+  @media print {
+    body { font-size: 9pt; }
+    .page { padding: 14mm 16mm; max-width: none; }
+    .job { page-break-inside: avoid; }
+  }
+
+  @page { margin: 0; size: A4; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <header class="header">
+    <img class="photo" src="./职业照_2026.jpg" alt="Miranda Li">
+    <div class="header-left">
+      <div class="name">Miranda Li</div>
+      <div class="name-cn">李梦婷</div>
+      <div class="tagline">ESG &amp; Sustainability · 15-Year Cross-Industry Executive</div>
+      <div class="contact">
+        <span>✉ lmt_miranda@outlook.com</span>
+        <span>English IELTS 7.0</span>
+        <span>Cantonese Working Proficiency</span><br>
+        <span>Aviation · Real Estate · Investment · New Energy / Advanced Materials · Military-Civil Integration</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ PROFESSIONAL PROFILE ══ -->
+  <section class="section">
+    <div class="section-title">Professional Profile</div>
+    <p class="profile-text">
+      ESG practitioner with 15 years of cross-industry and cross-border experience spanning mainland China, Hong Kong and overseas, across aviation, real estate, military-civil integration, new energy/advanced materials and private equity. Holds <strong>CFA ESG Sustainable Investing Certificate</strong>, <strong>University of Hong Kong ESG Certificate</strong>, <strong>Stanford Graduate School of Business Executive Program in Sustainable Development Strategies</strong> and <strong>UNECE (United Nations Economic Commission for Europe) Air Pollution Monitoring Certificate</strong>. Familiar with GRI, TCFD, SASB, GRESB, CDP and other leading ESG frameworks. Long-term track record in Chairman/President's Office roles, with multi-dimensional experience in ESG integration, philanthropy governance, crisis management and government-business relations.
+    </p>
+  </section>
+
+  <!-- ══ CORE COMPETENCIES ══ -->
+  <section class="section">
+    <div class="section-title">Core Competencies</div>
+    <div class="comp-grid">
+      <div class="comp-item">
+        <span class="comp-label">ESG Governance &amp; Compliance</span>
+        <span class="comp-detail">Full-cycle compliance framework · ISO 9001/14001 · HKEX ESG Guide / CAAC regulatory interface · Zero-violation record</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">ESG Investment &amp; Due Diligence</span>
+        <span class="comp-detail">Government-backed fund post-investment management · Supply chain ESG DD &amp; rating improvement (Sustainalytics) · Green transition delivery</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">Carbon Management &amp; Green Operations</span>
+        <span class="comp-detail">MRV carbon monitoring, reporting &amp; verification · Aviation EFB paperless (1,200 t/yr fuel saved) · Blue Skies Action Plan · CORSIA · New energy value chain</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">ESG Reporting &amp; Disclosure</span>
+        <span class="comp-detail">GRI · TCFD · GRESB · CDP · HKEX ESG reporting · Sustainability report interface · Disclosure standard execution</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">Social Responsibility &amp; Philanthropy</span>
+        <span class="comp-detail">Family philanthropic fund management (CUHK-SZ One Drop Fund) · NTFCF: Palace Museum · PKU Ting Fong Building · Project approval · disbursement · audit · disclosure</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">ESG Communications &amp; Reputation</span>
+        <span class="comp-detail">Major crisis PR &amp; public opinion management · Multi-stakeholder communications (regulators / media / government) · ESG brand narrative</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WORK EXPERIENCE ══ -->
+  <section class="section">
+    <div class="section-title">Work Experience</div>
+
+    <!-- GF Group -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">GF Group (Guangfeng Group)</span>
+        <span class="job-date">Mar 2024 — Present</span>
+      </div>
+      <div class="job-title">Strategic Assistant to Chairman · Head of Responsible Investment</div>
+      <div class="company-desc">Private equity firm partnering with government-backed funds; investments spanning real estate, technology, healthcare, entertainment and advanced manufacturing</div>
+
+      <div class="sub-head">Responsible Investment · Sustainable Materials Upgrade · EU Market Compliance</div>
+      <ul>
+        <li>Oversaw post-investment management of <strong>Shenzhen Talent Innovation &amp; VC Fund (Phase II &amp; III)</strong> and <strong>Shenzhen SME &amp; Talent Equity Investment Fund</strong>; coverage across medtech, smart wearables, entertainment and sports</li>
+        <li>Led <strong>18-month LP active engagement ESG transformation</strong> (AI smart wearable IoT supply chain): drove green upgrade of 8 core components (FSC 100% recycled materials, sugarcane bagasse inserts, digital manuals, etc.); unit cost +$0.22 (&lt;0.1% MSRP, fully absorbed); Sustainalytics rating Medium Risk → <strong>ESG Low Risk</strong>; EU market 5 → <strong>11 countries</strong>; add-to-cart rate <strong>+4.1%</strong>; aligned with SZSE 2024 Sustainability Reporting Guidelines</li>
+      </ul>
+
+      <div class="sub-head">ESG Risk Governance · Philanthropy Fund Management</div>
+      <ul>
+        <li>Led <strong>Future Centre RMB 500M distressed asset restructuring</strong>: adopted "lease-to-manage" strategy to stabilise operations, isolate reputational risk and preserve disposal flexibility</li>
+        <li>Managed <strong>"One Drop" Charity Fund</strong> (CUHK-Shenzhen, RMB 20M); established campus development funds and scholarships. Secretary, Cheung Kong GSB EMBA Class 27</li>
+      </ul>
+    </div>
+
+    <!-- YiGui -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">YiGui TongFeng Technology Group</span>
+        <span class="job-date">Oct 2021 — Mar 2024</span>
+      </div>
+      <div class="job-title">Strategic Director (Reporting to Chairman) · Head of Green Industry</div>
+      <div class="company-desc">Advanced materials, new energy and precision instruments group; military-civil integration platform with China Aerospace and leading universities</div>
+
+      <div class="sub-head">Green Industry Investment &amp; Development · Military-Civil Integration Compliance</div>
+      <ul>
+        <li><strong>Full-cycle ESG due diligence (Zhihe New Materials)</strong>: DD framework covering corporate governance, technical compliance, policy alignment and financials — five ESG DD dimensions; leveraged HIT <strong>"Advanced Structural-Functional Integrated Materials &amp; Green Manufacturing Technology" MIIT Key Laboratory</strong> (CAE Academicians Zhou Yu &amp; Jia Dechang); green production bases in Jingdezhen &amp; Chongqing</li>
+        <li><strong>ESG civil applications</strong>: nuclear waste encapsulation (vs. cement/glass-ceramic), marine anti-corrosion coatings, medical bioceramics, satellite thruster components, leading telecom equipment manufacturer's 5G base station thermal coatings (<strong>+70% efficiency</strong>); 15 national invention patents; sole domestic supplier; production cycle 6 months → <strong>1.5 months</strong> (75% reduction)</li>
+        <li><strong>Equity financing</strong>: led SZ Junsheng Runshi VC Fund equity transfer, achieving <strong>RMB 100M</strong> valuation</li>
+      </ul>
+      <div class="sub-head">New Energy &amp; Low-Carbon Strategy</div>
+      <ul>
+        <li><strong>Xinjiang New Energy Base</strong>: 14-company joint inspection; 8 government meetings; 10+ strategic agreements (PV/storage/hydrogen; Urumqi 22,000MW, Kashgar 200,000MW); aligned with national desert solar-wind base policy (2022)</li>
+        <li><strong>Green Transport &amp; Hydrogen</strong>: partnered with GenCell (Israel) on hydrogen applications; collaborated with Sungrow Power on fuel cells and refuelling networks; built green power + hydrogen + zero-carbon transport ecosystem</li>
+      </ul>
+    </div>
+
+    <!-- Donghai -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">Donghai Airlines</span>
+        <span class="job-date">Feb 2018 — Mar 2021</span>
+      </div>
+      <div class="job-title">General Manager (Executive / Cabin) | ESG Compliance &amp; Green Operations</div>
+      <div class="company-desc">Strategic partner of China Southern Airlines; Shenzhen Bao'an International Airport; all-Boeing 737-800 fleet; 60+ routes</div>
+
+      <div class="sub-head">Low-Carbon Operations · Aviation Carbon Management</div>
+      <ul>
+        <li>Led full-fleet <strong>EFB (Electronic Flight Bag)</strong> deployment, achieving paperless cockpit operations; annual cost savings ~<strong>RMB 4M</strong>; fuel-efficiency programme (carbon brakes, route optimisation, new-energy ground vehicles): <strong>1,200+ tonnes/yr</strong> fuel saved (~3,800t CO₂)</li>
+        <li>Spearheaded <strong>paperless travel</strong> at Shenzhen Bao'an Airport (e-boarding passes / ID-only check-in, Aug 2019); established MRV carbon verification framework; participated in SAF pilot</li>
+        <li>Awarded <strong>2021 Shenzhen Green Development Benchmark Enterprise</strong>; among China's early-mover airlines in CAAC carbon emissions verification</li>
+      </ul>
+
+      <div class="sub-head">ESG Compliance Governance · Safety System Development</div>
+      <ul>
+        <li>Compiled first <strong>Service Quality Management Manual</strong>; led organisation through <strong>ISO 9001</strong> certification; <strong>zero regulatory violations</strong>; consecutively awarded CAAC Central South Bureau <strong>Safety Excellence Unit</strong></li>
+        <li><strong>Crisis management</strong>: led crisis communications for two major incidents (2018 &amp; 2021); primary CAAC safety rectification liaison; drove restructuring of safety, training, operations and ground support systems; restructuring outcomes subsequently acknowledged by <strong>CAAC Director Feng Zhengling</strong> via on-site visit</li>
+        <li>Participated in Greater Bay Area Airlines formation and <strong>Beijing Daxing Airport</strong> strategic base development</li>
+      </ul>
+
+      <div class="sub-head">Sustainable Brand · Corporate Social Responsibility</div>
+      <ul>
+        <li>Created <strong>"Nine-Color Girls"</strong> and <strong>"Nine-Color Seagull Demo Crew"</strong> service IPs; produced <em>Donghai Good Tea</em> in-flight media; "China's Top 10 Featured Airlines" &amp; "China's Most Beautiful Flight Attendants" (2018–2019)</li>
+        <li>Led team to <strong>Best Team Award</strong>, 2019 Shenzhen Airport "Warm Service · Warm Airport" competition; organised "Left-Behind Children Dream Trip" &amp; "Aviation Science Campus Tours" CSR programmes; managed <strong>500+ cabin crew</strong></li>
+      </ul>
+    </div>
+
+    <!-- Sino Group -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">Sino Group (Hong Kong)</span>
+        <span class="job-date">Nov 2015 — Feb 2018</span>
+      </div>
+      <div class="job-title">Assistant to Chairman · Head of Sustainability</div>
+      <div class="company-desc">Hong Kong's leading ESG property developer; HKEX-listed; MSCI AAA · Hang Seng AAA · S&amp;P Global Top 1% · CDP A; NTFCF is the group's core social responsibility pillar</div>
+
+      <div class="sub-head">Green Asset Operations · Sustainable Energy Conservation</div>
+      <ul>
+        <li>Participated in group solar PV programme (19 properties + 3 hotels, 3,000+ panels, <strong>8M kWh/yr</strong>); Hong Kong's benchmark distributed solar deployment in the property sector</li>
+        <li>Supported green operations across Tuen Mun Town Plaza, Gold Coast and Olympian City: energy conservation, water reduction, waste minimisation; embodying <strong>"living with community"</strong> sustainability philosophy</li>
+      </ul>
+
+      <div class="sub-head">Philanthropy Governance · Sustainable Community Investment</div>
+      <ul>
+        <li><strong>Ng Teng Fong Charitable Foundation (NTFCF)</strong>: one of HK's most active family philanthropic foundations (education, healthcare, cultural arts, youth); coordinated <strong>Palace Museum Restoration &amp; Education Fund</strong> (formal donation RMB 100M) and <strong>PKU Ting Fong Building</strong> project; participated in full-cycle approval, disbursement, audit and disclosure</li>
+        <li>Participated in early development of <strong>BLISS Community Investment Framework</strong> (Belonging / Legacy / Inclusivity / Sincerity / Sustainability)</li>
+        <li>Led <strong>Management Trainee Programme</strong> ("Five-Star Service" / "Star of Sino"): mainland China, Hong Kong and US recruitment, development and placement; Hong Kong Community Chest <strong>Excellence Award</strong> (2016/17)</li>
+      </ul>
+
+      <div class="sub-head">ESG Disclosure &amp; Compliance · Green Finance Framework</div>
+      <ul>
+        <li>Supported establishment of <strong>Board-level ESG Steering Committee</strong> (2015); coordinated publication of <strong>Sustainability Vision 2030 / 3R Strategy</strong> (2017: 30% carbon reduction, 50% single-use plastic reduction, 100% green building); supported <strong>Green Finance Framework</strong> &amp; HK$2B green loan (2018)</li>
+        <li>Coordinated high-level government-business programme (Fujian Provincial Party Committee, PRC Embassy Singapore, Temasek Holdings); contributed to <strong>Fullerton Hotel National Monument</strong> gazetting (Singapore's 71st, Dec 2015); managed "Wedding Card Street" redevelopment crisis</li>
+        <li>Served through HKEX ESG Reporting Guide upgrade to <strong>"comply or explain"</strong> (Jan 2016)</li>
+      </ul>
+    </div>
+
+    <!-- Singapore Airlines -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">Singapore Airlines</span>
+        <span class="job-date">Oct 2010 — Oct 2015</span>
+      </div>
+      <div class="job-title">Cabin Crew Assisting Instructor (A380 / A330 / B777) | Green Operations &amp; ESG Practice</div>
+      <div class="company-desc">World's top 5-star airline; MSCI ESG A · Dow Jones Sustainability Index · ISO 14001 · World's Most Ethical Company; 100+ cities across 50+ countries</div>
+
+      <ul>
+        <li>Operated <strong>ASPIRE multi-sector green demonstration flight (SQ11, LAX → TYO → SIN)</strong>; world's first dual-sector continuous green flight, achieving fuel savings through optimised routing, Continuous Descent Approach (CDA) and ATC coordination (full-route: <strong>10,686 kg fuel saved</strong>, <strong>33,769 kg CO₂ reduced</strong>, 6% fuel savings rate)</li>
+        <li>Fully implemented <strong>ISO 14001</strong> environmental management framework; executed onboard emissions reduction, plastic minimisation and waste sorting protocols; supported A380 low-emission fleet strategy</li>
+        <li>Participated in <strong>5Cs (Cabin Crew Club for Community Care)</strong> programmes; served on <strong>2015 A380 Charity Flight</strong> (SG50, 29 May 2015): 300+ Community Chest beneficiaries including children with special needs, persons with disabilities and elderly</li>
+        <li>Conducted crew induction, supervision and certification; co-developed <strong>standard manuals and ESG service guidelines</strong>, embedding sustainability and compliance into training frameworks</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══ EDUCATION ══ -->
+  <section class="section">
+    <div class="section-title">Education</div>
+
+    <div class="edu-row">
+      <div class="edu-date">2025–2026</div>
+      <div>
+        <div class="edu-school">Stanford Graduate School of Business</div>
+        <div class="edu-prog">Executive Program in Sustainable Development Strategies</div>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div class="edu-date">2025–2026</div>
+      <div>
+        <div class="edu-school">PKU HSBC Business School</div>
+        <div class="edu-prog">Executive Development Programme (EDP)</div>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div class="edu-date">2006–2010</div>
+      <div>
+        <div class="edu-school">Guizhou University (Project 211)</div>
+        <div class="edu-prog">BSc in Information and Computing Science (Mathematics) · First Prize, National Mathematical Modelling Competition (2009)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CERTIFICATIONS ══ -->
+  <section class="section">
+    <div class="section-title">Certifications</div>
+
+    <div class="cert-group">
+      <div class="cert-group-title">ESG / Sustainability</div>
+      <div class="cert-row">
+        <div class="cert-name"><strong>CFA ESG Sustainable Investing Certificate</strong></div>
+        <div class="cert-body">CFA Institute · ESG integration · climate risk · impact investing · green finance</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">University of Hong Kong ESG Certificate</div>
+        <div class="cert-body">The University of Hong Kong (HKU) · GRI / TCFD / SASB · sustainability strategy</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">Certificate – Monitoring Air Pollution Effects (CLRTAP)</div>
+        <div class="cert-body">UNECE · transboundary air pollution monitoring · UN convention framework</div>
+      </div>
+    </div>
+
+    <div class="cert-group">
+      <div class="cert-group-title">Finance / Professional</div>
+      <div class="cert-row">
+        <div class="cert-name">Asset Management Practitioner Qualification</div>
+        <div class="cert-body">AMAC (China)</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">Cabin Crew Instructor / Corporate Trainer</div>
+        <div class="cert-body">Singapore Airlines · Sino Group</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ESG SKILLS & TOOLS ══ -->
+  <section class="section">
+    <div class="section-title">ESG Skills &amp; Tools</div>
+
+    <div class="skills-block">
+      <span class="skills-label">Reporting Frameworks </span>
+      <span class="skills-val">GRI · TCFD · SASB · GRESB · CDP · HKEX ESG Reporting Guide · UN SDGs</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">Ratings &amp; Data Platforms </span>
+      <span class="skills-val">Sustainalytics ESG Risk Rating (hands-on) · MSCI ESG · S&amp;P Global ESG · Hang Seng Sustainability Index</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">Carbon &amp; Environmental Compliance </span>
+      <span class="skills-val">MRV · CAAC Civil Aviation Carbon Verification · CORSIA · ISO 14001 · UNECE CLRTAP · SAF industry practice</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">Governance &amp; Quality Systems </span>
+      <span class="skills-val">ISO 9001 (led certification) · Full-cycle compliance framework · Crisis &amp; reputation management · Multi-stakeholder engagement</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">ESG Investment &amp; DD </span>
+      <span class="skills-val">ESG DD framework (governance · technology · compliance · policy · financials) · LP active engagement · Government-backed fund post-investment ESG management</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">Languages </span>
+      <span class="skills-val">Mandarin (Native) · English (IELTS 7.0) · Cantonese (working proficiency)</span>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

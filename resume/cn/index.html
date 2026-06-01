@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李梦婷 · ESG简历 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Hiragino Sans GB', sans-serif;
+    color: #1d1d1f;
+    background: #fff;
+    font-size: 9.2pt;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 52px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1d1d1f;
+    margin-bottom: 22px;
+  }
+
+  .header-left { flex: 1; padding-top: 4px; text-align: center; }
+
+  .name {
+    font-size: 30pt;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #1d1d1f;
+    line-height: 1.05;
+  }
+
+  .name-en {
+    font-size: 11pt;
+    font-weight: 400;
+    color: #6e6e73;
+    letter-spacing: 1px;
+    margin-top: 3px;
+  }
+
+  .tagline {
+    font-size: 10pt;
+    font-weight: 500;
+    color: #3a3a3c;
+    margin-top: 8px;
+    letter-spacing: 0.2px;
+  }
+
+  .contact {
+    margin-top: 10px;
+    font-size: 8.2pt;
+    color: #6e6e73;
+    line-height: 1.8;
+  }
+
+  .contact span { margin-right: 18px; }
+
+  .photo {
+    width: 108px;
+    height: 148px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 5px;
+    margin-right: 28px;
+    flex-shrink: 0;
+    filter: grayscale(8%);
+  }
+
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 18px; }
+
+  .section-title {
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: #6e6e73;
+    padding-bottom: 5px;
+    border-bottom: 0.5px solid #d2d2d7;
+    margin-bottom: 10px;
+  }
+
+  /* ── PROFILE ── */
+  .profile-text {
+    font-size: 9pt;
+    color: #3a3a3c;
+    line-height: 1.7;
+  }
+
+  /* ── COMPETENCIES ── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px 32px;
+  }
+
+  .comp-item { font-size: 8.5pt; }
+
+  .comp-label {
+    font-weight: 600;
+    color: #1d1d1f;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .comp-detail {
+    color: #6e6e73;
+    font-size: 7.8pt;
+    line-height: 1.5;
+  }
+
+  /* ── JOB ENTRIES ── */
+  .job { margin-bottom: 16px; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1px;
+  }
+
+  .company-name {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #1d1d1f;
+  }
+
+  .job-date {
+    font-size: 8pt;
+    color: #8e8e93;
+    white-space: nowrap;
+    margin-left: 16px;
+  }
+
+  .job-title {
+    font-size: 9pt;
+    font-weight: 500;
+    color: #3a3a3c;
+    margin-bottom: 2px;
+  }
+
+  .company-desc {
+    font-size: 7.8pt;
+    color: #aeaeb2;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .sub-head {
+    font-size: 7.8pt;
+    font-weight: 700;
+    color: #1d1d1f;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin: 6px 0 3px;
+  }
+
+  ul { padding-left: 13px; }
+
+  li {
+    font-size: 8.5pt;
+    color: #3a3a3c;
+    line-height: 1.58;
+    margin-bottom: 2.5px;
+  }
+
+  li::marker { color: #aeaeb2; }
+
+  strong { color: #1d1d1f; font-weight: 600; }
+
+  em { color: #6e6e73; font-style: normal; font-size: 8pt; }
+
+  /* ── EDUCATION ── */
+  .edu-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 2px 14px;
+    margin-bottom: 5px;
+    font-size: 8.5pt;
+  }
+
+  .edu-date { color: #8e8e93; padding-top: 1px; }
+
+  .edu-school { font-weight: 600; color: #1d1d1f; }
+
+  .edu-prog { color: #6e6e73; font-size: 8pt; }
+
+  /* ── CERTS ── */
+  .cert-group { margin-bottom: 8px; }
+
+  .cert-group-title {
+    font-size: 7.8pt;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 4px;
+  }
+
+  .cert-row {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 2px 10px;
+    font-size: 8pt;
+    margin-bottom: 3px;
+    align-items: baseline;
+  }
+
+  .cert-name { color: #1d1d1f; font-weight: 500; }
+  .cert-body { color: #6e6e73; }
+  .cert-date { color: #aeaeb2; }
+
+  /* ── SKILLS ── */
+  .skills-block { margin-bottom: 5px; font-size: 8.2pt; }
+
+  .skills-label {
+    font-weight: 600;
+    color: #1d1d1f;
+  }
+
+  .skills-val { color: #6e6e73; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { font-size: 9pt; }
+    .page { padding: 14mm 16mm; max-width: none; }
+    .job { page-break-inside: avoid; }
+  }
+
+  @page { margin: 0; size: A4; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <header class="header">
+    <img class="photo" src="./职业照_2026.jpg" alt="Miranda Li">
+    <div class="header-left">
+      <div class="name">李梦婷</div>
+      <div class="name-en">Miranda Li</div>
+      <div class="tagline">ESG可持续发展 · 15年跨行业高管履历</div>
+      <div class="contact">
+        <span>✉ lmt_miranda@outlook.com</span>
+        <span>英语 IELTS 7.0</span>
+        <span>粤语 工作沟通</span><br>
+        <span>航空 · 地产 · 投资 · 新能源/新材料 · 军民融合</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ 个人简介 ══ -->
+  <section class="section">
+    <div class="section-title">个人简介</div>
+    <p class="profile-text">
+      具有15年跨行业跨境从业经历的ESG实践者，覆盖中国内地、香港及海外，先后深耕航空、地产、军民融合、新能源新材料及私募股权领域。持有<strong>CFA ESG可持续投资证书</strong>、<strong>香港大学ESG证书</strong>、<strong>斯坦福大学商学院可持续发展战略课程</strong>及<strong>联合国欧洲经济委员会（UNECE）大气污染监测证书</strong>；熟悉GRI、TCFD、SASB、GRESB、CDP等主流ESG框架；长期承担董事长/主席办公室核心职能，兼具ESG整合落地、公益治理、危机管理与政企沟通多维实践背景。
+    </p>
+  </section>
+
+  <!-- ══ 核心能力 ══ -->
+  <section class="section">
+    <div class="section-title">核心能力</div>
+    <div class="comp-grid">
+      <div class="comp-item">
+        <span class="comp-label">ESG治理与合规</span>
+        <span class="comp-detail">全链条合规框架 · ISO 9001/14001 · 港交所ESG指引 · 民航局监管对接 · 零违规管理</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">ESG投资与尽调</span>
+        <span class="comp-detail">政府引导基金投后管理 · 供应链ESG尽调（Sustainalytics）· 绿色转型交付 · ESG风险识别</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">碳管理与绿色运营</span>
+        <span class="comp-detail">MRV碳排放监测核查 · 民航EFB节能（年节约1,200吨燃油）· 蓝天保卫战 · CORSIA · 新能源产业链</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">ESG报告与披露</span>
+        <span class="comp-detail">GRI · TCFD · GRESB · CDP · 港交所ESG报告 · 可持续发展报告对接</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">社会责任与公益治理</span>
+        <span class="comp-detail">家族慈善公益基金管理（香港中文大学一滴水基金）|（黄廷芳慈善基金：故宫修缮·北京大学廷芳楼）| 慈善项目立项·拨付·审计·披露</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">ESG传播与声誉管理</span>
+        <span class="comp-detail">重大危机公关与舆情管理 · 多方利益相关方沟通（监管/媒体/政府）· 品牌ESG叙事</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 工作经历 ══ -->
+  <section class="section">
+    <div class="section-title">工作经历</div>
+
+    <!-- GF Group -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">广丰集团（GF Group）</span>
+        <span class="job-date">2024.03 — 至今</span>
+      </div>
+      <div class="job-title">董事长战略助理 · 责任投资负责人</div>
+      <div class="company-desc">私募股权基金，联合政府引导基金，投资覆盖地产、科技、医疗健康、文娱及先进制造业</div>
+
+      <div class="sub-head">责任投资 · 可持续材料升级 · 欧盟市场合规</div>
+      <ul>
+        <li>统筹<strong>深圳市人才创新创业基金（二期、三期）</strong>及<strong>深圳市中小企业人才股权投资基金</strong>投后管理，涉及医疗科技、智能穿戴、文娱体育等赛道</li>
+        <li>主导<strong>18个月LP主动介入式ESG改造</strong>（AI智能穿戴IoT终端供应链）：推动宠物追踪硬件8个核心组件绿色升级（FSC 100%再生材料、甘蔗渣填充、数字说明书等），单位成本增加$0.22（&lt;MSRP 0.1%，品牌商全额吸收）；Sustainalytics评级 Medium Risk → <strong>ESG Low Risk</strong>，欧盟市场 5 → <strong>11国</strong>，加购率 <strong>+4.1%</strong>；对标深交所2024《上市公司可持续发展报告指引》</li>
+      </ul>
+
+      <div class="sub-head">ESG风险治理 · 公益基金运营</div>
+      <ul>
+        <li>主导<strong>光启未来中心RMB 5亿不良资产重组</strong>：采用"以租代管"策略稳定运营，隔离声誉风险，保留处置灵活性</li>
+        <li>统筹<strong>"一滴水"公益基金</strong>（香港中文大学（深圳），规模RMB 2,000万）运营管理，设立校园发展基金与奖学金；任长江商学院EMBA 27班秘书长</li>
+      </ul>
+    </div>
+
+    <!-- YiGui -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">一轨同风科技集团</span>
+        <span class="job-date">2021.10 — 2024.03</span>
+      </div>
+      <div class="job-title">战略总监（直属董事长）· 绿色产业负责人</div>
+      <div class="company-desc">先进材料、新能源及精密仪器集团；联合中国航天、高校与科研机构建立军民融合平台</div>
+
+      <div class="sub-head">绿产投建 · 军民融合合规落地</div>
+      <ul>
+        <li><strong>执行全链条ESG尽调（智合新材）</strong>：框架覆盖公司治理、技术合规、行业政策、财务健康五大维度；依托哈工大<strong>"先进结构功能一体化材料与绿色制造技术"工信部重点实验室</strong>（院士周玉、贾德昌）产业化高性能特种陶瓷；ESG民用应用：核废料固封、海洋防腐、医疗植入体、头部通信设备商5G基站散热（+70%）；授权专利<strong>15项</strong>，国内<strong>唯一供应商</strong>资质，生产周期缩短<strong>75%</strong></li>
+        <li><strong>股权融资</strong>：主导深圳君盛润石创投基金股权转让，完成<strong>RMB 1亿元</strong>估值</li>
+      </ul>
+      <div class="sub-head">新能源低碳战略布局</div>
+      <ul>
+        <li><strong>新疆新能源基地开发</strong>：统筹14家企业联合考察，对接8次政府会议，签署10+项战略协议（光伏/储能/氢能，含乌鲁木齐22,000MW、喀什200,000MW基地）；落实国家"沙戈荒"政策（2022）</li>
+        <li><strong>绿色交通与氢能</strong>：联合以色列GenCell推进氢能应用；与阳光电源合作落地氢燃料电池及加氢网络，构建绿电＋氢能＋零碳交通生态</li>
+      </ul>
+    </div>
+
+    <!-- Donghai -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">东海航空</span>
+        <span class="job-date">2018.02 — 2021.03</span>
+      </div>
+      <div class="job-title">总经理（行政/客舱）| ESG合规与绿色运营</div>
+      <div class="company-desc">南航战略合作伙伴；深圳宝安国际机场；全波音737-800机队；60余条国内外航线</div>
+
+      <div class="sub-head">低碳运营 · 民航碳排放管理</div>
+      <ul>
+        <li><strong>统筹EFB电子飞行包全机队上线</strong>，实现驾驶舱无纸化，年节省运营成本近<strong>人民币400万元</strong>；同步推进节油专项（国产碳刹车副·航路优化·新能源车辆），年节约燃油逾<strong>1,200吨</strong>（减排约3,800吨CO₂）</li>
+        <li>牵头深圳宝安机场<strong>无纸化出行落地</strong>（电子登机牌/一证通关，2019年8月）；建立公司MRV碳排放监测与核查体系；参与SAF行业试点</li>
+        <li><strong>2021年获评深圳市年度绿色发展标杆企业</strong>，系国内率先完成民航碳排放核查的航司之一</li>
+      </ul>
+
+      <div class="sub-head">ESG合规治理 · 安全体系建构</div>
+      <ul>
+        <li>编撰《服务质量管理手册》，首次系统梳理全业务线质量标准；推动通过<strong>ISO 9001</strong>认证；构建全周期合规框架，任期内<strong>零监管违规</strong>；连续获民航局中南局<strong>安全优秀单位</strong>表彰</li>
+        <li><strong>危机管理与声誉治理</strong>：主导2018、2021年两起重大事件危机公关与监管对接；全面统筹民航局安全整顿专项，推动四大体系系统性重构；所推动整顿工作后续获<strong>民航局局长冯正霖</strong>赴企调研肯定</li>
+        <li>参与<strong>大湾区航空筹建</strong>及<strong>北京大兴机场战略基地</strong>项目</li>
+      </ul>
+
+      <div class="sub-head">可持续品牌 · 社会责任落地</div>
+      <ul>
+        <li>创立"九彩女孩""九彩海鸥示范组"服务IP；主导《东海好茶》空中媒体内容；获评"中国十大特色航空公司""中国最美空乘"（2018–2019）</li>
+        <li>参与深圳机场<strong>"真情服务·温馨空港"微笑服务大赛</strong>（2019），带领团队斩获<strong>最佳团队奖</strong>；策划"留守圆梦公益行""航空科普进校园"等公益项目；统筹<strong>500+人客舱团队</strong>管理</li>
+      </ul>
+    </div>
+
+    <!-- Sino Group -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">信和集团（Sino Group）</span>
+        <span class="job-date">2015.11 — 2018.02</span>
+      </div>
+      <div class="job-title">主席助理 · 可持续发展负责人</div>
+      <div class="company-desc">香港ESG标杆龙头地产商；港交所上市；MSCI AAA · 恒生AAA · 标普全球前1% · CDP A级；黄廷芳慈善基金为集团核心社会支柱</div>
+
+      <div class="sub-head">绿色资产运营 · 可持续节能</div>
+      <ul>
+        <li>参与集团光伏太阳能项目持续运营（19物业+3酒店，3,000+光伏板，年发电<strong>800万度</strong>），践行香港地产分布式光伏标杆</li>
+        <li>协同屯门市广场、黄金海岸、奥海城等大型社区绿色运营：节能、节水、废弃物减量，践行"<strong>与社区共生</strong>"可持续理念</li>
+      </ul>
+
+      <div class="sub-head">慈善公益治理 · 可持续社区投资</div>
+      <ul>
+        <li><strong>黄廷芳慈善基金</strong>：覆盖教育奖学金、医疗捐助、文化艺术推广、青年发展四大方向，系香港最活跃家族公益基金之一；协同参与<strong>故宫博物院修缮与教育基金</strong>筹备（正式签约RMB 1亿元）及<strong>北京大学廷芳楼</strong>捐建项目；参与立项·拨付·审计·披露全链条</li>
+        <li>参与<strong>BLISS社区投资框架</strong>（文化/艺术/绿色/健康）早期筹建；主导"五星服务""信之星"管培生计划（内地/香港/美国）；推动公益金<strong>卓越奖</strong>落地（2016/17）</li>
+      </ul>
+
+      <div class="sub-head">ESG信披合规 · 绿色融资框架</div>
+      <ul>
+        <li>配合推动<strong>ESG督导委员会</strong>建立（2015年，董事会级）；协同发布<strong>《可持续发展愿景2030》3R战略</strong>（2017年：碳排降30%/减塑50%/100%绿建）；参与<strong>绿色融资框架</strong>及港币<strong>20亿元首笔绿色贷款</strong>内部统筹（2018年）</li>
+        <li>高规格政商活动统筹（福建省委代表团·中国驻新大使馆·淡马锡）；参与<strong>富丽敦酒店国家法定古迹</strong>申报落地（新加坡第71座，2015年12月）；处置"<strong>利东街重建</strong>"舆情善后</li>
+        <li>深度参与港交所《ESG报告指引》升级为<strong>"不遵守即解释"</strong>（2016年1月生效）合规建设转型期</li>
+      </ul>
+    </div>
+
+    <!-- Singapore Airlines -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">新加坡航空（Singapore Airlines）</span>
+        <span class="job-date">2010.10 — 2015.10</span>
+      </div>
+      <div class="job-title">乘务教员（A380 / A330 / B777）| 绿色运营与ESG实践</div>
+      <div class="company-desc">全球顶级五星航空；MSCI ESG A · 道琼斯可持续发展指数 · ISO 14001认证 · 全球最具道德企业；服务50余国、100余城市</div>
+
+      <ul>
+        <li>执飞<strong>ASPIRE多段绿色示范航班（SQ11，洛杉矶→东京→新加坡）</strong>；全球首次双航段连续绿色飞行，通过优化航路、CDA持续下降进近及ATC协同节能（双航段节省燃油<strong>10,686 kg</strong>，减少CO₂ <strong>33,769 kg</strong>，节油率6%）</li>
+        <li>全面执行<strong>ISO 14001</strong>环境管理体系；落实机上减排·节能·减塑·废弃物分类等绿色规范</li>
+        <li>参与<strong>5Cs（Cabin Crew Club for Community Care）</strong>社区关爱计划；执行<strong>2015年A380慈善飞行</strong>（SG50系列，服务300+受益人含残障儿童/老人/特殊需要群体）</li>
+        <li>承担乘务新人带教·在岗督导·资质认证；参与编写<strong>标准手册及ESG可持续服务规范</strong></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══ 教育背景 ══ -->
+  <section class="section">
+    <div class="section-title">教育背景</div>
+
+    <div class="edu-row">
+      <div class="edu-date">2025–2026</div>
+      <div>
+        <div class="edu-school">斯坦福大学商学院（Stanford GSB）</div>
+        <div class="edu-prog">Executive Program in Sustainable Development Strategies · 可持续发展战略高管课程</div>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div class="edu-date">2025–2026</div>
+      <div>
+        <div class="edu-school">北京大学汇丰商学院</div>
+        <div class="edu-prog">高管发展课程（EDP）</div>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div class="edu-date">2006–2010</div>
+      <div>
+        <div class="edu-school">贵州大学（211工程）</div>
+        <div class="edu-prog">信息与计算科学（数学）理学学士 · 全国大学生数学建模竞赛<strong>一等奖</strong>（2009）</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 资质认证 ══ -->
+  <section class="section">
+    <div class="section-title">资质认证</div>
+
+    <div class="cert-group">
+      <div class="cert-group-title">ESG / 可持续发展</div>
+      <div class="cert-row">
+        <div class="cert-name"><strong>CFA ESG可持续投资证书</strong></div>
+        <div class="cert-body">CFA Institute · ESG整合·气候风险·影响力投资·绿色金融</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">香港大学 ESG 证书</div>
+        <div class="cert-body">香港大学（HKU）· ESG三大框架·GRI/TCFD/SASB·可持续战略</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">大气污染影响监测证书（CLRTAP）</div>
+        <div class="cert-body">联合国欧洲经济委员会 UNECE · 跨境大气污染监测·联合国公约框架</div>
+      </div>
+    </div>
+
+    <div class="cert-group">
+      <div class="cert-group-title">金融 / 专业资质</div>
+      <div class="cert-row">
+        <div class="cert-name">基金从业资格</div>
+        <div class="cert-body">中国基金业协会（AMAC）</div>
+        <div class="cert-date">—</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">乘务教员 / 企业培训师</div>
+        <div class="cert-body">新加坡航空 · 信和集团</div>
+        <div class="cert-date">—</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ESG技能与工具 ══ -->
+  <section class="section">
+    <div class="section-title">ESG技能与工具</div>
+
+    <div class="skills-block">
+      <span class="skills-label">报告框架</span>
+      <span class="skills-val">GRI · TCFD · SASB · GRESB · CDP · 港交所ESG报告指引 · UN SDGs</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">评级与数据平台</span>
+      <span class="skills-val">Sustainalytics ESG风险评级（操作经验）· MSCI ESG · 标普全球ESG · 恒生可持续发展指数</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">碳管理与环境合规</span>
+      <span class="skills-val">MRV · 民航CAAC碳排放核查 · CORSIA · ISO 14001 · UNECE CLRTAP · SAF实践</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">治理与质量体系</span>
+      <span class="skills-val">ISO 9001（主导认证）· 全链条合规框架 · 危机管理与舆情治理</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">ESG投资与尽调</span>
+      <span class="skills-val">ESG尽调五维框架 · LP主动参与式ESG改造 · 政府引导基金投后ESG管理</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">语言</span>
+      <span class="skills-val">普通话（母语）· 英语（IELTS 7.0）· 粤语（工作沟通）</span>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

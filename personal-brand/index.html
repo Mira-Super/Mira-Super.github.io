@@ -9,165 +9,86 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --c-bg: #1c1c1c;
-      --c-bg-alt: #242422;
-      --c-fg: #f5d200;
-      --c-fg-2: rgba(245,210,0,0.58);
-      --c-fg-3: rgba(245,210,0,0.28);
-      --c-fg-light: #1c1c1c;
-      --c-fg-light-2: rgba(28,28,28,0.62);
-      --c-border: #2e2e2c;
+      --c-bg: #1c1c1c; --c-bg-alt: #242422; --c-bg-light: #f5d200;
+      --c-fg: #f5d200; --c-fg-2: rgba(245,210,0,0.58); --c-fg-3: rgba(245,210,0,0.28);
+      --c-fg-light: #1c1c1c; --c-fg-light-2: rgba(28,28,28,0.62);
+      --c-border: #2e2e2c; --c-border-light: rgba(28,28,28,0.18);
       --f-display: "Barlow","Noto Sans SC",sans-serif;
       --f-mono: "IBM Plex Mono",monospace;
       --f-body: "Barlow","Noto Sans SC",system-ui,sans-serif;
       --ease-enter: cubic-bezier(0.16,1,0.3,1);
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { background: var(--c-bg); color: var(--c-fg); font-family: var(--f-body); -webkit-font-smoothing: antialiased; }
 
-    /* TOP BAR */
     .topbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5vw;
-      background: var(--c-bg);
-      border-bottom: 1px solid var(--c-border);
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; background: var(--c-bg); border-bottom: 1px solid var(--c-border); z-index: 100;
     }
-    .back-btn {
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--c-fg-2);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
+    .back-btn { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-fg-2); text-decoration: none; transition: color 0.3s; }
     .back-btn:hover { color: var(--c-fg); }
-    .topbar-label {
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--c-fg-3);
-    }
+    .topbar-label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-fg-3); }
 
-    /* LAYOUT */
     .page { padding-top: 52px; }
 
-    /* HERO */
     .hero {
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 8vh 5vw 6vh;
-      border-bottom: 1px solid var(--c-border);
+      min-height: 90vh; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 8vh 5vw 6vh; border-bottom: 1px solid var(--c-border);
     }
-    .hero-eyebrow {
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--c-fg-2);
-      margin-bottom: 3vh;
-    }
-    .hero-title {
-      font-family: var(--f-display);
-      font-size: clamp(3.5rem, 10vw, 11rem);
-      font-weight: 900;
-      line-height: 0.88;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: var(--c-fg);
-    }
-    .hero-desc {
-      margin-top: 4vh;
-      font-size: clamp(1rem, 1.4vw, 1.3rem);
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--c-fg-2);
-      max-width: 52ch;
-    }
+    .hero-eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-fg-2); margin-bottom: 3vh; }
+    .hero-title { font-family: var(--f-display); font-size: clamp(3.5rem,10vw,11rem); font-weight: 900; line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase; color: var(--c-fg); }
+    .hero-desc { margin-top: 4vh; font-size: clamp(1rem,1.4vw,1.3rem); font-weight: 400; line-height: 1.5; color: var(--c-fg-2); max-width: 52ch; }
 
-    /* SECTIONS */
-    .section {
-      padding: 7vh 5vw;
-      border-bottom: 1px solid var(--c-border);
-    }
-    .section-label {
-      font-family: var(--f-mono);
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--c-fg-3);
-      margin-bottom: 4vh;
-    }
-    .section-title {
-      font-family: var(--f-display);
-      font-size: clamp(1.8rem, 4vw, 4.5rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      line-height: 0.95;
-      color: var(--c-fg);
-      margin-bottom: 3vh;
-    }
-    .section-body {
-      font-size: clamp(0.9rem, 1.1vw, 1.1rem);
-      line-height: 1.7;
-      color: var(--c-fg-2);
-      max-width: 60ch;
-    }
+    /* Resume section */
+    .section { padding: 7vh 5vw; border-bottom: 1px solid var(--c-border); }
+    .section-label { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-fg-3); margin-bottom: 4vh; }
+    .section-title { font-family: var(--f-display); font-size: clamp(1.8rem,4vw,4.5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; line-height: 0.95; color: var(--c-fg); margin-bottom: 3vh; }
+    .section-body { font-size: clamp(0.9rem,1.1vw,1.1rem); line-height: 1.7; color: var(--c-fg-2); max-width: 60ch; margin-bottom: 4vh; }
 
-    /* PLACEHOLDER BLOCK */
-    .placeholder {
-      margin-top: 4vh;
-      background: var(--c-bg-alt);
-      border: 1px dashed var(--c-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6vh 3vw;
-      font-family: var(--f-mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--c-fg-3);
-    }
+    /* CV link cards */
+    .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2vw; }
 
-    /* GRID */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3vw;
-      margin-top: 4vh;
+    .cv-card {
+      position: relative; overflow: hidden;
+      background: var(--c-bg-alt); border: 1px solid var(--c-border);
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 4vh 3vw; text-decoration: none; cursor: pointer;
+      transition: border-color 0.45s;
+      min-height: 28vh;
     }
+    .cv-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--c-fg); transform: translateY(101%);
+      transition: transform 0.55s cubic-bezier(0.16,1,0.3,1); z-index: 0;
+    }
+    .cv-card:hover { border-color: var(--c-fg); }
+    .cv-card:hover::before { transform: translateY(0); }
+
+    .cv-card-lang { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-fg-3); position: relative; z-index: 1; transition: color 0.4s; }
+    .cv-card:hover .cv-card-lang { color: var(--c-fg-light-2); }
+
+    .cv-card-body { position: relative; z-index: 1; }
+    .cv-card-title { display: block; font-family: var(--f-display); font-size: clamp(1.4rem,2.2vw,2.6rem); font-weight: 900; text-transform: uppercase; color: var(--c-fg); line-height: 0.95; letter-spacing: -0.01em; transition: color 0.4s; margin-bottom: 1.2vh; }
+    .cv-card:hover .cv-card-title { color: var(--c-fg-light); }
+
+    .cv-card-sub { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-fg-3); transition: color 0.4s; display: flex; justify-content: space-between; align-items: center; }
+    .cv-card:hover .cv-card-sub { color: var(--c-fg-light-2); }
+
+    .cv-card-arrow { font-size: 1.6vw; font-weight: 900; font-family: var(--f-display); transition: transform 0.4s var(--ease-enter); }
+    .cv-card:hover .cv-card-arrow { transform: translate(4px,-4px); }
+
+    /* Placeholder */
+    .placeholder { background: var(--c-bg-alt); border: 1px dashed var(--c-border); display: flex; align-items: center; justify-content: center; padding: 6vh 3vw; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-fg-3); }
+
     @media (max-width: 768px) {
-      .two-col { grid-template-columns: 1fr; }
-      .hero-title { font-size: clamp(3rem, 14vw, 6rem); }
+      .cv-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: clamp(3rem,14vw,6rem); }
     }
 
-    /* FOOTER */
-    .footer {
-      padding: 4vh 5vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .footer-text {
-      font-family: var(--f-mono);
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--c-fg-3);
-    }
+    .footer { padding: 4vh 5vw; display: flex; justify-content: space-between; align-items: center; }
+    .footer-text { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-fg-3); }
   </style>
 </head>
 <body>
@@ -184,27 +105,50 @@
       <p class="hero-desc">Identity, voice and positioning — how Miranda Li shows up across professional contexts, platforms and conversations.</p>
     </section>
 
+    <!-- RESUME -->
     <section class="section">
-      <p class="section-label">01 · Positioning</p>
+      <p class="section-label">01 · Resume</p>
+      <h2 class="section-title">Resume</h2>
+      <p class="section-body">Download or view Miranda's CV in Chinese or English.</p>
+
+      <div class="cv-grid">
+        <a href="/resume/cn/" class="cv-card" target="_blank">
+          <span class="cv-card-lang">中文版</span>
+          <div class="cv-card-body">
+            <span class="cv-card-title">李梦婷<br>ESG简历</span>
+            <div class="cv-card-sub">
+              <span>Chinese · 2026</span>
+              <span class="cv-card-arrow">↗</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/resume/en/" class="cv-card" target="_blank">
+          <span class="cv-card-lang">English</span>
+          <div class="cv-card-body">
+            <span class="cv-card-title">Miranda Li<br>ESG Resume</span>
+            <div class="cv-card-sub">
+              <span>English · 2026</span>
+              <span class="cv-card-arrow">↗</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- POSITIONING -->
+    <section class="section">
+      <p class="section-label">02 · Positioning</p>
       <h2 class="section-title">Brand<br>Positioning</h2>
       <p class="section-body">ESG strategist with a 15-year executive track record across five industries. The intersection of operational depth and sustainability vision.</p>
       <div class="placeholder">Content coming soon</div>
     </section>
 
+    <!-- VISUAL IDENTITY -->
     <section class="section">
-      <p class="section-label">02 · Visual Identity</p>
-      <h2 class="section-title">Visual<br>Identity</h2>
-      <p class="section-body">Colours, typography, photography and design language that define how Miranda communicates visually.</p>
-      <div class="two-col">
-        <div class="placeholder">Assets coming soon</div>
-        <div class="placeholder">Guidelines coming soon</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <p class="section-label">03 · Voice &amp; Tone</p>
-      <h2 class="section-title">Voice &amp;<br>Tone</h2>
-      <p class="section-body">How Miranda writes, speaks and engages — across Chinese and English, formal and conversational contexts.</p>
+      <p class="section-label">03 · Visual Identity &amp; Voice</p>
+      <h2 class="section-title">Identity<br>&amp; Voice</h2>
+      <p class="section-body">Visual language, tone and communication style across Chinese and English professional contexts.</p>
       <div class="placeholder">Content coming soon</div>
     </section>
 
