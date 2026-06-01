@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miranda Li — Wonderful Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;800;900&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Design Tokens ─────────────────────────────────────── */
+    :root {
+      --c-bg:        #1c1c1c;
+      --c-bg-alt:    #242422;
+      --c-accent:    #f5d200;
+      --c-fg-2:      rgba(245,210,0,0.58);
+      --c-fg-3:      rgba(245,210,0,0.32);
+      --c-border:    #2e2e2c;
+      --c-fg-light:  #1c1c1c;
+      --c-fg-light-2:rgba(28,28,28,0.62);
+
+      --font-display: 'Barlow', 'Noto Sans SC', sans-serif;
+      --font-mono:    'IBM Plex Mono', monospace;
+    }
+
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--c-bg);
+      color: var(--c-accent);
+      font-family: var(--font-display);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; }
+
+    /* ── Gate Overlay ──────────────────────────────────────── */
+    #gate-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--c-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #gate-overlay.hidden { display: none; }
+    .gate-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 320px;
+      padding: 0 24px;
+    }
+    .gate-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-fg-2);
+      margin-bottom: 8px;
+    }
+    .gate-input {
+      width: 100%;
+      background: var(--c-bg-alt);
+      border: 1px solid var(--c-border);
+      color: var(--c-accent);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .gate-input::placeholder { color: var(--c-fg-3); }
+    .gate-input:focus { border-color: var(--c-accent); }
+    .gate-btn {
+      width: 100%;
+      background: var(--c-accent);
+      color: var(--c-fg-light);
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: none;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .gate-btn:hover { opacity: 0.88; }
+    .gate-error {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #e05c5c;
+      min-height: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Topbar ────────────────────────────────────────────── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      background: var(--c-bg);
+      border-bottom: 1px solid var(--c-border);
+    }
+    .back-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--c-fg-2);
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--c-accent); }
+    .topbar-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-fg-3);
+    }
+
+    /* ── Page ──────────────────────────────────────────────── */
+    .page {
+      padding-top: 48px;
+    }
+
+    /* ── Hero ──────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8vh 5vw 6vh;
+      border-bottom: 1px solid var(--c-border);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(28,28,28,0.45);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245,210,0,0.72);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 10vw, 120px);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #f5d200;
+      margin-bottom: 28px;
+    }
+    .hero-desc {
+      font-family: var(--font-display);
+      font-size: clamp(15px, 1.8vw, 18px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(245,210,0,0.7);
+      max-width: 520px;
+    }
+
+    /* ── Section ───────────────────────────────────────────── */
+    .section {
+      padding: 80px 5vw;
+      border-bottom: 1px solid var(--c-border);
+    }
+    .section:last-of-type { border-bottom: none; }
+    .section-bg-alt { background: var(--c-bg-alt); }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--c-fg-3);
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 60px);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      margin-bottom: 24px;
+    }
+    .section-body {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--c-fg-2);
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    /* ── Placeholder Box ───────────────────────────────────── */
+    .placeholder-box {
+      border: 1px dashed var(--c-fg-3);
+      padding: 60px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .placeholder-text {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-fg-3);
+    }
+
+    /* ── Footer ────────────────────────────────────────────── */
+    footer {
+      padding: 32px 5vw;
+      border-top: 1px solid var(--c-border);
+      background: var(--c-bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-left {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--c-fg-2);
+    }
+    .footer-right {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--c-fg-3);
+    }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .topbar { padding: 0 20px; }
+      .hero { padding: 8vh 20px 6vh; }
+      .section { padding: 60px 20px; }
+      footer { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Password Gate ──────────────────────────────────────── -->
+<div id="gate-overlay">
+  <div class="gate-box">
+    <span class="gate-label">Access Restricted</span>
+    <input id="gate-input" class="gate-input" type="password" placeholder="Enter password" autocomplete="off" />
+    <button class="gate-btn" id="gate-btn">Enter</button>
+    <span class="gate-error" id="gate-error"></span>
+  </div>
+</div>
+<script>
+  (function () {
+    var overlay = document.getElementById('gate-overlay');
+    var input = document.getElementById('gate-input');
+    var btn = document.getElementById('gate-btn');
+    var errEl = document.getElementById('gate-error');
+    if (sessionStorage.getItem('site_unlocked') === '1') { overlay.classList.add('hidden'); }
+    function attempt() {
+      if (input.value === 'miranda2026') {
+        sessionStorage.setItem('site_unlocked', '1');
+        overlay.classList.add('hidden');
+      } else {
+        errEl.textContent = 'Incorrect password. Try again.';
+        input.value = ''; input.focus();
+      }
+    }
+    btn.addEventListener('click', attempt);
+    input.addEventListener('keydown', function(e) { if (e.key === 'Enter') attempt(); });
+  })();
+</script>
+
+<!-- ── Topbar ─────────────────────────────────────────────── -->
+<nav class="topbar">
+  <a href="/v2/" class="back-btn">← Miranda Li</a>
+  <span class="topbar-label">Wonderful Life</span>
+</nav>
+
+<!-- ── Page ──────────────────────────────────────────────── -->
+<div class="page">
+
+  <!-- Hero -->
+  <section class="hero">
+    <img
+      class="hero-bg"
+      src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80&auto=format&fit=crop"
+      alt=""
+      loading="eager"
+    />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">04 · Wonderful Life</p>
+      <h1 class="hero-title">WONDERFUL<br>LIFE</h1>
+      <p class="hero-desc">The things that exist outside the resume.</p>
+    </div>
+  </section>
+
+  <!-- Section 01: Travel -->
+  <section class="section">
+    <p class="section-label">01 · Travel</p>
+    <h2 class="section-title">TRAVEL</h2>
+    <p class="section-body">Places that changed how I think.</p>
+    <div class="placeholder-box">
+      <span class="placeholder-text">Coming soon</span>
+    </div>
+  </section>
+
+  <!-- Section 02: Reading -->
+  <section class="section section-bg-alt">
+    <p class="section-label">02 · Reading</p>
+    <h2 class="section-title">READING</h2>
+    <p class="section-body">Books, papers, and things worth a second read.</p>
+    <div class="placeholder-box">
+      <span class="placeholder-text">Coming soon</span>
+    </div>
+  </section>
+
+  <!-- Section 03: Moments -->
+  <section class="section">
+    <p class="section-label">03 · Moments</p>
+    <h2 class="section-title">MOMENTS</h2>
+    <p class="section-body">The rest of it.</p>
+    <div class="placeholder-box">
+      <span class="placeholder-text">Coming soon</span>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-left">Miranda Li · Wonderful Life</span>
+    <span class="footer-right">miranda-li.net/v2 · 2026</span>
+  </footer>
+
+</div><!-- /.page -->
+</body>
+</html>
