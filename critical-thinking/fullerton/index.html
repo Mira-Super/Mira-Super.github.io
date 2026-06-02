@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Should Fullerton Go Next? — Miranda Li</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── TOKENS ── */
+:root {
+  --bg:      #0B1018;
+  --bg1:     #101820;
+  --bg2:     #162030;
+  --bg3:     #1E2D3E;
+  --gold:    #C4A265;
+  --gold2:   #E0C285;
+  --white:   #F0EAE0;
+  --muted:   #647A8F;
+  --dim:     #3A5068;
+  --border:  rgba(196,162,101,0.15);
+  --sans:    'Barlow', 'Noto Sans SC', sans-serif;
+  --mono:    'IBM Plex Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.6rem 5vw;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .4s, padding .4s;
+}
+nav.scrolled {
+  background: rgba(11,16,24,.96);
+  backdrop-filter: blur(16px);
+  padding: 1rem 5vw;
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand { font-family: var(--mono); font-size: .72rem; letter-spacing: .18em; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+.nav-links { display: flex; gap: 2.5rem; }
+.nav-links a { font-family: var(--mono); font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; color: var(--white); font-weight: 700; transition: color .3s; }
+.nav-links a:hover { color: var(--gold); }
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: .1s; }
+.reveal.d2 { transition-delay: .2s; }
+.reveal.d3 { transition-delay: .3s; }
+.reveal.d4 { transition-delay: .4s; }
+
+/* ── SECTION CHROME ── */
+.sec-tag {
+  font-family: var(--mono); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); display: flex; align-items: center; gap: .9rem; margin-bottom: 1.2rem;
+}
+.sec-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); flex-shrink: 0; }
+
+.sec-h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 800; letter-spacing: -.02em; line-height: 1.05;
+  color: var(--white); margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.sec-h2 span { color: var(--gold); }
+
+.sec-sub { color: var(--muted); font-size: .95rem; line-height: 1.8; max-width: 520px; }
+
+/* ── HERO ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  height: 100vh; min-height: 680px;
+  background: var(--bg);
+  overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 4vw 8vh 5vw;
+  position: relative; z-index: 2;
+}
+.hero-right {
+  position: relative; overflow: hidden;
+}
+.hero-right::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 140px; z-index: 3; pointer-events: none;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+}
+.hero-img-wrap {
+  width: 100%; height: 100%;
+  clip-path: url(#arcClip);
+}
+.hero-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 18%;
+  display: block;
+}
+.hero-tag {
+  font-family: var(--mono); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.5rem;
+  display: inline-flex; align-items: center; gap: .7rem;
+}
+.hero-tag::before { content: ''; width: 16px; height: 1px; background: var(--gold); }
+
+.hero-h1 {
+  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  font-weight: 900; letter-spacing: -.03em; line-height: .95;
+  text-transform: uppercase; color: var(--white);
+  margin-bottom: 2rem; max-width: 800px;
+}
+.hero-h1 em { font-style: normal; color: var(--gold); }
+
+.hero-creds {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2.5rem;
+}
+.hero-cred {
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(196,162,101,.35);
+  padding: .3rem .85rem; border-radius: 2rem;
+  transition: border-color .3s, background .3s;
+}
+.hero-cred:hover { border-color: var(--gold); background: rgba(196,162,101,.08); }
+
+/* Miranda perspective footer inside hero */
+.hero-perspective {
+  margin-top: auto; padding-top: 2rem;
+  border-top: 1px solid rgba(196,162,101,.15);
+}
+.perspective-label {
+  font-family: var(--mono); font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: .8rem;
+  display: flex; align-items: center; gap: .6rem;
+}
+.perspective-label::before { content: ''; width: 14px; height: 1px; background: var(--dim); }
+.perspective-chips {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.p-chip {
+  font-family: var(--mono); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(196,162,101,.25);
+  padding: .22rem .7rem; border-radius: 2rem;
+  transition: border-color .3s;
+}
+.p-chip:hover { border-color: var(--gold); }
+
+.hero-alumni {
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .6rem; font-weight: 500;
+}
+
+.scroll-hint {
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--dim); display: inline-flex; align-items: center; gap: .6rem;
+  transition: color .3s; cursor: pointer;
+}
+.scroll-hint:hover { color: var(--gold); }
+.scroll-line { width: 32px; height: 1px; background: currentColor; }
+
+/* ── STATS ── */
+.stats {
+  background: var(--bg1);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stat {
+  padding: 3.2rem 2rem; text-align: center;
+  border-right: 1px solid var(--border);
+  transition: background .3s;
+}
+.stat:last-child { border-right: none; }
+.stat:hover { background: var(--bg2); }
+.stat-num {
+  font-family: var(--mono); font-size: 3rem; font-weight: 300;
+  color: var(--gold); line-height: 1; display: block; margin-bottom: .5rem;
+}
+.stat-label { font-family: var(--mono); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+/* ── DNA ── */
+.dna-section {
+  padding: 8rem 5vw 12rem;
+  background: linear-gradient(160deg, var(--bg) 0%, var(--bg1) 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+  position: relative; overflow: hidden;
+}
+
+/* bears decoration */
+.bears-deco {
+  position: absolute; top: 0; right: 0;
+  width: 420px; height: 520px;
+  pointer-events: none; z-index: 0;
+  opacity: .12;
+  mask-image: radial-gradient(ellipse 75% 75% at 75% 20%, black 0%, black 15%, transparent 68%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 75% 20%, black 0%, black 15%, transparent 68%);
+}
+.bears-deco img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 35%;
+}
+
+/* section header above bears */
+.dna-header { position: relative; z-index: 1; }
+
+.dna-list {
+  display: flex; flex-direction: column;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px; overflow: hidden;
+  margin-top: 3.5rem;
+  position: relative; z-index: 1;
+}
+
+.dna-card {
+  background: var(--bg1);
+  display: grid;
+  grid-template-columns: 52px 1fr 1.6fr;
+  gap: 0 2.5rem;
+  align-items: start;
+  padding: 2rem 2.5rem;
+  transition: background .4s;
+  cursor: default;
+}
+.dna-card:hover { background: var(--bg2); }
+
+.dna-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--gold);
+  transition: border-color .3s, background .3s;
+  margin-top: .1rem;
+}
+.dna-card:hover .dna-icon { border-color: var(--gold); background: rgba(196,162,101,.08); }
+.dna-icon svg { width: 18px; height: 18px; }
+
+.dna-left { display: flex; flex-direction: column; gap: .4rem; padding-top: .1rem; }
+.dna-n {
+  font-family: var(--mono); font-size: .58rem; letter-spacing: .2em;
+  color: var(--dim);
+}
+.dna-title {
+  font-size: .9rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .04em; color: var(--white);
+  line-height: 1.35; transition: color .3s;
+}
+.dna-card:hover .dna-title { color: var(--gold); }
+
+.dna-body { font-size: .88rem; color: var(--muted); line-height: 1.8; padding-top: .15rem; }
+.dna-body .hl { color: var(--white); font-weight: 500; }
+.hl-g { color: var(--gold); font-weight: 600; }
+
+/* ── MAP ── */
+.map-section {
+  background: var(--bg1);
+  clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+  margin-top: -6rem; padding: 10rem 5vw 8rem;
+}
+.map-box {
+  position: relative; margin-top: 3.5rem;
+  /* no border, no radius — edges fade into bg */
+}
+.map-photo {
+  width: 100%; height: 460px; object-fit: cover; object-position: center 30%;
+  opacity: .22; display: block;
+  /* fade all 4 edges into background */
+  mask-image:
+    linear-gradient(to right,  transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to right,  transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+.map-dots {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.dot {
+  position: absolute; transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* ── EXISTING dots: gold diamond + glow, no pulse ── */
+.dot-ex { color: var(--gold); }
+.dot-core-ex {
+  width: 11px; height: 11px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--gold), 0 0 24px rgba(196,162,101,.45);
+  flex-shrink: 0;
+}
+
+/* ── PROPOSED dots: blue circle + double pulse ── */
+.dot-pr { color: #5BB8E0; }
+.dot-core-pr {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #5BB8E0;
+  box-shadow: 0 0 6px #5BB8E0;
+  flex-shrink: 0;
+}
+.dot-pulse {
+  position: absolute; width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid currentColor; opacity: 0;
+  animation: pulse 2.6s ease-out infinite;
+}
+.dot-pulse2 { animation-delay: 1.3s; }
+.dot-pulse3 {
+  position: absolute; width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid currentColor; opacity: 0;
+  animation: pulse 2.6s ease-out infinite;
+  animation-delay: .65s;
+}
+@keyframes pulse {
+  0%   { transform: scale(.4); opacity: .6; }
+  100% { transform: scale(1);  opacity: 0; }
+}
+.dot-lbl {
+  font-family: var(--mono); font-size: .6rem; letter-spacing: .14em; font-weight: 700;
+  text-transform: uppercase; margin-top: .5rem; white-space: nowrap;
+}
+
+/* legend */
+.map-legend {
+  display: flex; gap: 2.5rem; margin-top: 2rem; align-items: center;
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .16em;
+  text-transform: uppercase; font-weight: 700;
+}
+.map-legend .leg-ex { display: flex; align-items: center; gap: .7rem; color: var(--gold); }
+.map-legend .leg-pr { display: flex; align-items: center; gap: .7rem; color: #5BB8E0; }
+.leg-diamond {
+  width: 10px; height: 10px; background: var(--gold);
+  transform: rotate(45deg); border-radius: 2px; flex-shrink: 0;
+  box-shadow: 0 0 6px var(--gold);
+}
+.leg-circle {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #5BB8E0; flex-shrink: 0;
+  box-shadow: 0 0 6px #5BB8E0;
+}
+.map-quote {
+  margin-top: 2rem; font-size: 1.3rem; font-weight: 300; font-style: italic;
+  color: var(--muted); max-width: 660px; line-height: 1.5;
+  border-left: 2px solid var(--gold); padding-left: 1.2rem;
+}
+
+/* ── CITIES ── */
+.cities-wrap { background: var(--bg); }
+
+.city-block {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+  border-top: 1px solid var(--border);
+}
+.city-block.flip { direction: rtl; }
+.city-block.flip > * { direction: ltr; }
+
+.city-photo {
+  position: relative; overflow: hidden; min-height: 500px;
+}
+.city-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  transition: transform 1s ease;
+  transform: scale(1.05);
+}
+.city-block:hover .city-photo img { transform: scale(1); }
+.city-photo-grad {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(11,16,24,.55) 0%, rgba(11,16,24,.15) 100%);
+}
+.photo-chip {
+  position: absolute; bottom: 1.8rem; left: 1.8rem;
+  font-family: var(--mono); font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold); background: rgba(11,16,24,.75);
+  padding: .3rem .8rem; border: 1px solid var(--border); border-radius: 2rem;
+}
+
+.city-text {
+  background: var(--bg1); padding: 5rem 4.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.city-idx { font-family: var(--mono); font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); margin-bottom: 1.4rem; }
+
+.city-name {
+  font-size: clamp(2.4rem, 3.5vw, 3.4rem); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -.02em; line-height: 1;
+  margin-bottom: .3rem; color: var(--white);
+  transition: color .4s, transform .4s;
+  display: inline-block;
+}
+.city-block:hover .city-name { color: var(--gold2); transform: scale(1.02); transform-origin: left; }
+
+.city-cn { font-family: 'Noto Sans SC'; font-size: .85rem; color: var(--gold); margin-bottom: .9rem; }
+.city-verdict { font-size: .88rem; font-style: italic; color: var(--muted); margin-bottom: 1.8rem; line-height: 1.6; }
+.city-rule { width: 32px; height: 1px; background: var(--gold); margin-bottom: 1.8rem; }
+
+.city-body { font-size: .88rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.8rem; }
+.city-body strong { color: var(--white); font-weight: 500; }
+
+.chips { display: flex; flex-wrap: nowrap; gap: .35rem; margin-bottom: 1.8rem; overflow-x: auto; }
+.chip {
+  font-family: var(--mono); font-size: .54rem; letter-spacing: .08em; text-transform: uppercase;
+  padding: .22rem .6rem; border: 1px solid var(--border); border-radius: 2rem; color: var(--muted);
+  white-space: nowrap; flex-shrink: 0;
+  transition: border-color .3s, color .3s;
+}
+.chip.hi { border-color: rgba(196,162,101,.4); color: var(--gold); }
+.chip:hover { border-color: var(--gold); color: var(--gold); }
+
+.city-footer {
+  border-top: 1px solid var(--border); padding-top: 1.4rem; margin-top: auto;
+  font-size: .8rem; color: var(--muted); line-height: 1.7;
+}
+.city-footer b { color: var(--white); font-weight: 500; }
+
+/* Shenzhen sub-options */
+.sub-trio {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+  margin-top: 1.6rem;
+}
+.sub-card {
+  background: var(--bg2); padding: 1.4rem 1.2rem;
+  transition: background .3s;
+}
+.sub-card:hover { background: var(--bg3); }
+.sub-tag { font-family: var(--mono); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+.sub-ttl { font-size: .84rem; font-weight: 700; color: var(--white); margin-bottom: .25rem; line-height: 1.3; }
+.sub-cn { font-family: 'Noto Sans SC'; font-size: .7rem; color: var(--dim); margin-bottom: .5rem; }
+.sub-body { font-size: .75rem; color: var(--muted); line-height: 1.65; }
+
+/* benchmark strip */
+.bench {
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 1.8rem 4.5rem;
+  display: flex; align-items: flex-start; gap: 2.5rem; flex-wrap: wrap;
+}
+.bench-lbl { font-family: var(--mono); font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); flex-shrink: 0; padding-top: .15rem; }
+.bench-items { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+.bench-item { font-size: .78rem; color: var(--muted); display: flex; align-items: flex-start; gap: .45rem; }
+.bench-item b { color: var(--white); font-weight: 500; display: block; margin-bottom: .1rem; }
+.bench-ico { width: 13px; height: 13px; flex-shrink: 0; margin-top: .18rem; color: var(--gold); }
+
+/* ── MOAT TRINITY ── */
+.moat-section {
+  background: var(--bg1);
+  padding: 6rem 5vw 6rem;
+  border-top: 1px solid var(--border);
+}
+.moat-label { font-family: var(--mono); font-size: .68rem; letter-spacing: .18em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+.moat-title { font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 900; color: var(--white); margin-bottom: .6rem; }
+.moat-sub { font-size: .88rem; color: var(--muted); margin-bottom: 3rem; max-width: 600px; }
+.moat-cards { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 1.2rem; }
+.moat-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 2.2rem 1.8rem;
+  text-align: center;
+}
+.moat-card-val { font-size: clamp(1.8rem,4vw,2.6rem); font-weight: 900; color: var(--gold); margin-bottom: .5rem; font-family: var(--sans); }
+.moat-card-lbl { font-size: .78rem; color: var(--muted); letter-spacing: .06em; }
+.moat-x { font-size: 1.4rem; color: var(--dim); font-weight: 300; text-align: center; }
+@media(max-width:640px){
+  .moat-cards { grid-template-columns: 1fr; }
+  .moat-x { display: none; }
+}
+
+/* ── MARKET SCORE TABLE ── */
+.score-section {
+  background: var(--bg); padding: 5rem 5vw 5.5rem;
+  border-top: 1px solid var(--border);
+}
+.score-intro { max-width: 680px; margin-bottom: 2.8rem; }
+.score-intro p { font-size: .92rem; color: var(--muted); line-height: 1.75; }
+.score-intro p span { color: var(--gold); font-weight: 600; }
+.score-table { width: 100%; border-collapse: collapse; font-size: .78rem; }
+.score-table thead th {
+  font-family: var(--mono); font-size: .6rem; letter-spacing: .12em;
+  color: var(--muted); text-transform: uppercase; text-align: center;
+  padding: .5rem .6rem 1rem; border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.score-table thead th.col-market { text-align: left; }
+.score-table thead th.col-star { color: var(--gold); }
+.score-table tbody tr { border-bottom: 1px solid var(--border); }
+.score-table tbody tr.row-hl { background: rgba(196,162,101,.06); }
+.score-table tbody td { padding: .9rem .6rem; vertical-align: middle; }
+.score-code {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; border-radius: 7px;
+  background: var(--bg3); font-family: var(--mono); font-size: .62rem;
+  font-weight: 700; color: var(--white); margin-right: .7rem;
+  flex-shrink: 0;
+}
+.score-code.hl { background: rgba(0,200,150,.2); color: #00C896; }
+.score-market-name { font-weight: 600; color: var(--white); font-size: .82rem; }
+.score-market-sub { color: var(--muted); font-size: .68rem; margin-top: .1rem; }
+.score-cell {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: .82rem; margin: auto;
+}
+.sc5 { background: rgba(196,162,101,.35); color: var(--gold2); }
+.sc4 { background: rgba(196,162,101,.2); color: var(--gold); }
+.sc3 { background: rgba(196,162,101,.1); color: var(--muted); }
+.sc2 { background: rgba(58,80,104,.4); color: var(--dim); }
+.sc1 { background: rgba(58,80,104,.25); color: var(--dim); }
+.score-cell-star { outline: 1.5px dashed var(--gold); outline-offset: 2px; border-radius: 8px; }
+.score-td-center { text-align: center; }
+.tier-badge {
+  display: inline-block; padding: .28rem .9rem; border-radius: 20px;
+  font-family: var(--mono); font-size: .62rem; font-weight: 700; letter-spacing: .06em;
+  white-space: nowrap;
+}
+.tier1 { background: rgba(0,200,150,.15); color: #00C896; border: 1px solid rgba(0,200,150,.35); }
+.tier2 { background: rgba(196,162,101,.12); color: var(--gold); border: 1px solid rgba(196,162,101,.3); }
+.tier3 { background: rgba(220,80,120,.1); color: #E0607E; border: 1px solid rgba(220,80,120,.25); }
+@media(max-width:640px){
+  .score-table thead th:not(.col-market):not(.col-star):not(.col-tier) { display: none; }
+  .score-table tbody td:not(.td-market):not(.td-star):not(.td-tier) { display: none; }
+}
+
+/* ── ENTRY MODE ── */
+.entry-section {
+  background: var(--bg1); padding: 5rem 5vw 5.5rem;
+  border-top: 1px solid var(--border);
+}
+.entry-modes {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem;
+  margin-bottom: 3.2rem;
+}
+.entry-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.6rem 1.4rem;
+}
+.entry-card-tag {
+  font-family: var(--mono); font-size: .58rem; letter-spacing: .12em;
+  color: var(--muted); margin-bottom: .7rem;
+}
+.entry-card-title {
+  font-size: 1rem; font-weight: 800; margin-bottom: .7rem; line-height: 1.2;
+}
+.entry-card-body { font-size: .74rem; color: var(--muted); line-height: 1.65; }
+.ec-gold { color: var(--gold); }
+.ec-teal { color: #5BB8E0; }
+.ec-amber { color: #C4935A; }
+.ec-white { color: var(--white); }
+.entry-table { width: 100%; border-collapse: collapse; font-size: .79rem; margin-bottom: 2.4rem; }
+.entry-table thead th {
+  font-family: var(--mono); font-size: .6rem; letter-spacing: .1em;
+  color: var(--muted); text-transform: uppercase; text-align: left;
+  padding: .5rem .8rem 1rem; border-bottom: 1px solid var(--border);
+}
+.entry-table tbody tr { border-bottom: 1px solid var(--border); }
+.entry-table tbody tr.erow-hl { background: rgba(196,162,101,.05); }
+.entry-table tbody td { padding: .85rem .8rem; vertical-align: middle; }
+.etier { font-family: var(--mono); font-size: .7rem; font-weight: 700; }
+.etier-1 { color: #00C896; } .etier-2 { color: var(--gold); } .etier-3 { color: #E0607E; }
+.emode { font-weight: 600; }
+.emode-own { color: var(--gold); }
+.emode-jv { color: #5BB8E0; }
+.emode-mgmt { color: var(--muted); }
+.emode-no { color: #E0607E; }
+.ereason { color: var(--muted); font-size: .74rem; }
+.pull-quote {
+  border-left: 3px solid var(--gold); padding: 1.4rem 1.8rem;
+  background: rgba(196,162,101,.04); border-radius: 0 10px 10px 0;
+  font-size: clamp(.88rem,1.4vw,1.05rem); line-height: 1.75; color: var(--muted);
+}
+.pull-quote strong { color: var(--gold); font-weight: 700; }
+.pull-quote b { color: var(--white); font-weight: 600; }
+@media(max-width:700px){ .entry-modes { grid-template-columns: 1fr 1fr; } }
+@media(max-width:420px){ .entry-modes { grid-template-columns: 1fr; } }
+
+/* ── PORTFOLIO TIMELINE ── */
+.timeline-wrap {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 14px; padding: 2rem 2.4rem;
+  margin: 0 5vw 3.5rem;
+}
+.timeline-head { font-size: .78rem; color: var(--muted); margin-bottom: 1.4rem; font-family: var(--mono); letter-spacing: .08em; }
+.timeline-row {
+  display: grid; grid-template-columns: 52px 1fr auto;
+  align-items: center; gap: 1.2rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+}
+.timeline-year { font-family: var(--mono); font-size: .9rem; font-weight: 700; color: var(--gold); }
+.timeline-name { font-size: .95rem; font-weight: 600; color: var(--white); margin-bottom: .18rem; }
+.timeline-desc { font-size: .74rem; color: var(--muted); }
+.timeline-tag {
+  font-size: .62rem; font-family: var(--mono); letter-spacing: .08em;
+  padding: .28rem .75rem; border-radius: 20px;
+  border: 1px solid rgba(91,184,224,.35); color: #5BB8E0;
+  white-space: nowrap;
+}
+
+/* ── COMPETITIVE SUMMARY ── */
+.comp-section {
+  background: var(--bg1); padding: 6rem 5vw 5rem;
+  border-top: 1px solid var(--border);
+}
+.comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-bottom: 1.4rem; }
+.comp-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.8rem 1.8rem;
+}
+.comp-card-title { font-size: .95rem; font-weight: 800; margin-bottom: 1.4rem; }
+.comp-threat .comp-card-title { color: #E0607E; }
+.comp-bench .comp-card-title { color: #00C896; }
+.comp-item { display: flex; align-items: flex-start; gap: .9rem; margin-bottom: 1.3rem; }
+.comp-item:last-child { margin-bottom: 0; }
+.comp-badge {
+  width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: .65rem; font-weight: 700;
+}
+.badge-threat { background: rgba(224,96,126,.2); color: #E0607E; }
+.badge-bench  { background: rgba(0,200,150,.15); color: #00C896; }
+.comp-item-name { font-size: .88rem; font-weight: 700; color: var(--white); margin-bottom: .3rem; }
+.comp-item-body { font-size: .75rem; color: var(--muted); line-height: 1.65; }
+.comp-white {
+  background: var(--bg2); border: 1px solid rgba(196,162,101,.25);
+  border-radius: 14px; padding: 2rem 2rem;
+}
+.comp-white-title { color: var(--gold); font-size: .95rem; font-weight: 800; margin-bottom: 1rem; }
+.comp-white-body { font-size: .84rem; color: var(--muted); line-height: 1.8; }
+.comp-white-body strong { color: var(--gold); font-weight: 700; }
+.comp-white-body b { color: var(--white); font-weight: 600; }
+.comp-white-body .hl-manila { color: var(--gold); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+@media(max-width:640px){ .comp-grid { grid-template-columns: 1fr; } }
+
+/* ── CLOSE ── */
+.close-section {
+  position: relative; overflow: hidden;
+  background: linear-gradient(170deg, var(--bg1) 0%, var(--bg) 100%);
+  clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+  padding: 12rem 5vw 8rem; text-align: center;
+  border-top: 1px solid var(--border);
+}
+.close-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=60') center/cover;
+  opacity: .05;
+}
+.close-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+.close-tag {
+  font-family: var(--mono); font-size: .65rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem; display: inline-flex; align-items: center; gap: .6rem;
+}
+.close-h2 {
+  font-size: clamp(2.4rem, 5.5vw, 4.5rem); font-weight: 900;
+  text-transform: uppercase; letter-spacing: -.02em; line-height: 1;
+  color: var(--white); margin-bottom: 2.2rem;
+}
+.close-h2 span { color: var(--gold); }
+.close-body { font-size: .95rem; color: var(--muted); line-height: 1.9; margin-bottom: 2.5rem; }
+.close-where {
+  font-size: 1.05rem; font-style: italic; color: var(--gold2);
+  line-height: 1.7; margin-bottom: .5rem;
+}
+.close-contact {
+  margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; color: var(--muted);
+}
+.close-contact a { color: var(--gold); transition: opacity .3s; }
+.close-contact a:hover { opacity: .7; }
+
+footer {
+  background: var(--bg); border-top: 1px solid var(--border);
+  padding: 1.8rem 5vw; display: flex; align-items: center; justify-content: space-between;
+}
+footer span { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .dna-grid { grid-template-columns: repeat(3,1fr); }
+  .city-block, .city-block.flip { grid-template-columns: 1fr; direction: ltr; }
+  .city-photo { min-height: 280px; }
+  .city-text { padding: 3rem 2.5rem; }
+  .stats { grid-template-columns: repeat(2,1fr); }
+  .sub-trio { grid-template-columns: 1fr; }
+  .bench { padding: 1.5rem 2.5rem; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .dna-grid { grid-template-columns: 1fr; }
+  .hero-h1 { font-size: 2.8rem; }
+  .stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-brand">MIRANDA LI ✖ FULLERTON APAC</div>
+  <div class="nav-links">
+    <a href="#brand" class="bold">The Brand</a>
+    <a href="#map">The Gap</a>
+    <a href="#cities">Four Cities</a>
+    <a href="#close">Let's Talk</a>
+  </div>
+</nav>
+
+<!-- SVG ARC CLIP -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden;">
+  <defs>
+    <clipPath id="arcClip" clipPathUnits="objectBoundingBox">
+      <path d="M 0.15 0 Q -0.1 0.5 0.15 1 L 1 1 L 1 0 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Left: text -->
+  <div class="hero-left">
+    <div class="hero-tag">Strategic Observation · June 2026</div>
+    <h1 class="hero-h1">Where should<br><em>Fullerton</em><br>go next?</h1>
+    <div class="scroll-hint" onclick="document.getElementById('brand').scrollIntoView({behavior:'smooth'})">
+      <div class="scroll-line"></div> Scroll
+    </div>
+    <div class="hero-perspective">
+      <div class="perspective-label">Miranda's Perspective</div>
+      <div class="perspective-chips">
+        <span class="p-chip">Sino Group Alumni</span>
+        <span class="p-chip">Shenzhen · 8+ Years</span>
+        <span class="p-chip">Just back from The Fullerton Singapore</span>
+        <span class="p-chip">Hosted Events at The Fullerton · Multiple Occasions</span>
+        <span class="p-chip">Marina Bay Sands AI Forum · Next Week</span>
+      </div>
+    </div>
+  </div>
+  <!-- Right: image with arc clip -->
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img src="fullerton-hero.jpg" alt="The Fullerton Hotel Singapore">
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat reveal">
+    <span class="stat-num"><span class="ctr" data-t="4">0</span></span>
+    <span class="stat-label">Hotels Worldwide</span>
+  </div>
+  <div class="stat reveal d1">
+    <span class="stat-num"><span class="ctr" data-t="25">0</span></span>
+    <span class="stat-label">Years of Curation</span>
+  </div>
+  <div class="stat reveal d2">
+    <span class="stat-num"><span class="ctr" data-t="7">0</span>–9</span>
+    <span class="stat-label">Years Between Each Opening</span>
+  </div>
+  <div class="stat reveal d3">
+    <span class="stat-num"><span class="ctr" data-t="0">0</span></span>
+    <span class="stat-label">Heritage Hotels in Greater Bay Area</span>
+  </div>
+</div>
+
+<!-- DNA -->
+<section class="dna-section" id="brand">
+
+  <!-- Bears decoration top-right -->
+  <div class="bears-deco">
+    <img src="fullerton-bears.jpg" alt="Robby and Lizzy">
+  </div>
+
+  <div class="dna-header">
+    <div class="sec-tag reveal">The Brand</div>
+    <h2 class="sec-h2 reveal d1">What makes<br>Fullerton, <span>Fullerton.</span></h2>
+    <p class="sec-sub reveal d2">Five principles that explain why this brand cannot be replicated — and why location strategy is everything.</p>
+  </div>
+
+  <div class="dna-list">
+
+    <!-- 01 -->
+    <div class="dna-card reveal">
+      <div class="dna-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M12 3L3 9h18L12 3z"/><rect x="5" y="9" width="3" height="12"/><rect x="10.5" y="9" width="3" height="12"/><rect x="16" y="9" width="3" height="12"/><line x1="3" y1="21" x2="21" y2="21"/>
+        </svg>
+      </div>
+      <div class="dna-left">
+        <span class="dna-n">01</span>
+        <div class="dna-title">Born from Historic<br>Post Offices</div>
+      </div>
+      <div class="dna-body">Each property began as a <span class="hl">century-old civic postal landmark</span>. Singapore. Sydney. The same founding logic: a building the city trusted for a hundred years, <span class="hl">given a new purpose without losing its soul</span>.</div>
+    </div>
+
+    <!-- 02 -->
+    <div class="dna-card reveal d1">
+      <div class="dna-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M5 3h14M5 21h14"/><path d="M7 3v4l5 4-5 4v4"/><path d="M17 3v4l-5 4 5 4v4"/>
+        </svg>
+      </div>
+      <div class="dna-left">
+        <span class="dna-n">02</span>
+        <div class="dna-title">A Curator,<br>Not a Chain</div>
+      </div>
+      <div class="dna-body"><span class="hl">4 hotels across 25 years</span> — one every 7 to 9 years. The brand doesn't rush. It waits for the <span class="hl">right building in the right city</span>. That patience is the moat that no amount of capital can buy.</div>
+    </div>
+
+    <!-- 03 -->
+    <div class="dna-card reveal d2">
+      <div class="dna-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <rect x="3" y="4" width="7" height="16" rx="1"/><rect x="14" y="4" width="7" height="7" rx="1"/><rect x="14" y="13" width="7" height="7" rx="1"/>
+        </svg>
+      </div>
+      <div class="dna-left">
+        <span class="dna-n">03</span>
+        <div class="dna-title">Two Formats,<br>One City</div>
+      </div>
+      <div class="dna-body"><span class="hl">Heritage flagship</span> (400 rooms, CBD landmark) paired with a <span class="hl">Waterfront Bay boutique</span> (under 100 rooms, bespoke). Singapore runs both. This dual-format playbook is how Fullerton enters every new market.</div>
+    </div>
+
+    <!-- 04 -->
+    <div class="dna-card reveal d3">
+      <div class="dna-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <polyline points="23,4 23,10 17,10"/><polyline points="1,20 1,14 7,14"/>
+          <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+        </svg>
+      </div>
+      <div class="dna-left">
+        <span class="dna-n">04</span>
+        <div class="dna-title">Owner-Operator<br>Flywheel</div>
+      </div>
+      <div class="dna-body">Sino Group <span class="hl">owns the land, converts the building, operates the hotel</span>. No landlord above you. This protects brand integrity and <span class="hl">compresses cost in ways most luxury brands cannot replicate</span>.</div>
+    </div>
+
+    <!-- 05 -->
+    <div class="dna-card reveal d4">
+      <div class="dna-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/>
+          <line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="8.5" x2="22" y2="8.5"/><line x1="2" y1="15.5" x2="22" y2="15.5"/>
+        </svg>
+      </div>
+      <div class="dna-left">
+        <span class="dna-n">05</span>
+        <div class="dna-title">The Clientele</div>
+      </div>
+      <div class="dna-body"><span class="hl">Cross-border HNW business travelers.</span> Private equity and family offices moving between <span class="hl">Hong Kong, Singapore, and the GBA</span>. People who already know what Fullerton feels like — and notice when it's missing.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MOAT TRINITY -->
+<section class="moat-section">
+  <div class="moat-label reveal">Why It Can't Be Copied</div>
+  <div class="moat-title reveal d1">The Moat Is Three Things at Once.</div>
+  <div class="moat-sub reveal d2">Scarce landmark × ultra-luxury × 100% owner-operated — the owner is the operator. Capital alone cannot replicate it.</div>
+  <div class="moat-cards reveal d3">
+    <div class="moat-card">
+      <div class="moat-card-val">Scarce</div>
+      <div class="moat-card-lbl">National landmark buildings</div>
+    </div>
+    <div class="moat-x">×</div>
+    <div class="moat-card">
+      <div class="moat-card-val">Ultra</div>
+      <div class="moat-card-lbl">Ultra-luxury positioning</div>
+    </div>
+    <div class="moat-x">×</div>
+    <div class="moat-card">
+      <div class="moat-card-val">100%</div>
+      <div class="moat-card-lbl">Owner-operated. Always.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET SCORE TABLE -->
+<section class="score-section">
+  <div class="score-intro reveal">
+    <div class="moat-label" style="margin-bottom:.8rem">APAC Market Screening</div>
+    <p>Fullerton's model requires one thing most markets can't supply: <span>a landmark-grade civic building available for conversion.</span> Tourism demand is abundant across APAC. Supply gap is real in most cities. But landmark access — the single hardest criterion — is what separates the markets that qualify from the ones that don't.</p>
+  </div>
+  <table class="score-table reveal d1">
+    <thead>
+      <tr>
+        <th class="col-market">Market</th>
+        <th>Tourism &amp; Wealth</th>
+        <th>Supply Gap</th>
+        <th class="col-star">★ Landmark Access</th>
+        <th>Regulatory</th>
+        <th>Network Fit</th>
+        <th class="col-tier">Tier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-hl">
+        <td class="td-market">
+          <div style="display:flex;align-items:center">
+            <span class="score-code hl">PH</span>
+            <div><div class="score-market-name">Philippines</div><div class="score-market-sub">Manila · Intramuros</div></div>
+          </div>
+        </td>
+        <td class="score-td-center"><div class="score-cell sc3">3</div></td>
+        <td class="score-td-center"><div class="score-cell sc4">4</div></td>
+        <td class="score-td-center td-star"><div class="score-cell sc5 score-cell-star">5</div></td>
+        <td class="score-td-center"><div class="score-cell sc3">3</div></td>
+        <td class="score-td-center"><div class="score-cell sc5">5</div></td>
+        <td class="td-tier"><span class="tier-badge tier1">● Tier 1</span></td>
+      </tr>
+      <tr>
+        <td class="td-market">
+          <div style="display:flex;align-items:center">
+            <span class="score-code">JP</span>
+            <div><div class="score-market-name">Japan</div><div class="score-market-sub">Tokyo / Kyoto / Osaka</div></div>
+          </div>
+        </td>
+        <td class="score-td-center"><div class="score-cell sc5">5</div></td>
+        <td class="score-td-center"><div class="score-cell sc4">4</div></td>
+        <td class="score-td-center td-star"><div class="score-cell sc2 score-cell-star">2</div></td>
+        <td class="score-td-center"><div class="score-cell sc3">3</div></td>
+        <td class="score-td-center"><div class="score-cell sc4">4</div></td>
+        <td class="td-tier"><span class="tier-badge tier2">● Tier 2</span></td>
+      </tr>
+      <tr>
+        <td class="td-market">
+          <div style="display:flex;align-items:center">
+            <span class="score-code">CN</span>
+            <div><div class="score-market-name">China Mainland</div><div class="score-market-sub">Shanghai / Beijing / Chengdu</div></div>
+          </div>
+        </td>
+        <td class="score-td-center"><div class="score-cell sc5">5</div></td>
+        <td class="score-td-center"><div class="score-cell sc3">3</div></td>
+        <td class="score-td-center td-star"><div class="score-cell sc2 score-cell-star">2</div></td>
+        <td class="score-td-center"><div class="score-cell sc2">2</div></td>
+        <td class="score-td-center"><div class="score-cell sc4">4</div></td>
+        <td class="td-tier"><span class="tier-badge tier2">● Tier 2</span></td>
+      </tr>
+      <tr>
+        <td class="td-market">
+          <div style="display:flex;align-items:center">
+            <span class="score-code">ID</span>
+            <div><div class="score-market-name">Indonesia</div><div class="score-market-sub">Jakarta / Bali / Yogyakarta</div></div>
+          </div>
+        </td>
+        <td class="score-td-center"><div class="score-cell sc5">5</div></td>
+        <td class="score-td-center"><div class="score-cell sc3">3</div></td>
+        <td class="score-td-center td-star"><div class="score-cell sc2 score-cell-star">2</div></td>
+        <td class="score-td-center"><div class="score-cell sc2">2</div></td>
+        <td class="score-td-center"><div class="score-cell sc3">3</div></td>
+        <td class="td-tier"><span class="tier-badge tier2">● Tier 2</span></td>
+      </tr>
+      <tr>
+        <td class="td-market">
+          <div style="display:flex;align-items:center">
+            <span class="score-code">AU</span>
+            <div><div class="score-market-name">Australia &amp; NZ</div><div class="score-market-sub">Sydney / Melbourne +</div></div>
+          </div>
+        </td>
+        <td class="score-td-center"><div class="score-cell sc5">5</div></td>
+        <td class="score-td-center"><div class="score-cell sc2">2</div></td>
+        <td class="score-td-center td-star"><div class="score-cell sc2 score-cell-star">2</div></td>
+        <td class="score-td-center"><div class="score-cell sc3">3</div></td>
+        <td class="score-td-center"><div class="score-cell sc4">4</div></td>
+        <td class="td-tier"><span class="tier-badge tier2">● Tier 2</span></td>
+      </tr>
+      <tr>
+        <td class="td-market">
+          <div style="display:flex;align-items:center">
+            <span class="score-code">VN</span>
+            <div><div class="score-market-name">Vietnam</div><div class="score-market-sub">HCMC / Hanoi / Da Nang</div></div>
+          </div>
+        </td>
+        <td class="score-td-center"><div class="score-cell sc5">5</div></td>
+        <td class="score-td-center"><div class="score-cell sc3">3</div></td>
+        <td class="score-td-center td-star"><div class="score-cell sc1 score-cell-star">1</div></td>
+        <td class="score-td-center"><div class="score-cell sc2">2</div></td>
+        <td class="score-td-center"><div class="score-cell sc3">3</div></td>
+        <td class="td-tier"><span class="tier-badge tier3">● Tier 3</span></td>
+      </tr>
+      <tr>
+        <td class="td-market">
+          <div style="display:flex;align-items:center">
+            <span class="score-code">TH</span>
+            <div><div class="score-market-name">Thailand</div><div class="score-market-sub">Bangkok / Chiang Mai / Phuket</div></div>
+          </div>
+        </td>
+        <td class="score-td-center"><div class="score-cell sc4">4</div></td>
+        <td class="score-td-center"><div class="score-cell sc2">2</div></td>
+        <td class="score-td-center td-star"><div class="score-cell sc1 score-cell-star">1</div></td>
+        <td class="score-td-center"><div class="score-cell sc2">2</div></td>
+        <td class="score-td-center"><div class="score-cell sc3">3</div></td>
+        <td class="td-tier"><span class="tier-badge tier3">● Tier 3</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ENTRY MODE -->
+<section class="entry-section">
+  <div class="moat-label reveal" style="margin-bottom:1rem">Entry Mode Framework</div>
+  <div class="entry-modes reveal d1">
+    <div class="entry-card">
+      <div class="entry-card-tag">Tier 01 · The Moat</div>
+      <div class="entry-card-title ec-gold">Heavy Asset · Own</div>
+      <div class="entry-card-body">Buy the world-class landmark outright → perpetual title + brand residential recoup. The moat lives on the balance sheet as land.</div>
+    </div>
+    <div class="entry-card">
+      <div class="entry-card-tag">Tier 02 · Quasi-Own</div>
+      <div class="entry-card-title ec-teal">Long Lease · Operate</div>
+      <div class="entry-card-body">Long-lease a government landmark (≤50 yr) → asset-heavy operation on leasehold + JV. The Peninsula playbook.</div>
+    </div>
+    <div class="entry-card">
+      <div class="entry-card-tag">Tier 03 · Scarce Overflow</div>
+      <div class="entry-card-title ec-amber">JV · Lock Equity</div>
+      <div class="entry-card-body">Landmark exists but title is locked → JV stake 20–50%, brand control secured. Does not require 100% ownership to hold the position.</div>
+    </div>
+    <div class="entry-card">
+      <div class="entry-card-tag">Tier 04 · Opportunistic</div>
+      <div class="entry-card-title ec-white">Pure Management</div>
+      <div class="entry-card-body">No convertible landmark available but brand presence is warranted → asset-light management contract, zero capital deployed.</div>
+    </div>
+  </div>
+
+  <table class="entry-table reveal d2">
+    <thead>
+      <tr>
+        <th>Market</th>
+        <th>Tier</th>
+        <th>Recommended Mode</th>
+        <th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="erow-hl">
+        <td><b style="color:var(--white)">Philippines</b></td>
+        <td><span class="etier etier-1">T1</span></td>
+        <td><span class="emode emode-own">Heavy Asset Own (long lease) + Residential</span></td>
+        <td><span class="ereason">Only full-match market; lane completely empty; priority entry</span></td>
+      </tr>
+      <tr>
+        <td><b style="color:var(--white)">Japan</b></td>
+        <td><span class="etier etier-2">T2</span></td>
+        <td><span class="emode emode-jv">JV Equity (Kyoto / regional heritage)</span></td>
+        <td><span class="ereason">Model validated but trophy assets locked by zaibatsu capital</span></td>
+      </tr>
+      <tr>
+        <td><b style="color:var(--white)">China Mainland</b></td>
+        <td><span class="etier etier-2">T2</span></td>
+        <td><span class="emode emode-mgmt">Pure Management — no capital deployed</span></td>
+        <td><span class="ereason">No perpetual title available; SOEs grant management rights only</span></td>
+      </tr>
+      <tr>
+        <td><b style="color:var(--white)">Indonesia</b></td>
+        <td><span class="etier etier-2">T2</span></td>
+        <td><span class="emode emode-jv">JV / Defer</span></td>
+        <td><span class="ereason">HGB 80-yr non-perpetual; Bali cultural assets cannot be foreign-held</span></td>
+      </tr>
+      <tr>
+        <td><b style="color:var(--white)">Australia &amp; NZ</b></td>
+        <td><span class="etier etier-2">T2</span></td>
+        <td><span class="emode emode-jv">Opportunistic — Own or JV</span></td>
+        <td><span class="ereason">Proven market; top-tier landmarks already occupied</span></td>
+      </tr>
+      <tr>
+        <td><b style="color:var(--white)">Vietnam</b></td>
+        <td><span class="etier etier-3">T3</span></td>
+        <td><span class="emode emode-no">Do Not Enter</span></td>
+        <td><span class="ereason">Heritage relics unconvertible; foreign land capped at 50-yr lease</span></td>
+      </tr>
+      <tr>
+        <td><b style="color:var(--white)">Thailand</b></td>
+        <td><span class="etier etier-3">T3</span></td>
+        <td><span class="emode emode-no">Do Not Enter</span></td>
+        <td><span class="ereason">Three trophy assets already sold; foreign freehold structurally impossible</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pull-quote reveal d3">
+    Mandarin Oriental spent <strong>$4.2B going private</strong> to reclaim the freedom <b>Fullerton was born with</b>. Asset-light is a multiplier for Marriott — for Fullerton, it's castration. The premium lives in the landmark; strip the shell, and the premium goes with it.
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section" id="map">
+  <div class="sec-tag reveal">The Opportunity</div>
+  <h2 class="sec-h2 reveal d1">The gap is<br><span>visible from here.</span></h2>
+
+  <!-- Portfolio Timeline -->
+  <div class="timeline-wrap reveal d2">
+    <div class="timeline-head">4 PROPERTIES · THE PACE IS THE PROOF</div>
+    <div class="timeline-row">
+      <div class="timeline-year">2001</div>
+      <div>
+        <div class="timeline-name">The Fullerton Hotel Singapore</div>
+        <div class="timeline-desc">1928 General Post Office · National Monument #71</div>
+      </div>
+      <div class="timeline-tag">Flagship · Landmark Conversion</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-year">2010</div>
+      <div>
+        <div class="timeline-name">The Fullerton Bay Hotel</div>
+        <div class="timeline-desc">Waterfront extension of the original Fullerton precinct</div>
+      </div>
+      <div class="timeline-tag">Modern Waterfront</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-year">2019</div>
+      <div>
+        <div class="timeline-name">The Fullerton Hotel Sydney</div>
+        <div class="timeline-desc">1866 Sydney GPO · First international move</div>
+      </div>
+      <div class="timeline-tag">First Overseas</div>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-year">2022</div>
+      <div>
+        <div class="timeline-name">The Fullerton Ocean Park Hong Kong</div>
+        <div class="timeline-desc">New-build · Marine resort · DNA extended</div>
+      </div>
+      <div class="timeline-tag">DNA Extended</div>
+    </div>
+  </div>
+
+  <div class="map-box reveal d3">
+    <img class="map-photo" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=55" alt="Asia Pacific">
+    <div class="map-dots">
+      <!-- Existing: gold diamond, static glow -->
+      <div class="dot dot-ex" style="left:61.5%;top:64%">
+        <div class="dot-core-ex"></div>
+        <div class="dot-lbl">Singapore ×2</div>
+      </div>
+      <div class="dot dot-ex" style="left:75%;top:80%">
+        <div class="dot-core-ex"></div>
+        <div class="dot-lbl">Sydney</div>
+      </div>
+      <div class="dot dot-ex" style="left:65%;top:45%">
+        <div class="dot-core-ex"></div>
+        <div class="dot-lbl">Hong Kong</div>
+      </div>
+      <!-- Proposed: blue circle, triple pulse -->
+      <div class="dot dot-pr" style="left:65.8%;top:42%">
+        <div class="dot-core-pr"></div>
+        <div class="dot-pulse" style="border-color:#5BB8E0;animation-delay:.0s"></div>
+        <div class="dot-pulse3" style="border-color:#5BB8E0;animation-delay:.5s"></div>
+        <div class="dot-lbl">Shenzhen ★</div>
+      </div>
+      <div class="dot dot-pr" style="left:63.5%;top:40%">
+        <div class="dot-core-pr"></div>
+        <div class="dot-pulse" style="border-color:#5BB8E0;animation-delay:.4s"></div>
+        <div class="dot-pulse3" style="border-color:#5BB8E0;animation-delay:.9s"></div>
+        <div class="dot-lbl">Guangzhou</div>
+      </div>
+      <div class="dot dot-pr" style="left:67%;top:55%">
+        <div class="dot-core-pr"></div>
+        <div class="dot-pulse" style="border-color:#5BB8E0;animation-delay:.8s"></div>
+        <div class="dot-pulse3" style="border-color:#5BB8E0;animation-delay:1.3s"></div>
+        <div class="dot-lbl">Manila</div>
+      </div>
+      <div class="dot dot-pr" style="left:72%;top:31%">
+        <div class="dot-core-pr"></div>
+        <div class="dot-pulse" style="border-color:#5BB8E0;animation-delay:1.2s"></div>
+        <div class="dot-pulse3" style="border-color:#5BB8E0;animation-delay:1.7s"></div>
+        <div class="dot-lbl">Osaka</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-legend reveal d3">
+    <span class="leg-ex"><div class="leg-diamond"></div>Existing Fullerton</span>
+    <span class="leg-pr"><div class="leg-circle"></div>Proposed City</span>
+  </div>
+  <p class="map-quote reveal d4">"The existing portfolio hugs the coastlines of former British territories. The next chapter is written elsewhere."</p>
+</section>
+
+<!-- CITIES -->
+<div class="cities-wrap" id="cities">
+
+<!-- ① SHENZHEN -->
+<div class="city-block">
+  <div class="city-photo">
+    <img src="shenzhen-shekou.jpg" alt="Sea World Shekou Shenzhen">
+    <div class="city-photo-grad"></div>
+    <div class="photo-chip">Sea World · Shekou · Shenzhen</div>
+  </div>
+  <div class="city-text reveal">
+    <div class="city-idx">01 / 04</div>
+    <div class="city-name">Shenzhen</div>
+    <div class="city-cn">深圳 · 改革原点与湾区金融新城</div>
+    <div class="city-verdict">"The city with no heritage hotels — and the most compelling reason to build one."</div>
+    <div class="city-rule"></div>
+    <div class="city-body">
+      Every ultra-luxury rival — Raffles, Andaz, Conrad, Rosewood, Waldorf Astoria — is a <span class="hl-g">glass tower with zero narrative.</span> None can claim a story rooted in this city's founding. Fullerton's entry would be the only property in Shenzhen where <span class="hl-g">the hotel IS the heritage.</span>
+    </div>
+    <div class="chips">
+      <span class="chip hi">★&nbsp; Primary Pick</span>
+      <span class="chip hi">⊕&nbsp; Dual-Store Model</span>
+      <span class="chip hi">✓&nbsp; HK WFOE Feasible</span>
+      <span class="chip hi">◇&nbsp; Zero Heritage Competitors</span>
+    </div>
+    <div class="sub-trio">
+      <div class="sub-card">
+        <div class="sub-tag">Heritage Flagship</div>
+        <div class="sub-ttl" style="color:var(--gold)">Shekou Sea World</div>
+        <div class="sub-body">MV Minghua — inscribed by Deng Xiaoping — anchors the narrative. <strong>Fullerton Singapore started from a GPO; Fullerton Shenzhen starts from China's opening up.</strong></div>
+      </div>
+      <div class="sub-card">
+        <div class="sub-tag">Bay Boutique</div>
+        <div class="sub-ttl" style="color:var(--gold)">Qianhai Waterfront</div>
+        <div class="sub-body">Conrad opened 2023, Rosewood 2026, Waldorf 2028. <strong>A Fullerton Bay-format here completes the dual-store model — and must move before the window closes.</strong></div>
+      </div>
+      <div class="sub-card">
+        <div class="sub-tag">Sino Hotels Boutique</div>
+        <div class="sub-ttl" style="color:var(--gold)">Nantou Ancient City</div>
+        <div class="sub-body"><strong>15–25 rooms, Ming Dynasty civic core.</strong> Ref: The Pottinger model. You Xiong Hotel (Neri&Hu) has already proven the concept works here.</div>
+      </div>
+    </div>
+    <div class="bench">
+      <span class="bench-lbl">Benchmark</span>
+      <div class="bench-items">
+        <div class="bench-item">
+          <svg class="bench-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="6" width="12" height="9" rx=".5"/><path d="M5 15V10h6v5"/><path d="M8 6V3"/><path d="M1 6h14"/></svg>
+          <div><b>Raffles Shenzhen</b>Ultra-luxury tower · proves HNW clientele exists</div>
+        </div>
+        <div class="bench-item">
+          <svg class="bench-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="6" width="12" height="9" rx=".5"/><path d="M5 15V10h6v5"/><path d="M8 6V3"/><path d="M1 6h14"/></svg>
+          <div><b>Hilton Shekou Nanhai</b>541 rooms · volume-play · yacht marina · zero narrative</div>
+        </div>
+        <div class="bench-item">
+          <svg class="bench-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="6" width="12" height="9" rx=".5"/><path d="M5 15V10h6v5"/><path d="M8 6V3"/><path d="M1 6h14"/></svg>
+          <div><b>Conrad Qianhai (2023)</b>YABU Pushelberg · art museum concept · first mover in Qianhai</div>
+        </div>
+        <div class="bench-item">
+          <svg class="bench-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="6" width="12" height="9" rx=".5"/><path d="M5 15V10h6v5"/><path d="M8 6V3"/><path d="M1 6h14"/></svg>
+          <div><b>Rosewood Shenzhen (2026)</b>Shennan Blvd · highest positioning in market</div>
+        </div>
+        <div class="bench-item">
+          <svg class="bench-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="6" width="12" height="9" rx=".5"/><path d="M5 15V10h6v5"/><path d="M8 6V3"/><path d="M1 6h14"/></svg>
+          <div><b>Waldorf Astoria (2028)</b>Shenzhen Bay HQ Zone · sets the ultra-luxury ceiling</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ② GUANGZHOU -->
+<div class="city-block flip">
+  <div class="city-photo">
+    <img src="guangzhou-shamian.jpg" alt="Shamian Island Guangzhou colonial" style="object-position: center 20%;">
+    <div class="city-photo-grad"></div>
+    <div class="photo-chip">Shamian Island · Pearl River Delta</div>
+  </div>
+  <div class="city-text reveal">
+    <div class="city-idx">02 / 04</div>
+    <div class="city-name">Guangzhou</div>
+    <div class="city-cn">广州 · 最强叙事，最需找对入口</div>
+    <div class="city-verdict">"The strongest heritage narrative in the GBA. The most complicated path to it."</div>
+    <div class="city-rule"></div>
+    <div class="city-body">
+      Every top luxury hotel in Guangzhou is in a skyscraper — Rosewood on floor 69, Four Seasons on floors 74–98. <span class="hl-g">Ground-level, heritage-immersive luxury does not exist in this city.</span><br><br>
+      Shamian Island — 150+ Anglo-French colonial buildings, Pearl River waterfront — shares the same founding bloodline as Singapore's Fullerton. National Monument status creates structural barriers, but two realistic entries remain: <span class="hl-g">Dongshan District</span> (Republican-era villas, 40–60 rooms) or a <span class="hl-g">new-build facing Shamian</span> — The Pottinger logic applied to Guangzhou.
+    </div>
+    <div class="chips">
+      <span class="chip hi">★&nbsp; Strongest Heritage Story</span>
+      <span class="chip hi">⊕&nbsp; 29 min · Shenzhen HSR</span>
+      <span class="chip hi">✓&nbsp; 46 min · HK West Kowloon</span>
+      <span class="chip hi">◇&nbsp; Complex Regulatory Path</span>
+    </div>
+    <div class="city-footer">
+      <span style="color:var(--gold);font-weight:600">Key signal:</span>
+      <svg class="bench-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="display:inline-block;vertical-align:middle;margin:0 .3rem 0 .5rem;color:var(--white)"><rect x="2" y="6" width="12" height="9" rx=".5"/><path d="M5 15V10h6v5"/><path d="M8 6V3"/><path d="M1 6h14"/></svg>
+      <span style="color:var(--white);font-weight:500">White Swan Hotel</span> (1983, state-owned, 520 rooms on Shamian) proves foreign luxury investment in this district has been done. It simply hasn't been done at Fullerton's level.
+    </div>
+  </div>
+</div>
+
+<!-- ③ MANILA -->
+<div class="city-block">
+  <div class="city-photo">
+    <img src="manila-intramuros.jpg" alt="Intramuros Walled City Manila" style="object-position: center 50%;">
+    <div class="city-photo-grad"></div>
+    <div class="photo-chip">Intramuros · Walled City · Manila</div>
+  </div>
+  <div class="city-text reveal">
+    <div class="city-idx">03 / 04</div>
+    <div class="city-name">Manila</div>
+    <div class="city-verdict">"The oldest walled city in Asia. The heritage hotel position has never been claimed."</div>
+    <div class="city-rule"></div>
+    <div class="city-body">
+      <span class="hl-g">Intramuros</span> — the Spanish walled city built in 1571 — is the oldest planned urban district in Southeast Asia. Stone fortifications, baroque churches, and colonial civic buildings sit at the mouth of the Pasig River, ten minutes from BGC's glass-tower luxury hotels. International brands have migrated entirely to Makati and BGC: <span class="hl-g">the city's most historically resonant address has no serious hospitality anchor.</span><br><br>
+      The Philippines opened <span class="hl-g">100% foreign hotel ownership</span> in 2021. Tourism is the fastest-recovering in Southeast Asia — 5.9M arrivals in 2023, targeting 12M by 2028. The entry logic mirrors Fullerton's founding move: a civic-heritage address, an underserved luxury position, a city whose top guests are already willing to pay.
+    </div>
+    <div class="chips">
+      <span class="chip hi">★&nbsp; No Heritage Conversion Brand Yet</span>
+      <span class="chip hi">⊕&nbsp; 100% Foreign Hotel Ownership</span>
+      <span class="chip hi">✓&nbsp; 50-yr Lease + 25-yr Renewal</span>
+      <span class="chip hi">◇&nbsp; 12M Tourism Target by 2028</span>
+    </div>
+    <div class="city-footer">
+      <span style="color:var(--gold);font-weight:600">Key signal:</span>
+      <svg class="bench-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="display:inline-block;vertical-align:middle;margin:0 .3rem 0 .5rem;color:var(--white)"><rect x="2" y="6" width="12" height="9" rx=".5"/><path d="M5 15V10h6v5"/><path d="M8 6V3"/><path d="M1 6h14"/></svg>
+      <span style="color:var(--white);font-weight:500">Manila Hotel (1912)</span> <span style="color:var(--muted)">(government-owned, MacArthur's wartime HQ) proves heritage luxury demand. Raffles Makati (2013) proves international luxury demand. Neither is both — that gap is Fullerton's entry point.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ④ OSAKA -->
+<div class="city-block flip">
+  <div class="city-photo">
+    <img src="osaka-nakanoshima.jpg" alt="Osaka Central Public Hall Nakanoshima Island" style="object-position: center 40%;">
+    <div class="city-photo-grad"></div>
+    <div class="photo-chip">Nakanoshima Island · Osaka</div>
+  </div>
+  <div class="city-text reveal">
+    <div class="city-idx">04 / 04</div>
+    <div class="city-name">Osaka</div>
+    <div class="city-verdict">"The policy window just opened. The heritage stage is set. No one has claimed it yet."</div>
+    <div class="city-rule"></div>
+    <div class="city-body">
+      <span class="hl-g">Nakanoshima Island</span> — a narrow river island in central Osaka — holds the city's Meiji and Taishō civic core: Bank of Japan Osaka Branch (1903), Central Public Hall (1918), Prefectural Library (1904). The geography mirrors Fullerton Singapore precisely: waterfront, century-old public buildings, a founding civic address.<br><br>
+      The <span class="hl-g">GPO-level civic building conversion</span> — Fullerton's defining move — has not been done here. Japan allows <span class="hl-g">full foreign freehold</span> with no restrictions, and from fiscal 2026 the government actively subsidises heritage hotel development. Post-Expo, record inbound tourism, weak yen: the window is open and the stage is unclaimed.
+    </div>
+    <div class="chips">
+      <span class="chip hi">★&nbsp; Unclaimed Heritage Stage</span>
+      <span class="chip hi">⊕&nbsp; Full Foreign Freehold</span>
+      <span class="chip hi">✓&nbsp; Gov't Subsidies from 2026</span>
+      <span class="chip hi">◇&nbsp; No Aman or Bvlgari in Osaka</span>
+    </div>
+    <div class="city-footer">
+      <span style="color:var(--gold);font-weight:600">Key signal:</span>
+      <svg class="bench-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="display:inline-block;vertical-align:middle;margin:0 .3rem 0 .5rem;color:var(--white)"><rect x="2" y="6" width="12" height="9" rx=".5"/><path d="M5 15V10h6v5"/><path d="M8 6V3"/><path d="M1 6h14"/></svg>
+      <span style="color:var(--white);font-weight:500">RIHGA Royal → IHG Vignette Collection</span> <span style="color:var(--muted)">(1935, Nakanoshima) proves international brands are repositioning on this narrative. Fullerton's civic-heritage vocabulary has not yet arrived. Why not Tokyo? Tokyo is saturated — Osaka is where Japan's next luxury chapter is being written.</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /cities -->
+
+<!-- COMPETITIVE SUMMARY -->
+<section class="comp-section">
+  <div class="moat-label reveal" style="margin-bottom:1rem">Competitive Landscape</div>
+  <div class="comp-grid reveal d1">
+
+    <!-- Threats -->
+    <div class="comp-card comp-threat">
+      <div class="comp-card-title">Mirror Threats · Moving Fast</div>
+      <div class="comp-item">
+        <div class="comp-badge badge-threat">C</div>
+        <div>
+          <div class="comp-item-name">Capella (Pontiac Capital)</div>
+          <div class="comp-item-body">Same Singapore family-capital origin, same government landmark conversion playbook, partial self-ownership. Capella Sydney is already in the same city, same tier as Fullerton Sydney — direct face-off. Has voluntarily diluted purity by running two tracks.</div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-badge badge-threat">CO</div>
+        <div>
+          <div class="comp-item-name">COMO (Christina Ong)</div>
+          <div class="comp-item-body">Singapore-origin mirror. Has already claimed the State Buildings in Perth and other top-tier Australian heritage assets.</div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-badge badge-threat">R</div>
+        <div>
+          <div class="comp-item-name">Rosewood (Cheng Family / New World)</div>
+          <div class="comp-item-body">Asian family capital + heritage conversion + non-pure asset-light. Already moving on courthouse and former embassy conversions across APAC.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benchmarks -->
+    <div class="comp-card comp-bench">
+      <div class="comp-card-title">Benchmarks · The Right Comparables</div>
+      <div class="comp-item">
+        <div class="comp-badge badge-bench">P</div>
+        <div>
+          <div class="comp-item-name">Peninsula</div>
+          <div class="comp-item-body">Holds to heavy-asset ownership with just 10 properties globally, at an extremely deliberate pace. Exclusivity is maintained by making every property a local singularity. The closest structural analogue Fullerton should study.</div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-badge badge-bench">B</div>
+        <div>
+          <div class="comp-item-name">Belmond (LVMH)</div>
+          <div class="comp-item-body">"Heavy asset + singular legendary property + zero scale-chasing" — endorsed by the world's top luxury capital. Fullerton's best strategic mirror for where the brand can go.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- White Space -->
+  <div class="comp-white reveal d2">
+    <div class="comp-white-title">The White Space Is Closing</div>
+    <div class="comp-white-body">
+      Players who simultaneously satisfy <strong>national landmark + 100% ownership + ultra-luxury</strong> are vanishingly rare — Aman does not touch government heritage assets, Six Senses is pure asset-light, and the only direct competitor Capella has already diluted its own purity. The position to occupy: <b>"the ultra-scarce landmark collector that refuses to go asset-light or management-only"</b> — locking gateway cities with iconic civic heritage that no one has claimed yet, starting with <span class="hl-manila">Manila</span>.
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close-section" id="close">
+  <div class="close-bg"></div>
+  <div class="close-inner">
+    <div class="close-tag reveal">A Personal Note</div>
+    <h2 class="close-h2 reveal d1">Four cities.<br><span>One conversation.</span></h2>
+    <p class="close-body reveal d2">
+      Each for a different reason — a different story Fullerton hasn't told yet.<br>
+      Shenzhen for the founding myth. Guangzhou for the grandest unrealised narrative.<br>
+      Manila for the market that's ready. Osaka for the policy window that won't stay open forever.
+    </p>
+    <p class="close-where reveal d3">
+      I'm in Shenzhen this week — happy to walk the Shekou waterfront<br>and show you what I mean about the Minghua.
+    </p>
+    <p class="close-where reveal d3" style="font-size:.95rem; margin-top:.4rem; color:var(--muted)">
+      Next week, I'll be just across from Fullerton Bay — at the Marina Bay Sands AI Forum.<br>
+      The conversation can continue wherever works.
+    </p>
+    <div class="close-contact reveal d4">
+      Miranda Li &nbsp;·&nbsp;
+      <a href="mailto:lmt_miranda@outlook.com">lmt_miranda@outlook.com</a>
+      &nbsp;·&nbsp; Shenzhen
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span style="color:var(--white);font-weight:700">Miranda Li · Fullerton APAC · June 2026</span>
+  <span style="color:var(--white);font-weight:700">Prepared for David Ng · Private Circulation</span>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), {passive:true});
+
+
+// Reveal on scroll
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold: .1});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Counter animation
+function runCount(el) {
+  const target = parseInt(el.dataset.t);
+  if (target === 0) return;
+  const dur = 1600, start = performance.now();
+  const tick = now => {
+    const p = Math.min((now - start) / dur, 1);
+    el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target);
+    if (p < 1) requestAnimationFrame(tick); else el.textContent = target;
+  };
+  requestAnimationFrame(tick);
+}
+const cio = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); } });
+}, {threshold:.8});
+document.querySelectorAll('.ctr').forEach(el => cio.observe(el));
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+</script>
+</body>
+</html>
