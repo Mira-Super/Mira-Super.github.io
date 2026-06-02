@@ -14,58 +14,35 @@
       :root {
         --c-bg: #1c1c1c;
         --c-bg-alt: #242422;
-        --c-bg-light: #f5d200;
-        --c-bg-light-alt: #f0cc00;
         --c-fg: #f5d200;
         --c-fg-2: rgba(245,210,0,0.58);
         --c-fg-3: rgba(245,210,0,0.32);
         --c-fg-light: #1c1c1c;
         --c-fg-light-2: rgba(28,28,28,0.62);
-        --c-fg-light-3: rgba(28,28,28,0.35);
-        --c-accent: #f5d200;
         --c-border: #2e2e2c;
-        --c-border-light: rgba(28,28,28,0.18);
         --f-display: "Barlow","Noto Sans SC",sans-serif;
         --f-heading: "Barlow","Noto Sans SC",sans-serif;
         --f-body: "Barlow","Noto Sans SC",system-ui,sans-serif;
         --f-mono: "IBM Plex Mono",monospace;
         --sz-display: 12vw;
-        --sz-h1: 7.5vw;
-        --sz-h2: 4.8vw;
-        --sz-h3: 2.8vw;
         --sz-lead: 1.6vw;
-        --sz-body: 1.15vw;
         --sz-caption: 0.85vw;
         --sz-label: 0.72vw;
         --pad-x: 5vw;
         --pad-y: 5vh;
         --gap-lg: 3.5vh;
         --gap-md: 2vh;
-        --gap-sm: 1vh;
-        --ease-slide: cubic-bezier(0.77,0,0.175,1);
-        --dur-slide: 0.75s;
         --ease-enter: cubic-bezier(0.16,1,0.3,1);
         --dur-enter: 0.5s;
       }
 
       *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-      html,body { width: 100%; height: 100%; overflow: hidden; background: var(--c-bg); -webkit-font-smoothing: antialiased; }
-
-      #deck { display: flex; height: 100vh; transition: transform var(--dur-slide) var(--ease-slide); will-change: transform; }
-
-      .slide {
-        flex: 0 0 100vw; width: 100vw; height: 100vh; position: relative;
-        padding: var(--pad-y) var(--pad-x); display: grid;
-        grid-template-rows: auto 1fr auto; overflow: hidden;
-      }
-      .slide-body { min-height: 0; }
-      .slide.dark { background: var(--c-bg); color: var(--c-fg); }
-      .slide.light { background: var(--c-bg-light); color: var(--c-fg-light); }
+      html, body { width: 100%; height: 100%; overflow: hidden; background: var(--c-bg); -webkit-font-smoothing: antialiased; }
 
       [data-anim] { opacity: 0; }
-      .slide.is-active [data-anim] { animation-duration: var(--dur-enter); animation-timing-function: var(--ease-enter); animation-fill-mode: forwards; }
-      .slide.is-active [data-anim="fade-up"] { animation-name: kFadeUp; }
-      .slide.is-active [data-anim="fade-in"] { animation-name: kFadeIn; }
+      .is-active [data-anim] { animation-duration: var(--dur-enter); animation-timing-function: var(--ease-enter); animation-fill-mode: forwards; }
+      .is-active [data-anim="fade-up"] { animation-name: kFadeUp; }
+      .is-active [data-anim="fade-in"] { animation-name: kFadeIn; }
       [data-delay="0"] { animation-delay: 0s; }
       [data-delay="1"] { animation-delay: 0.08s; }
       [data-delay="2"] { animation-delay: 0.18s; }
@@ -75,29 +52,12 @@
       @keyframes kFadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
       @keyframes kFadeIn { from { opacity:0; } to { opacity:1; } }
 
-      #nav-dots { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; z-index: 100; }
-      .nav-dot { width: 5px; height: 5px; border-radius: 50%; border: none; background: rgba(255,255,255,0.22); cursor: pointer; transition: background 0.3s,transform 0.3s; padding: 0; }
-      .nav-dot.is-active { background: rgba(255,255,255,0.8); transform: scale(1.4); }
-      #slide-counter { position: fixed; bottom: 20px; right: 28px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); z-index: 100; user-select: none; }
-
-      .display { font-size: var(--sz-display); font-weight: 900; line-height: 0.9; letter-spacing: -0.02em; text-transform: uppercase; font-family: var(--f-display); }
-      .h1 { font-size: var(--sz-h1); font-weight: 900; line-height: 0.92; letter-spacing: -0.02em; text-transform: uppercase; font-family: var(--f-heading); }
-      .lead { font-size: var(--sz-lead); font-weight: 500; line-height: 1.45; font-family: var(--f-body); }
-      .body { font-size: var(--sz-body); font-weight: 400; line-height: 1.6; font-family: var(--f-body); }
-      .caption { font-size: var(--sz-caption); font-weight: 400; line-height: 1.5; font-family: var(--f-body); }
-      .label { font-size: var(--sz-label); font-weight: 500; letter-spacing: 0.06em; font-family: var(--f-mono); }
-      .muted { color: var(--c-fg-2); }
-
-      .cover-footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; padding-top: var(--gap-md); border-top: 1px solid var(--c-fg-3); }
-      .cover-footer-col { font-family: var(--f-mono); font-size: var(--sz-caption); font-weight: 400; line-height: 1.5; }
-      .cover-footer-col:last-child { text-align: right; }
-
-      /* ── MAIN COVER — split layout ── */
-      .slide--main-cover {
-        display: grid !important;
+      .cover {
+        width: 100vw; height: 100vh;
+        display: grid;
         grid-template-columns: 55fr 45fr;
-        grid-template-rows: 1fr;
-        padding: 0 !important;
+        background: var(--c-bg);
+        color: var(--c-fg);
       }
 
       .cover-left {
@@ -123,12 +83,45 @@
         color: var(--c-fg-2);
       }
 
+      .display {
+        font-family: var(--f-display);
+        font-size: var(--sz-display);
+        font-weight: 900;
+        line-height: 0.88;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        color: var(--c-fg);
+      }
+
+      .lead {
+        font-family: var(--f-body);
+        font-size: var(--sz-lead);
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--c-fg-2);
+      }
+
+      .cover-footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding-top: var(--gap-md);
+        border-top: 1px solid var(--c-fg-3);
+      }
+      .cover-footer-col {
+        font-family: var(--f-mono);
+        font-size: var(--sz-caption);
+        line-height: 1.5;
+        color: var(--c-fg-2);
+      }
+      .cover-footer-col:last-child { text-align: right; }
+      .cover-footer-col:nth-child(2) { text-align: center; }
+
       /* Vertical hub card stack */
       .hub-v-stack {
         display: flex;
         flex-direction: column;
         flex: 1;
-        gap: 1.5vh;
+        gap: 1.2vh;
         min-height: 0;
       }
 
@@ -141,7 +134,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 2vh 1.8vw;
+        padding: 1.6vh 1.8vw;
         text-decoration: none;
         cursor: pointer;
         transition: border-color 0.45s var(--ease-enter);
@@ -199,14 +192,14 @@
       .hub-v-title {
         display: block;
         font-family: var(--f-heading);
-        font-size: clamp(1rem, 1.9vw, 2.1rem);
+        font-size: clamp(0.9rem, 1.7vw, 1.9rem);
         font-weight: 900;
         text-transform: uppercase;
         color: var(--c-fg);
         line-height: 0.95;
         letter-spacing: -0.01em;
         transition: color 0.4s;
-        margin-bottom: 0.8vh;
+        margin-bottom: 0.5vh;
       }
       .hub-v-card:hover .hub-v-title { color: var(--c-fg-light); }
 
@@ -220,14 +213,11 @@
       }
       .hub-v-card:hover .hub-v-sub { color: var(--c-fg-light-2); }
 
-      /* ── END ── */
-      .slide--end { display: flex; flex-direction: column; justify-content: space-between; }
       /* Password gate */
       #gate-overlay {
         position: fixed; inset: 0; z-index: 9999;
         background: #1c1c1c;
         display: flex; align-items: center; justify-content: center;
-        font-family: "IBM Plex Mono", monospace;
       }
       #gate-overlay.hidden { display: none; }
       .gate-box {
@@ -295,199 +285,84 @@
         input.addEventListener('keydown', function (e) { if (e.key === 'Enter') attempt(); });
       })();
     </script>
-    <nav id="nav-dots"></nav>
-    <div id="slide-counter"></div>
 
-    <div id="deck">
+    <main class="cover is-active">
 
-      <!-- SLIDE 1 · MAIN COVER — split -->
-      <section class="slide dark slide--main-cover">
+      <!-- LEFT: Identity -->
+      <div class="cover-left">
+        <div></div>
 
-        <!-- LEFT: Identity -->
-        <div class="cover-left">
-          <div></div>
-
-          <div>
-            <h1 class="display" style="color: var(--c-fg); line-height: 0.88" data-anim="fade-up" data-delay="1">
-              MIRANDA<br>LI
-            </h1>
-            <p class="lead" style="color: var(--c-fg-2); margin-top: 2.5vh; text-transform: none; font-weight: 400; max-width: 40vw" data-anim="fade-up" data-delay="2">
-              ESG &amp; Sustainability Strategist. Executive background across five industries — now focused on long-term sustainability transition.
-            </p>
-          </div>
-
-          <div class="cover-footer" data-anim="fade-in" data-delay="4">
-            <span class="cover-footer-col" style="color: var(--c-fg-2)">ESG · Sustainability<br>2026</span>
-            <span class="cover-footer-col" style="text-align:center; color: var(--c-fg-2)">Strategy &amp; Transition</span>
-            <span class="cover-footer-col" style="color: var(--c-fg-2)">miranda-li.net</span>
-          </div>
+        <div>
+          <h1 class="display" data-anim="fade-up" data-delay="1">
+            MIRANDA<br>LI
+          </h1>
+          <p class="lead" style="margin-top: 2.5vh; max-width: 38vw;" data-anim="fade-up" data-delay="2">
+            ESG &amp; Sustainability Strategist.<br>
+            Executive background across five industries —<br>
+            now on the right side of the transition.
+          </p>
         </div>
 
-        <!-- RIGHT: Navigation hub -->
-        <div class="cover-right">
-          <p class="cover-eyebrow" data-anim="fade-in" data-delay="0">Explore</p>
-
-          <div class="hub-v-stack" data-anim="fade-up" data-delay="2">
-
-            <a href="/personal-brand/" class="hub-v-card">
-              <div class="hub-v-top">
-                <span class="hub-v-num">01</span>
-                <span class="hub-v-arrow">↗</span>
-              </div>
-              <div class="hub-v-bottom">
-                <span class="hub-v-title">Personal Brand</span>
-                <span class="hub-v-sub">Identity &amp; Voice</span>
-              </div>
-            </a>
-
-            <a href="/portfolio/" class="hub-v-card">
-              <div class="hub-v-top">
-                <span class="hub-v-num">02</span>
-                <span class="hub-v-arrow">↗</span>
-              </div>
-              <div class="hub-v-bottom">
-                <span class="hub-v-title">Portfolio</span>
-                <span class="hub-v-sub">Work &amp; Projects</span>
-              </div>
-            </a>
-
-            <a href="/knowledge-base/" class="hub-v-card">
-              <div class="hub-v-top">
-                <span class="hub-v-num">03</span>
-                <span class="hub-v-arrow">↗</span>
-              </div>
-              <div class="hub-v-bottom">
-                <span class="hub-v-title">Knowledge Base</span>
-                <span class="hub-v-sub">Research &amp; Insights</span>
-              </div>
-            </a>
-
-          </div>
+        <div class="cover-footer" data-anim="fade-in" data-delay="4">
+          <span class="cover-footer-col">ESG · Sustainability<br>2026</span>
+          <span class="cover-footer-col">Strategy &amp; Transition</span>
+          <span class="cover-footer-col">miranda-li.net</span>
         </div>
+      </div>
 
-      </section>
+      <!-- RIGHT: Navigation hub -->
+      <div class="cover-right">
+        <p class="cover-eyebrow" data-anim="fade-in" data-delay="0">Explore</p>
 
-      <!-- SLIDE 2 · END light -->
-      <section class="slide light slide--end">
-        <h1 class="h1" style="max-width: 85%; line-height: 0.9; font-size: var(--sz-display); color: var(--c-fg-light);" data-anim="fade-up" data-delay="0">
-          LET'S CONNECT.
-        </h1>
+        <div class="hub-v-stack" data-anim="fade-up" data-delay="2">
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-lg); margin-top: var(--gap-lg);" data-anim="fade-up" data-delay="2">
-          <div>
-            <p class="body" style="color: var(--c-fg-light-2)">
-              Open to ESG advisory roles, sustainability strategy<br />
-              positions, and conversations about the transition ahead.
-            </p>
-            <p class="body" style="color: var(--c-fg-light); margin-top: 1.5vh; font-weight: 700;">
-              llmmtt666@gmail.com
-            </p>
-          </div>
-          <div>
-            <p class="body" style="color: var(--c-fg-light-2)">
-              Background in aviation, real estate, new energy,<br />
-              finance and defense — now fully focused on ESG.
-            </p>
-            <p class="body" style="color: var(--c-fg-light); margin-top: 1.5vh; font-weight: 700;">
-              miranda-li.net
-            </p>
-          </div>
+          <a href="me/" class="hub-v-card">
+            <div class="hub-v-top">
+              <span class="hub-v-num">01</span>
+              <span class="hub-v-arrow">↗</span>
+            </div>
+            <div class="hub-v-bottom">
+              <span class="hub-v-title">Me</span>
+              <span class="hub-v-sub">Who I Am</span>
+            </div>
+          </a>
+
+          <a href="career/" class="hub-v-card">
+            <div class="hub-v-top">
+              <span class="hub-v-num">02</span>
+              <span class="hub-v-arrow">↗</span>
+            </div>
+            <div class="hub-v-bottom">
+              <span class="hub-v-title">Career</span>
+              <span class="hub-v-sub">Track Record</span>
+            </div>
+          </a>
+
+          <a href="critical-thinking/" class="hub-v-card">
+            <div class="hub-v-top">
+              <span class="hub-v-num">03</span>
+              <span class="hub-v-arrow">↗</span>
+            </div>
+            <div class="hub-v-bottom">
+              <span class="hub-v-title">Critical Thinking</span>
+              <span class="hub-v-sub">Research &amp; Views</span>
+            </div>
+          </a>
+
+          <a href="wonderful-life/" class="hub-v-card">
+            <div class="hub-v-top">
+              <span class="hub-v-num">04</span>
+              <span class="hub-v-arrow">↗</span>
+            </div>
+            <div class="hub-v-bottom">
+              <span class="hub-v-title">Wonderful Life</span>
+              <span class="hub-v-sub">The Other Side</span>
+            </div>
+          </a>
+
         </div>
+      </div>
 
-        <div class="cover-footer" style="border-top-color: var(--c-border-light);" data-anim="fade-in" data-delay="4">
-          <span class="cover-footer-col" style="color: var(--c-fg-light-2)">Miranda Li<br />ESG &amp; Sustainability</span>
-          <span class="cover-footer-col" style="text-align: center; color: var(--c-fg-light-2)">Strategy &amp; Transition</span>
-          <span class="cover-footer-col" style="color: var(--c-fg-light-2); text-align: right;">miranda-li.net · 2026</span>
-        </div>
-      </section>
-
-    </div><!-- /deck -->
-
-    <script>
-      (function () {
-        "use strict";
-        const deck = document.getElementById("deck");
-        const slides = Array.from(document.querySelectorAll(".slide"));
-        const dotsEl = document.getElementById("nav-dots");
-        const counter = document.getElementById("slide-counter");
-        const total = slides.length;
-        let current = 0;
-        let animating = false;
-
-        function init() {
-          deck.style.width = total + "00vw";
-          slides.forEach(function (_, i) {
-            const btn = document.createElement("button");
-            btn.className = "nav-dot";
-            btn.setAttribute("aria-label", "Go to slide " + (i + 1));
-            btn.addEventListener("click", function () { goTo(i); });
-            dotsEl.appendChild(btn);
-          });
-          goTo(0, true);
-        }
-
-        function goTo(index, instant) {
-          index = Math.max(0, Math.min(total - 1, index));
-          if (index === current && !instant) return;
-          animating = true;
-          const prev = slides[current];
-          prev.classList.remove("is-active");
-          void prev.offsetWidth;
-          if (instant) {
-            deck.style.transition = "none";
-            deck.style.transform = "translateX(-" + index + "00vw)";
-            void deck.offsetWidth;
-            deck.style.transition = "";
-          } else {
-            deck.style.transform = "translateX(-" + index + "00vw)";
-          }
-          current = index;
-          const next = slides[current];
-          next.classList.add("is-active");
-          Array.from(dotsEl.children).forEach(function (dot, i) {
-            dot.classList.toggle("is-active", i === current);
-          });
-          counter.textContent = current + 1 + " / " + total;
-          const delay = instant ? 0 : parseFloat(getComputedStyle(deck).transitionDuration) * 1000;
-          setTimeout(function () { animating = false; }, delay);
-        }
-
-        document.addEventListener("keydown", function (e) {
-          if (animating) return;
-          if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
-            e.preventDefault(); goTo(current + 1);
-          } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-            e.preventDefault(); goTo(current - 1);
-          }
-        });
-
-        let wheelCooldown = false;
-        document.addEventListener("wheel", function (e) {
-          e.preventDefault();
-          if (animating || wheelCooldown) return;
-          wheelCooldown = true;
-          setTimeout(function () { wheelCooldown = false; }, 900);
-          if (e.deltaY > 0 || e.deltaX > 0) { goTo(current + 1); } else { goTo(current - 1); }
-        }, { passive: false });
-
-        let touchStartX = null, touchStartY = null;
-        document.addEventListener("touchstart", function (e) {
-          touchStartX = e.touches[0].clientX;
-          touchStartY = e.touches[0].clientY;
-        }, { passive: true });
-        document.addEventListener("touchend", function (e) {
-          if (touchStartX === null) return;
-          const dx = touchStartX - e.changedTouches[0].clientX;
-          const dy = touchStartY - e.changedTouches[0].clientY;
-          if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-            if (animating) return;
-            if (dx > 0) { goTo(current + 1); } else { goTo(current - 1); }
-          }
-          touchStartX = null; touchStartY = null;
-        }, { passive: true });
-
-        init();
-      })();
-    </script>
+    </main>
   </body>
 </html>
