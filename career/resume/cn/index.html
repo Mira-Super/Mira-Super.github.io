@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李梦婷 · 简历 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    color: #1d1d1f;
+    background: #fff;
+    font-size: 9.2pt;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 52px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1d1d1f;
+    margin-bottom: 22px;
+  }
+
+  .header-left { flex: 1; padding-top: 4px; text-align: center; }
+
+  .name {
+    font-size: 30pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #1d1d1f;
+    line-height: 1.05;
+  }
+
+  .name-en {
+    font-size: 11pt;
+    font-weight: 400;
+    color: #6e6e73;
+    letter-spacing: 1px;
+    margin-top: 3px;
+  }
+
+  .tagline {
+    font-size: 10pt;
+    font-weight: 500;
+    color: #3a3a3c;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .contact {
+    margin-top: 10px;
+    font-size: 8.2pt;
+    color: #6e6e73;
+    line-height: 1.8;
+  }
+
+  .contact span { margin-right: 18px; }
+
+  .photo {
+    width: 108px;
+    height: 148px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 5px;
+    margin-right: 28px;
+    flex-shrink: 0;
+    filter: grayscale(8%);
+  }
+
+  .section { margin-bottom: 18px; }
+
+  .section-title {
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #6e6e73;
+    padding-bottom: 5px;
+    border-bottom: 0.5px solid #d2d2d7;
+    margin-bottom: 10px;
+  }
+
+  .profile-text {
+    font-size: 9pt;
+    color: #3a3a3c;
+    line-height: 1.8;
+  }
+
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px 32px;
+  }
+
+  .comp-item { font-size: 8.5pt; }
+
+  .comp-label {
+    font-weight: 600;
+    color: #1d1d1f;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .comp-detail {
+    color: #6e6e73;
+    font-size: 7.8pt;
+    line-height: 1.6;
+  }
+
+  .job { margin-bottom: 16px; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1px;
+  }
+
+  .company-name {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #1d1d1f;
+  }
+
+  .job-date {
+    font-size: 8pt;
+    color: #8e8e93;
+    white-space: nowrap;
+    margin-left: 16px;
+  }
+
+  .job-title {
+    font-size: 9pt;
+    font-weight: 500;
+    color: #3a3a3c;
+    margin-bottom: 2px;
+  }
+
+  .company-desc {
+    font-size: 7.8pt;
+    color: #aeaeb2;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .sub-head {
+    font-size: 7.8pt;
+    font-weight: 700;
+    color: #1d1d1f;
+    letter-spacing: 0.8px;
+    margin: 6px 0 3px;
+  }
+
+  ul { padding-left: 13px; }
+
+  li {
+    font-size: 8.5pt;
+    color: #3a3a3c;
+    line-height: 1.65;
+    margin-bottom: 2.5px;
+  }
+
+  li::marker { color: #aeaeb2; }
+
+  strong { color: #1d1d1f; font-weight: 600; }
+
+  .edu-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 2px 14px;
+    margin-bottom: 5px;
+    font-size: 8.5pt;
+  }
+
+  .edu-date { color: #8e8e93; padding-top: 1px; }
+  .edu-school { font-weight: 600; color: #1d1d1f; }
+  .edu-prog { color: #6e6e73; font-size: 8pt; }
+
+  .cert-group { margin-bottom: 8px; }
+
+  .cert-group-title {
+    font-size: 7.8pt;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 4px;
+  }
+
+  .cert-row {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2px 10px;
+    font-size: 8pt;
+    margin-bottom: 3px;
+    align-items: baseline;
+  }
+
+  .cert-name { color: #1d1d1f; font-weight: 500; }
+  .cert-body { color: #6e6e73; }
+
+  .skills-block { margin-bottom: 5px; font-size: 8.2pt; }
+  .skills-label { font-weight: 600; color: #1d1d1f; }
+  .skills-val { color: #6e6e73; }
+
+  @media print {
+    body { font-size: 9pt; }
+    .page { padding: 14mm 16mm; max-width: none; }
+    .job { page-break-inside: avoid; }
+  }
+
+  @page { margin: 0; size: A4; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <img class="photo" src="./职业照_2026.jpg" alt="李梦婷">
+    <div class="header-left">
+      <div class="name">李梦婷</div>
+      <div class="name-en">Miranda Li</div>
+      <div class="tagline">企业战略 · 城市与社区长期价值 · 15年跨行业高管</div>
+      <div class="contact">
+        <span>✉ lmt_miranda@outlook.com</span>
+        <span>英语 IELTS 7.0</span>
+        <span>粤语工作用语</span><br>
+        <span>地产与酒店 · 航空 · 投资 · 政府事务 · 可持续发展</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 个人简介 -->
+  <section class="section">
+    <div class="section-title">个人简介</div>
+    <p class="profile-text">
+      具有15年跨行业、跨境从业经历，覆盖地产与酒店、航空、军民融合、新能源及私募股权，足迹遍及50余国。职业起点为<strong>新加坡航空</strong>，随后加入<strong>信和集团</strong>——这段经历深刻塑造了对品牌价值、社区根植与长期价值创造的认知与信念。此后历任航空公司总经理、多家机构主席办公室核心职务，积累了政府关系、规模化运营、危机管理与跨行业战略协调的深厚实践。近年深度参与大湾区产业生态，长期常驻深圳。持有 <strong>CFA 可持续投资证书</strong>及<strong>斯坦福商学院高管课程</strong>资质。母语普通话，英语精通（IELTS 7.0），粤语流利。
+    </p>
+  </section>
+
+  <!-- 核心能力 -->
+  <section class="section">
+    <div class="section-title">核心能力</div>
+    <div class="comp-grid">
+      <div class="comp-item">
+        <span class="comp-label">企业战略与市场拓展</span>
+        <span class="comp-detail">城市与社区生态分析 · 品牌定位 · 长期价值创造 · 合作结构搭建</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">政府与机构关系</span>
+        <span class="comp-detail">公私合作 · 中央及地方政府对接 · 监管协调 · 高规格代表团接待</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">酒店与物业运营</span>
+        <span class="comp-detail">高端服务品质设计与执行 · 物业交楼与会所管理 · 品牌酒店推介与资源对接 · 高规格商务接待</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">慈善基金与社区投资</span>
+        <span class="comp-detail">家族基金治理 · 项目立项与拨付 · 文化遗产及教育资助 · 合规监督</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">危机与声誉管理</span>
+        <span class="comp-detail">舆情处置 · 多方利益相关者沟通 · 监管机构对接 · 媒体与政府危机应对</span>
+      </div>
+      <div class="comp-item">
+        <span class="comp-label">可持续发展与ESG整合</span>
+        <span class="comp-detail">CFA ESG · GRI / TCFD / GRESB / CDP · 碳管理 · ESG供应链升级 · 绿色运营</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 工作经历 -->
+  <section class="section">
+    <div class="section-title">工作经历</div>
+
+    <!-- 信和集团 — 对此受众置首位 -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">信和集团（香港）</span>
+        <span class="job-date">2015年11月 — 2018年2月</span>
+      </div>
+      <div class="job-title">企业培训主任 | 培训发展 · 公益统筹 · 对外专项事务</div>
+      <div class="company-desc">香港领先地产开发商；港交所上市；MSCI AAA · 恒生AAA · 标普全球前1% · CDP A；GRESB全球领导者</div>
+
+      <div class="sub-head">人才发展与培训体系</div>
+      <ul>
+        <li>开展课程研发与跨基地宣讲，覆盖新加坡、香港、厦门等多个业务基地</li>
+        <li>统筹<strong>管理培训生项目</strong>（「五星服务」/「信之星」人才项目）：负责内地、香港、美国等地优秀毕业生招聘、培养与岗位规划，搭建系统化人才培训体系</li>
+      </ul>
+
+      <div class="sub-head">服务标准化与品质管理</div>
+      <ul>
+        <li>聚焦一线服务质量升级，设计并推行服务提升专项课题；统筹<strong>会所服务、交楼服务、游艇会服务</strong>等业务板块的标准化提升与执行监督</li>
+        <li>负责<strong>喜帖街 / The Avenue</strong>及<strong>The Mayfair by the Sea</strong>项目交楼事务</li>
+      </ul>
+
+      <div class="sub-head">公益基金执行与社区投资</div>
+      <ul>
+        <li><strong>黄廷芳慈善基金（NTFCF）</strong>：参与教育基金项目执行落地，跟进立项评审、拨付、审计与披露；赴偏远地区开展实地走访，策划并落地教育类公益项目，确保资金使用规范、项目合规可控</li>
+      </ul>
+
+      <div class="sub-head">对外事务与战略统筹</div>
+      <ul>
+        <li>代表主席向中国顶尖企业家推介<strong>富丽敦酒店新加坡</strong></li>
+        <li>赴<strong>新疆、甘肃</strong>开展项目实地考察与调研</li>
+        <li>统筹新加坡高规格政商活动保障：<strong>福建省委代表团、中国驻新加坡大使馆、淡马锡集团</strong></li>
+      </ul>
+    </div>
+
+    <!-- 广丰集团 -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">广丰集团（GF Group）</span>
+        <span class="job-date">2024年3月 — 至今</span>
+      </div>
+      <div class="job-title">直属董事长 | 投资组合管理与战略运营</div>
+      <div class="company-desc">私募股权基金，联合政府引导基金，投资覆盖地产、科技、医疗健康、文娱及先进制造业</div>
+
+      <div class="sub-head">投资组合管理 · 项目统筹</div>
+      <ul>
+        <li>统筹<strong>深圳市人才创新创业基金（二期、三期）</strong>及<strong>深圳市中小企业人才股权投资基金</strong>投后管理，覆盖医疗科技、智能穿戴、文娱体育等赛道</li>
+        <li>主导<strong>光启未来中心RMB 5亿不良资产重组</strong>：采用「以租代管」策略稳定运营，隔离声誉风险，保留后续处置灵活性</li>
+        <li>主导<strong>18个月投资方深度介入式供应链升级项目</strong>（AI智能穿戴IoT终端）：统筹8个核心组件产品升级，欧盟销售市场从5国扩展至<strong>11国</strong>，加购率提升<strong>4.1%</strong>，单位成本增加仅$0.22（&lt;MSRP 0.1%，品牌商全额吸收）</li>
+      </ul>
+
+      <div class="sub-head">公益治理 · 利益相关方管理</div>
+      <ul>
+        <li>统筹<strong>「一滴水」公益基金</strong>（香港中文大学深圳校区，RMB 2,000万）运营管理，设立校园发展基金与奖学金；全程跟进项目立项、拨付与监督</li>
+        <li>任长江商学院EMBA 27班秘书长</li>
+      </ul>
+    </div>
+
+    <!-- 一轨同风 -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">一轨同风科技集团</span>
+        <span class="job-date">2021年10月 — 2024年3月</span>
+      </div>
+      <div class="job-title">直属董事长 | 政府事务与产业战略发展</div>
+      <div class="company-desc">先进材料、新能源及精密仪器集团；联合中国航天、高校与科研机构建立军民融合平台</div>
+
+      <div class="sub-head">战略协同与政府事务</div>
+      <ul>
+        <li>搭建政府、科研院所及龙头企业长效合作机制；对接发改委、央企国企及地方政府，推进新能源与新材料项目战略布局</li>
+        <li>协助董事长开展商务谈判与资源整合，推进光电、新型电力系统及氢能项目落地</li>
+      </ul>
+
+      <div class="sub-head">军民技术转化与产业落地</div>
+      <ul>
+        <li>参与特种陶瓷新材料产学研项目，联合科研院所（依托哈工大工信部重点实验室，中国工程院院士周玉、贾德昌）研发高性能特种陶瓷；在<strong>景德镇、重庆</strong>建设绿色生产基地与3D打印智能制造中心</li>
+        <li>搭建军民技术双向转化体系：产品覆盖军工导弹天线罩（单件<strong>60—80万元</strong>）、医疗植入假体、精密设备及3C消费电子；15项国家发明专利，生产周期从6个月压缩至<strong>1.5个月</strong></li>
+        <li>执行全链条投资尽调（智合新材）：覆盖公司治理、核心团队、技术合规、政策符合度及财务健康度</li>
+      </ul>
+
+      <div class="sub-head">代表项目</div>
+      <ul>
+        <li><strong>新疆新能源基地</strong>：组织14家企业联合赴疆考察，对接8次政府专项会议，签署10+项战略协议（光伏/储能/氢能）；重点项目覆盖乌鲁木齐2,200万kW、喀什20,000万kW、疏勒200万kW光储一体化等基地</li>
+        <li><strong>深圳氢能产业</strong>：联合以色列GenCell推进前沿氢能应用；对接雄韬股份落地深圳氢燃料电池及加氢网络，构建绿电＋氢能＋零碳交通生态</li>
+        <li><strong>股权融资</strong>：主导深圳君盛润石创投基金股权转让，企业估值达<strong>RMB 1亿元</strong></li>
+      </ul>
+    </div>
+
+    <!-- 东海航空 -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">东海航空</span>
+        <span class="job-date">2018年2月 — 2021年3月</span>
+      </div>
+      <div class="job-title">总经理（行政管理部）· 副总经理（客舱服务部）</div>
+      <div class="company-desc">南方航空战略合作伙伴；驻深圳宝安国际机场；全波音737-800机队；60余条国内外航线</div>
+
+      <div class="sub-head">战略规划与政府关系</div>
+      <ul>
+        <li>参与经营指标制定与民航五率监督；对接<strong>民航局、空管局及地方政府</strong>推进政策协同；筹划深圳—达尔文、南通—济州岛国际航线；参与<strong>大湾区航空</strong>筹建及<strong>北京大兴机场</strong>战略基地项目</li>
+      </ul>
+
+      <div class="sub-head">运营管理与合规治理</div>
+      <ul>
+        <li>编撰公司首部《服务质量管理手册》；主导<strong>ISO 9001</strong>认证；搭建全链路合规体系；任期内<strong>零监管违规</strong>；连续获民航局中南局<strong>安全优秀单位</strong></li>
+        <li>主导<strong>EFB全机队部署</strong>实现驾驶舱无纸化；推进电子发票、无纸化出行全流程；年节省运营成本约<strong>RMB 400万元</strong>，年节约燃油<strong>逾1,200吨</strong>；获评<strong>2021年深圳绿色发展标杆企业</strong></li>
+        <li>处置「2.20」「7.28」等重大事件，声誉稳定、风险闭环；整顿成效获<strong>民航局局长冯正霖</strong>赴企调研认可</li>
+      </ul>
+
+      <div class="sub-head">团队管理与品牌建设</div>
+      <ul>
+        <li>统筹客舱部六大科室，管理<strong>500余名乘务人员</strong>；创立「<strong>九彩女孩</strong>」服务IP，策划《东海好茶》机上媒体；获评「中国十佳特色航空公司」及「中国最美空姐」（2018—2019）</li>
+      </ul>
+    </div>
+
+    <!-- 新加坡航空 -->
+    <div class="job">
+      <div class="job-header">
+        <span class="company-name">新加坡航空</span>
+        <span class="job-date">2010年10月 — 2015年10月</span>
+      </div>
+      <div class="job-title">高级乘务教员 | A380 · A330 · B777 | 服务培训与标准建设</div>
+      <div class="company-desc">全球顶级五星航空公司；MSCI ESG A级 · 道琼斯可持续发展指数 · ISO 14001 · 全球最具商业道德企业；服务50余国、逾百城市</div>
+
+      <ul>
+        <li>承担乘务新人带教、在岗督导与资质认证；参与编写<strong>标准操作手册及服务规范</strong>，将服务品质与合规要求系统嵌入培训体系</li>
+        <li>执飞<strong>A380、A330、B777</strong>机型，服务覆盖50余国、逾100座城市，积累深厚跨文化沟通与国际服务交付能力</li>
+        <li>参与<strong>5Cs社区关爱计划</strong>；参与执行<strong>2015年A380慈善飞行</strong>（SG50，新加坡建国50周年）：服务逾<strong>300名</strong>受益人，涵盖特殊需要儿童、残障人士及弱势长者</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- 教育背景 -->
+  <section class="section">
+    <div class="section-title">教育背景</div>
+    <div class="edu-row">
+      <div class="edu-date">2025—2026</div>
+      <div>
+        <div class="edu-school">斯坦福大学商学院（Stanford GSB）</div>
+        <div class="edu-prog">可持续发展战略高管课程（Executive Program in Sustainable Development Strategies）</div>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div class="edu-date">2025—2026</div>
+      <div>
+        <div class="edu-school">北京大学汇丰商学院</div>
+        <div class="edu-prog">高管发展课程（EDP）</div>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div class="edu-date">2006—2010</div>
+      <div>
+        <div class="edu-school">贵州大学（211工程）</div>
+        <div class="edu-prog">信息与计算科学（数学）理学学士 · 全国大学生数学建模竞赛一等奖（2009年）</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 资质认证 -->
+  <section class="section">
+    <div class="section-title">资质认证</div>
+
+    <div class="cert-group">
+      <div class="cert-group-title">专业进修</div>
+      <div class="cert-row">
+        <div class="cert-name"><strong>CFA 可持续投资证书</strong></div>
+        <div class="cert-body">CFA Institute · 绿色金融 · 影响力投资 · 气候风险</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">ESG与可持续战略证书</div>
+        <div class="cert-body">香港大学（HKU）</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">大气污染监测证书（CLRTAP）</div>
+        <div class="cert-body">联合国欧洲经济委员会（UNECE）</div>
+      </div>
+    </div>
+
+    <div class="cert-group">
+      <div class="cert-group-title">金融 / 行业资质</div>
+      <div class="cert-row">
+        <div class="cert-name">基金从业资格</div>
+        <div class="cert-body">中国基金业协会（AMAC）</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-name">乘务教员 / 企业培训师</div>
+        <div class="cert-body">新加坡航空认证 · 信和集团企业培训师</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 专业技能 -->
+  <section class="section">
+    <div class="section-title">专业技能</div>
+    <div class="skills-block">
+      <span class="skills-label">语言 </span>
+      <span class="skills-val">普通话（母语）· 英语（IELTS 7.0，工作语言）· 粤语（流利）</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">运营与治理 </span>
+      <span class="skills-val">ISO 9001（主导认证）· 全链条合规框架 · 危机管理与舆情处置 · 多方利益相关者协调</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">政企协调 </span>
+      <span class="skills-val">多层级政府关系维护 · 高规格商务接待与活动统筹 · 跨境机构对接 · 公私合作项目推进</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">投资与项目管理 </span>
+      <span class="skills-val">政府引导基金投后管理 · 不良资产重组 · 全链条投资尽调 · 供应链升级项目交付</span>
+    </div>
+    <div class="skills-block">
+      <span class="skills-label">可持续发展 </span>
+      <span class="skills-val">GRI · TCFD · GRESB · CDP · 港交所ESG报告指引 · 绿色金融 · 影响力投资</span>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
