@@ -66,6 +66,29 @@
 
   .contact div { white-space: nowrap; }
 
+  @media (max-width: 600px) {
+    .page { padding: 24px 20px; }
+
+    .header { flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+    .header-left { padding-top: 0; }
+
+    .photo { width: 80px; height: 110px; margin-right: 0; }
+
+    .contact div { white-space: normal; }
+
+    .job-header { flex-wrap: wrap; gap: 2px 0; }
+    .job-date { margin-left: 0; }
+
+    .comp-grid { grid-template-columns: 1fr; }
+
+    .edu-row { grid-template-columns: 1fr; }
+    .edu-date { padding-top: 0; }
+
+    .cert-row { grid-template-columns: 1fr; }
+
+    li { font-size: 9.5pt; }
+  }
+
   .photo {
     width: 108px;
     height: 148px;
@@ -230,12 +253,12 @@
     <div class="header-left">
       <div class="name">Miranda Li</div>
       <div class="name-cn">李梦婷</div>
-      <div class="tagline">Cross-Industry Strategic Executive · Corporate Governance &amp; ESG · Government Relations</div>
+      <div class="tagline">Strategic Executive · Corporate Governance &amp; ESG · Government Relations</div>
       <div class="contact">
         <div>Shenzhen / Hong Kong / Singapore</div>
-        <div>✉ lmt_miranda@outlook.com</div>
         <div>Mandarin (Native) · English (IELTS 7.0) · Cantonese (working proficiency)</div>
         <div>Aviation · Real Estate · Investment · New Energy / Advanced Materials · Defence-Civil Integration</div>
+        <div>✉ lmt_miranda@outlook.com</div>
       </div>
     </div>
   </header>
