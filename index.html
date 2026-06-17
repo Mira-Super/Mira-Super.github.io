@@ -268,12 +268,14 @@
         var input = document.getElementById('gate-input');
         var btn = document.getElementById('gate-btn');
         var errEl = document.getElementById('gate-error');
-        if (sessionStorage.getItem('site_unlocked') === '1') {
+        var PWD = 'miranda2026';
+        var TOKEN = btoa(PWD);
+        if (localStorage.getItem('site_auth') === TOKEN) {
           overlay.classList.add('hidden');
         }
         function attempt() {
-          if (input.value === 'miranda2026') {
-            sessionStorage.setItem('site_unlocked', '1');
+          if (input.value === PWD) {
+            localStorage.setItem('site_auth', TOKEN);
             overlay.classList.add('hidden');
           } else {
             errEl.textContent = 'Incorrect password. Try again.';
