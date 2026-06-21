@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>前海桂湾地块 · 用地区位示意图 | Qianhai Guiwan Parcel</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #e8e8e3;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #1c2530;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+  }
+  .sheet {
+    background: #fafaf7;
+    width: 960px;
+    max-width: 100%;
+    border: 2px solid #2a3540;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  }
+  .titlebar {
+    border-bottom: 2px solid #2a3540;
+    padding: 14px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background: #f1f1ec;
+  }
+  .titlebar .main { font-size: 19px; font-weight: 800; letter-spacing: .5px; }
+  .titlebar .sub { font-size: 12px; color: #5a6675; margin-top: 3px; }
+  .titlebar .meta { text-align: right; font-size: 10.5px; color: #5a6675; line-height: 1.7; }
+  .map-wrap { position: relative; }
+  svg { display: block; width: 100%; height: auto; background: #f4f3ee; }
+  .footer { border-top: 2px solid #2a3540; display: grid; grid-template-columns: 1.5fr 1fr; }
+  .legend, .notes { padding: 14px 22px; font-size: 11.5px; }
+  .legend { border-right: 1px solid #c8c8c0; }
+  .legend h4, .notes h4 {
+    font-size: 12px; letter-spacing: .5px; margin-bottom: 9px; color: #2a3540;
+    border-bottom: 1px solid #d4d4cc; padding-bottom: 5px;
+  }
+  .legend-row { display: flex; align-items: center; gap: 9px; margin-bottom: 7px; line-height: 1.35; }
+  .swatch { width: 26px; height: 14px; flex-shrink: 0; border: 1px solid #6a7280; margin-top: 2px; }
+  .sw-plot { background: rgba(210,60,55,0.14); border: 2px solid #d23c37; }
+  .sw-ruler { background: rgba(60,110,180,0.12); border: 1.6px solid #3a6eb4; }
+  .sw-complex{ background: rgba(180,140,60,0.14); border: 1.6px dashed #b38a3c; }
+  .sw-road { background: #d8cfa8; border-color: #b3a875; }
+  .sw-bldg { background: #cdd3da; border-color: #9aa3ad; }
+  .en { color: #7a8694; font-size: 10.5px; }
+  .notes ul { list-style: none; }
+  .notes li { margin-bottom: 7px; padding-left: 13px; position: relative; line-height: 1.4; color: #3a4450; }
+  .notes li::before { content: "·"; position: absolute; left: 2px; color: #d23c37; font-weight: 800; }
+  .disclaimer {
+    background: #fff4e0; border-top: 1px solid #e0c98a; padding: 9px 22px;
+    font-size: 10.5px; color: #8a6d2a; line-height: 1.6;
+  }
+  .road-label { font: 600 12.5px "PingFang SC", sans-serif; fill: #7a6a2f; }
+  .road-en { font: 500 9.5px sans-serif; fill: #a08a4a; }
+  .road-label-sm { font: 600 10.5px "PingFang SC", sans-serif; fill: #8a7a3a; }
+  .bldg-label { font: 600 11.5px "PingFang SC", sans-serif; fill: #3a4450; }
+  .bldg-en { font: 500 9px sans-serif; fill: #7a8694; }
+  .bldg-label-sm { font: 500 10px "PingFang SC", sans-serif; fill: #5a6675; }
+  .plot-label { font: 800 15px "PingFang SC", sans-serif; fill: #b32d28; }
+  .plot-en { font: 600 9.5px sans-serif; fill: #c25a55; }
+  .plot-area  { font: 700 11.5px "PingFang SC", sans-serif; fill: #b32d28; }
+  .ruler-label{ font: 700 11.5px "PingFang SC", sans-serif; fill: #2f5fa0; }
+  .ruler-en { font: 500 9px sans-serif; fill: #5a82b8; }
+  .dim-label  { font: 600 10.5px "PingFang SC", sans-serif; fill: #b32d28; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="titlebar">
+    <div>
+      <div class="main">前海桂湾地块 · 用地区位示意图</div>
+      <div class="sub">Qianhai Guiwan Parcel — Location &amp; Scale Reference Schematic</div>
+    </div>
+    <div class="meta">
+      区域 Area：深圳南山 · 前海合作区 · 桂湾片区<br>
+      Shenzhen Nanshan · Qianhai Coop. Zone · Guiwan<br>
+      用地 Land area：David 口述约 5万㎡（量级存疑，见说明）<br>
+      底图 Base：高德卫星图 2026-06-18 · 标尺 Ref：周大福宗地
+    </div>
+  </div>
+
+  <div class="map-wrap">
+  <svg viewBox="0 0 960 1210" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="hatchRed" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="20" stroke="#d23c37" stroke-width="2.4" opacity="0.5"/>
+      </pattern>
+      <pattern id="hatchGold" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="22" stroke="#b38a3c" stroke-width="2" opacity="0.45"/>
+      </pattern>
+    </defs>
+
+    <rect x="0" y="0" width="960" height="1210" fill="#eceae0"/>
+
+    <!-- ====== 道路 Roads ====== -->
+    <!-- 临海大道（西） -->
+    <rect x="34" y="0" width="60" height="1210" fill="#dccfa0"/>
+    <line x1="64" y1="0" x2="64" y2="1210" stroke="#fff" stroke-width="2" stroke-dasharray="14 12"/>
+    <text class="road-label" x="50" y="600" transform="rotate(-90 50 600)">临 海 大 道</text>
+    <text class="road-en" x="70" y="600" transform="rotate(-90 70 600)">LINHAI BLVD</text>
+    <!-- 听海大道（东） -->
+    <rect x="866" y="0" width="46" height="1210" fill="#dccfa0"/>
+    <text class="road-label" x="888" y="560" transform="rotate(-90 888 560)">听 海 大 道</text>
+    <text class="road-en" x="906" y="560" transform="rotate(-90 906 560)">TINGHAI BLVD</text>
+    <!-- 桂湾四路（北横） -->
+    <rect x="94" y="250" width="772" height="38" fill="#dccfa0"/>
+    <text class="road-label-sm" x="690" y="268">桂湾四路</text>
+    <text class="road-en" x="690" y="281">GUIWAN 4TH RD</text>
+    <!-- 桂湾五路（南横） -->
+    <rect x="94" y="900" width="772" height="38" fill="#dccfa0"/>
+    <text class="road-label-sm" x="690" y="918">桂湾五路</text>
+    <text class="road-en" x="690" y="931">GUIWAN 5TH RD</text>
+    <!-- 枢纽大街 -->
+    <path d="M 120 320 Q 230 296 340 320" fill="none" stroke="#cfcfc6" stroke-width="18"/>
+    <text class="road-label-sm" x="160" y="310">枢纽大街 Shuniu St</text>
+    <!-- 前海地下道路 -->
+    <line x1="350" y1="320" x2="350" y2="820" stroke="#d8a23c" stroke-width="3" stroke-dasharray="3 4"/>
+    <text class="road-label-sm" x="360" y="600" transform="rotate(90 360 600)" fill="#b3811f">前海地下道路 Underground Rd</text>
+
+    <!-- ====== 主体地块 Subject Plot（红线） ====== -->
+    <path d="M 120 322 Q 230 300 340 322 L 340 800 L 120 800 Z"
+          fill="rgba(120,150,100,0.30)" stroke="#d23c37" stroke-width="3.5"/>
+    <path d="M 120 322 Q 230 300 340 322 L 340 800 L 120 800 Z" fill="url(#hatchRed)"/>
+    <text class="plot-label" x="230" y="520" text-anchor="middle">主体地块</text>
+    <text class="plot-en"    x="230" y="536" text-anchor="middle">SUBJECT PLOT</text>
+    <text class="plot-area"  x="230" y="560" text-anchor="middle">单宗地量级 约1.5–2.5万㎡</text>
+    <text class="plot-en"    x="230" y="575" text-anchor="middle" fill="#c25a55">single parcel ~15,000–25,000㎡ (est.)</text>
+    <text class="bldg-label-sm" x="230" y="598" text-anchor="middle" fill="#7a3a36">高端住宅+酒店（设想）</text>
+    <text class="plot-en"    x="230" y="612" text-anchor="middle" fill="#9a6a55">luxury residential + hotel (concept)</text>
+    <text class="dim-label" x="230" y="324" text-anchor="middle">↤ 约 150 m / approx. 150 m ↦</text>
+
+    <!-- ====== 周大福金融大厦宗地（标尺 Scale Ref） ====== -->
+    <rect x="430" y="330" width="210" height="210" rx="4"
+          fill="rgba(60,110,180,0.10)" stroke="#3a6eb4" stroke-width="2.5"/>
+    <rect x="470" y="368" width="48" height="58" fill="#9fb6d6" stroke="#3a6eb4" stroke-width="1.2"/>
+    <rect x="552" y="368" width="48" height="58" fill="#9fb6d6" stroke="#3a6eb4" stroke-width="1.2"/>
+    <text class="ruler-label" x="535" y="462" text-anchor="middle">前海周大福金融大厦</text>
+    <text class="ruler-en" x="535" y="476" text-anchor="middle">Chow Tai Fook Finance Tower</text>
+    <text class="bldg-label-sm" x="535" y="494" text-anchor="middle" fill="#2f5fa0" font-weight="700">宗地占地 Land 18,218㎡（标尺/ref）</text>
+    <text class="bldg-label-sm" x="535" y="510" text-anchor="middle" fill="#2f5fa0">宗地 Parcel T201-0092</text>
+    <text class="bldg-label-sm" x="535" y="526" text-anchor="middle" fill="#2f5fa0">双塔 Twin towers · GFA 24.5万㎡</text>
+    <text class="dim-label" x="535" y="332" text-anchor="middle" fill="#2f5fa0">↤ 约 135 m / approx. 135 m ↦</text>
+
+    <text class="bldg-label-sm" x="388" y="640" text-anchor="middle" fill="#6a6052" transform="rotate(90 388 640)" font-size="10">两宗地占地量级相当 / comparable land area →</text>
+
+    <!-- ====== 东侧地标 Landmarks ====== -->
+    <rect x="430" y="600" width="100" height="64" fill="#cdd3da" stroke="#9aa3ad" stroke-width="1.5"/>
+    <text class="bldg-label" x="480" y="630" text-anchor="middle">HyQ 前坊</text>
+    <text class="bldg-en" x="480" y="645" text-anchor="middle">HyQ Qianfang</text>
+
+    <rect x="560" y="600" width="120" height="64" fill="#cdd3da" stroke="#9aa3ad" stroke-width="1.5"/>
+    <text class="bldg-label" x="620" y="628" text-anchor="middle">前海壹方汇</text>
+    <text class="bldg-en" x="620" y="643" text-anchor="middle">Yifang Hui · retail</text>
+
+    <!-- ====== 鸿荣源综合体（5万㎡ 对照） ====== -->
+    <rect x="430" y="700" width="300" height="186"
+          fill="rgba(180,140,60,0.12)" stroke="#b38a3c" stroke-width="2.5" stroke-dasharray="8 5"/>
+    <rect x="430" y="700" width="300" height="186" fill="url(#hatchGold)"/>
+    <g fill="#d8c08a" stroke="#b38a3c" stroke-width="1">
+      <rect x="452" y="722" width="34" height="44"/>
+      <rect x="502" y="722" width="34" height="44"/>
+      <rect x="552" y="722" width="34" height="44"/>
+      <rect x="604" y="722" width="40" height="50"/>
+      <rect x="662" y="722" width="40" height="50"/>
+    </g>
+    <text class="bldg-label" x="580" y="800" text-anchor="middle" fill="#8a6d3a">前海鸿荣源中心综合体</text>
+    <text class="bldg-en" x="580" y="814" text-anchor="middle" fill="#a07f3a">Hongrongyuan Center (complex)</text>
+    <text class="bldg-label-sm" x="580" y="832" text-anchor="middle" fill="#8a6d3a" font-weight="700">占地 Land ~5万㎡ · 5 塔 towers</text>
+    <text class="bldg-label-sm" x="580" y="848" text-anchor="middle" fill="#8a6d3a">2 办公+1 酒店(康莱德 Conrad)+2 公寓</text>
+    <text class="bldg-label-sm" x="580" y="866" text-anchor="middle" fill="#8a6d3a" font-style="italic">← "5万㎡" = a complex of this scale</text>
+
+    <!-- ====== 指北针 ====== -->
+    <g transform="translate(820, 66)">
+      <circle cx="0" cy="0" r="24" fill="#fafaf7" stroke="#2a3540" stroke-width="1.5"/>
+      <path d="M 0 -18 L 6 6 L 0 0 L -6 6 Z" fill="#d23c37"/>
+      <path d="M 0 18 L 6 -6 L 0 0 L -6 -6 Z" fill="#2a3540"/>
+      <text x="0" y="-28" text-anchor="middle" font="700 12px sans-serif" fill="#2a3540">N</text>
+    </g>
+
+    <!-- ====== 比例尺 ====== -->
+    <g transform="translate(110, 1040)">
+      <rect x="0" y="0" width="68" height="9" fill="#2a3540"/>
+      <rect x="68" y="0" width="68" height="9" fill="#fafaf7" stroke="#2a3540" stroke-width="1"/>
+      <text x="0" y="26" font="500 11px sans-serif" fill="#3a4450">0</text>
+      <text x="118" y="26" font="500 10.5px sans-serif" fill="#3a4450">约 100 m / ~100 m（示意 schematic）</text>
+    </g>
+
+    <!-- 标尺说明框 -->
+    <g transform="translate(430, 1010)">
+      <rect x="0" y="0" width="400" height="108" rx="6" fill="#fafaf7" stroke="#3a6eb4" stroke-width="1.4"/>
+      <text x="14" y="22" font="700 11.5px sans-serif" fill="#2f5fa0">占地量级校核 Land-area cross-check（实测宗地 actual parcel data）</text>
+      <text x="14" y="42" font="500 10.5px sans-serif" fill="#3a4450">· 周大福金融大厦宗地 CTF Tower parcel：18,218㎡（紧邻东侧 adjacent）</text>
+      <text x="14" y="61" font="500 10.5px sans-serif" fill="#3a4450">· 桂湾单宗地常见区间 Guiwan single-parcel range：约 0.7万–1.8万㎡</text>
+      <text x="14" y="80" font="500 10.5px sans-serif" fill="#3a4450">· 鸿荣源综合体 Hongrongyuan complex（含康莱德 incl. Conrad）：~5万㎡</text>
+      <text x="14" y="99" font="600 10.5px sans-serif" fill="#b32d28">⇒ 5万㎡ 更可能是综合体整体占地，非单宗地 / likely a whole-complex footprint</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="footer">
+    <div class="legend">
+      <h4>图　例　LEGEND</h4>
+      <div class="legend-row"><span class="swatch sw-plot"></span><span>主体地块（红线·单宗地量级 ~1.5–2.5万㎡）<br><span class="en">Subject plot (red line · single-parcel scale)</span></span></div>
+      <div class="legend-row"><span class="swatch sw-ruler"></span><span>周大福宗地（占地标尺 18,218㎡）<br><span class="en">CTF Tower parcel (scale ref 18,218㎡)</span></span></div>
+      <div class="legend-row"><span class="swatch sw-complex"></span><span>鸿荣源综合体（5万㎡量级对照·含康莱德）<br><span class="en">Hongrongyuan complex (50,000㎡ ref · incl. Conrad)</span></span></div>
+      <div class="legend-row"><span class="swatch sw-road"></span><span>城市道路 City road</span></div>
+      <div class="legend-row"><span class="swatch sw-bldg"></span><span>既有建筑/地标 Existing building / landmark</span></div>
+    </div>
+    <div class="notes">
+      <h4>关键判断　KEY READ</h4>
+      <ul>
+        <li><strong>5万㎡ 作单宗地偏大</strong>：紧邻周大福整宗地才 1.8万㎡<br><span class="en">50,000㎡ is large for a single parcel — adjacent CTF parcel is only 18,218㎡</span></li>
+        <li>若为单宗地，真实量级更可能 <strong>1.5–2.5万㎡</strong><br><span class="en">If a single parcel, more likely ~15,000–25,000㎡</span></li>
+        <li>5万㎡ ≈ 鸿荣源那种<strong>多塔综合体整体占地</strong><br><span class="en">50,000㎡ ≈ a multi-tower complex footprint</span></li>
+        <li>待确认：<strong>单宗地 还是 整街坊综合开发？</strong><br><span class="en">To confirm: single parcel or whole-block development?</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ 本图为<strong>区位与占地量级示意图（非测绘红线图）</strong>，由 Miranda 凭 6-18 当日 David 手机所示高德地图位置回忆绘制。面积量级依实测宗地数据（周大福 18,218㎡）反推校核；David 口述"约5万㎡"更可能指含住宅+酒店的<strong>多塔综合开发地块整体占地</strong>，而非单一宗地。具体宗地号、用地面积、规划性质与出让状态<strong>未找到对应公开出让记录，来源不明，待核实</strong>。<br>
+    <em>Schematic for location &amp; land-area scale only — NOT a survey red-line map. Drawn from recollection of the Amap view shown on David's phone (2026-06-18). Scale cross-checked against the adjacent Chow Tai Fook Finance Tower parcel (18,218㎡). David's "~50,000㎡" more likely refers to a whole multi-tower complex footprint than a single parcel. Exact parcel ID, land area, zoning and tender status not found in public records — to be verified with Qianhai Authority.</em>
+  </div>
+
+</div>
+</body>
+</html>

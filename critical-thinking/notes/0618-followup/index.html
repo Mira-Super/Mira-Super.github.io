@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>0618 Follow-up · Questions Revisited</title>
+<style>
+:root{
+  --paper:#fbfaf6;
+  --ink:#20201d;
+  --text:#4a4740;
+  --muted:#8a8478;
+  --line:#ded7c9;
+  --line2:#ebe5d8;
+  --gold:#a77d22;
+  --gold2:#7a5a16;
+  --blue:#2f6fb4;
+  --green:#307d57;
+  --red:#a2443f;
+  --soft:#f3efe6;
+  --soft2:#f7f3ea;
+  --greenbg:#f2f8f2;
+  --goldbg:#faf4e6;
+  --redbg:#fbf0ee;
+  --warm:#fffdf8;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--gold2);text-decoration:none;border-bottom:1px solid rgba(167,125,34,.34)}
+a:hover{border-bottom-color:var(--gold2)}
+strong{color:var(--ink);font-weight:850}
+.nav{
+  position:sticky;top:0;z-index:20;
+  height:58px;padding:0 clamp(18px,4vw,56px);
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(251,250,246,.92);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line2);
+}
+.brand{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.nav a{border:0;margin-left:18px;font-size:12px;font-weight:750;color:var(--muted)}
+.nav a:hover{color:var(--gold2)}
+.wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto;padding:56px 0 92px}
+.hero{padding:48px 0 44px;border-bottom:1px solid var(--line)}
+.eyebrow{display:flex;align-items:center;gap:18px;margin-bottom:24px;color:var(--gold);font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.eyebrow:before{content:"";width:54px;height:1px;background:var(--gold)}
+h1{max-width:990px;margin:0;font-size:clamp(44px,7vw,86px);line-height:1.04;letter-spacing:-.055em}
+h1 em{font-style:normal;color:var(--gold)}
+.lead{max-width:930px;margin:24px 0 0;color:var(--text);font-size:21px;line-height:1.76}
+.toc{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+.toc a{display:block;border:1px solid var(--line);border-radius:14px;padding:16px 17px;background:#fff;color:var(--ink);box-shadow:inset 0 3px 0 rgba(167,125,34,.32)}
+.toc a:nth-child(3){box-shadow:inset 0 3px 0 rgba(48,125,87,.28)}
+.toc a:nth-child(4){box-shadow:inset 0 3px 0 rgba(162,68,63,.22)}
+.toc b{display:block;font-size:16px;margin-bottom:5px}
+.toc span{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+section{padding:56px 0;border-bottom:1px solid var(--line2)}
+section.panel{
+  margin:32px -18px 0;
+  padding:48px 18px;
+  border:1px solid var(--line2);
+  border-radius:26px;
+}
+section.airport{background:linear-gradient(160deg,var(--warm),#fff 42%,rgba(251,250,246,.2))}
+section.vcpe{background:linear-gradient(160deg,var(--warm),#fff 42%,rgba(251,250,246,.2))}
+section.travel{background:linear-gradient(160deg,var(--greenbg),#fff 42%,rgba(251,250,246,.2))}
+section.hotel{background:linear-gradient(160deg,var(--goldbg),#fff 42%,rgba(251,250,246,.2))}
+section.next-panel{background:linear-gradient(160deg,rgba(32,32,29,.055),rgba(255,255,255,.8))}
+.section-head{display:grid;grid-template-columns:86px 1fr;gap:22px;align-items:start;margin-bottom:24px}
+.num{font:800 42px/1 Georgia,serif;color:#c9b47d}
+h2{margin:0;font-size:clamp(28px,3.4vw,44px);line-height:1.18;letter-spacing:-.035em}
+.sub{max-width:940px;margin:12px 0 0;color:var(--text);font-size:17px;line-height:1.76}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+  padding:20px 22px;
+}
+.card.blue{background:#fff;border-color:#e4dccb}
+.card.green{background:var(--greenbg);border-color:#d8e6d8}
+.card.gold{background:var(--goldbg);border-color:#e7d8b4}
+.card.red{background:var(--redbg);border-color:#e8ccc7}
+.card.lilac{background:#fff;border-color:#e4dccb}
+.card h3{margin:0 0 10px;font-size:20px;line-height:1.35;color:var(--gold2)}
+.card.green h3{color:var(--green)}
+.card.red h3{color:var(--red)}
+.card p{margin:0;color:var(--text);font-size:15px;line-height:1.76}
+.callout{
+  margin-top:20px;
+  border-left:4px solid var(--gold);
+  background:var(--goldbg);
+  padding:18px 20px;
+  color:var(--text);
+  font-size:18px;
+  line-height:1.72;
+}
+.callout.green{border-left-color:var(--green);background:var(--greenbg)}
+.callout.red{border-left-color:var(--red);background:var(--redbg)}
+.mark-blue,.mark-green,.mark-gold,.mark-red,.mark-lilac{
+  padding:.06em .32em;
+  border-radius:.38em;
+  font-weight:850;
+}
+.mark-blue,.mark-gold,.mark-lilac{background:rgba(167,125,34,.14);color:#745616}
+.mark-green{background:rgba(48,125,87,.13);color:#286947}
+.mark-red{background:rgba(162,68,63,.12);color:#8b3935}
+.tag{
+  display:inline-block;
+  margin:0 2px;
+  padding:1px 7px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:800;
+  line-height:1.55;
+  vertical-align:.12em;
+  white-space:nowrap;
+}
+.tag.ind{color:var(--gold2);border-color:rgba(167,125,34,.24);background:rgba(167,125,34,.07)}
+sup.fn{font-size:.7em;font-weight:800}
+sup.fn a{border:0}
+.tbl{overflow-x:auto;margin:18px 0}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:14px;line-height:1.56}
+th,td{padding:12px 13px;border-bottom:1px solid var(--line2);vertical-align:top;text-align:left}
+th{color:var(--gold2);background:var(--soft);font-weight:800}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right;white-space:nowrap}
+ul,ol{margin:10px 0;padding-left:1.2rem}
+li{margin:6px 0;color:var(--text)}
+.quote{
+  margin:18px 0;
+  padding:17px 19px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--soft);
+  color:var(--ink);
+  font-size:18px;
+  line-height:1.72;
+}
+.source-list{font-size:13px;color:var(--muted);line-height:1.7}
+.source-list h2{font-size:18px;letter-spacing:0;margin-bottom:12px}
+.source-list li{color:var(--muted);margin:8px 0}
+.back{border:0;margin-left:6px;color:var(--gold)}
+.closing{margin-top:28px;text-align:right;color:var(--muted);font-size:13px}
+@media(max-width:900px){
+  .nav a{display:none}
+  .toc,.grid2,.grid3{grid-template-columns:1fr}
+  .section-head{grid-template-columns:1fr;gap:8px}
+  .num{font-size:26px}
+}
+
+#langbar{position:fixed;top:12px;right:16px;z-index:300;display:flex;border:1px solid rgba(0,0,0,.14);border-radius:9px;overflow:hidden;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.10)}
+#langbar button{font:600 12px/1 -apple-system,BlinkMacSystemFont,sans-serif;padding:7px 13px;border:0;background:#fff;color:#555;cursor:pointer;letter-spacing:.02em}
+#langbar button.on{background:#1a1a1a;color:#fff}
+#langbar button+button{border-left:1px solid rgba(0,0,0,.14)}
+body[data-lang="en"] #doc-zh{display:none}
+body[data-lang="zh"] #doc-en{display:none}
+</style>
+</head><body data-lang="en">
+<div id="langbar"><button data-l="en">EN</button><button data-l="zh">中文</button></div>
+<div id="doc-en" class="langdoc">
+<nav class="nav">
+  <div class="brand">Miranda Li · 0618 Follow-up</div>
+  <div>
+    <a href="#airport">Airports</a>
+    <a href="#vcpe">VC/PE</a>
+    <a href="#travel">Travel</a>
+    <a href="#hotel">Hotels</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="eyebrow">0618 Lunch · Follow-up Notes</div>
+    <h1>A few questions from that lunch,<br><em>filled in properly.</em></h1>
+    <p class="lead">I did not write this as minutes. I went back to the questions and filled in the missing layers: <strong>why the Greater Bay Area can support several airports, how I would screen China VC/PE, how to think about Trip.com Group / Ctrip, what kind of travel demand actually matters to Fullerton, and whether Shenzhen hotels are really saturated.</strong> Some of my first answers were directionally right; the wording can now be sharper.</p>
+    <div class="toc">
+      <a href="#airport"><b>Q1 · Airports</b><span>The airport map is not just “complementary positioning”; it is institutional setting, catchment, cargo and demand layered together.</span></a>
+      <a href="#vcpe"><b>Q2 · VC/PE</b><span>Use top funds to filter flow, keep co-investment rights, and only do direct deals where Sino can diligence the business.</span></a>
+      <a href="#travel"><b>Q3 · Travel</b><span>Mass tourism is the backdrop. Fullerton needs HNW, cross-border and culture-led luxury demand.</span></a>
+      <a href="#hotel"><b>Q4 · Hotels</b><span>Shenzhen is not a one-line answer. It has to be read by district, guest type and timing.</span></a>
+    </div>
+  </header>
+
+  <section id="airport" class="panel airport">
+    <div class="section-head">
+      <div class="num">Q1</div>
+      <div>
+        <h2>Why can the GBA support three major airports?</h2>
+        <p class="sub">My answer over lunch was “differentiated positioning”. That is true, but incomplete. The better answer is that the airport system is built on <span class="mark-gold">one country, two systems</span>, <span class="mark-gold">three urban catchments</span>, <span class="mark-green">Hong Kong’s cargo moat</span>, and a <span class="mark-gold">214 million passenger market</span> in 2024.</p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead>
+          <tr><th>Airport</th><th class="r">2024 passenger throughput</th><th>Core position</th><th>Cargo / runway</th><th>My read</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Guangzhou Baiyun CAN</strong></td>
+            <td class="r"><strong>76.37 mn</strong></td>
+            <td>Northern PRD hub; China Southern base</td>
+            <td>World No. 11 by cargo; four runways</td>
+            <td>The largest passenger airport in the GBA in 2024; a mainland network hub.</td>
+          </tr>
+          <tr>
+            <td><strong>Shenzhen Bao'an SZX</strong></td>
+            <td class="r"><strong>c. 60 mn</strong></td>
+            <td>Shenzhen, Dongguan, Huizhou and the tech-manufacturing belt</td>
+            <td>World No. 20 by cargo; third runway opened in 2024</td>
+            <td>Fast-growing in both passenger and freight traffic; its overlap with Hong Kong is competitive, not only complementary.</td>
+          </tr>
+          <tr>
+            <td><strong>Hong Kong HKG</strong></td>
+            <td class="r"><strong>53.10 mn</strong></td>
+            <td>International hub, free port, wide-body and long-haul advantage</td>
+            <td><strong>World No. 1 by cargo, c. 4.9 mn tonnes</strong>; three-runway system opened in 2024</td>
+            <td>Passenger share is being challenged, but cargo and free-port status remain a real moat.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid2">
+      <div class="card blue">
+        <h3>The deepest layer is institutional</h3>
+        <p>Hong Kong and the mainland airports sit under different aviation, customs, border and cargo regimes. That is the first reason the system exists as multiple airports, not a single regional airport plan.</p>
+      </div>
+      <div class="card gold">
+        <h3>There is also real competition</h3>
+        <p>Shenzhen and Guangzhou are both pushing for international routes, cargo and business traffic. Hong Kong is not outside that competition. Externally, “functional differentiation” is acceptable language; internally, the competition should be acknowledged.</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card green">
+        <h3>One wording correction: Donghai Airlines</h3>
+        <p>I said Donghai was Shenzhen’s only local airline. More precise: Shenzhen Airlines was founded in Shenzhen in 1993 and is now under the Air China system. Donghai is better described as a <strong>Shenzhen-based independent private airline</strong>, with a later start and weaker access to prime slots and trunk routes.</p>
+      </div>
+      <div class="card lilac">
+        <h3>Why this matters for investment</h3>
+        <p>The airport map shows that the GBA is not a single-centre market. Hotels and high-end consumption work the same way: Hong Kong, Shenzhen and Guangzhou are not simple substitutes. They are different guest pools, institutional settings and consumption occasions layered together.</p>
+      </div>
+    </div>
+
+    <p class="callout"><strong>My one-line answer now:</strong> the GBA airports are not duplicated infrastructure; they are supported by <strong>institutional boundaries, cargo specialisation, city catchments and a 214 million passenger base</strong>.</p>
+  </section>
+
+  <section id="vcpe" class="panel vcpe">
+    <div class="section-head">
+      <div class="num">Q2</div>
+      <div>
+        <h2>How would I screen China VC/PE? Is Trip.com Group / Ctrip worth looking at?</h2>
+        <p class="sub">This was the question I did not fully unpack at lunch. For a family office, I would not start from “this sounds like a good company”. The safer path is: <span class="mark-gold">let leading funds filter the deal flow</span>, keep <span class="mark-gold">co-investment rights</span>, and only do direct investments where the business touches <strong>real estate, hotels, retail or property operations</strong>.</p>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="card lilac">
+        <h3>Layer 1 · Team</h3>
+        <p>Has the founder moved from zero to one, and then from one to scale? Is the core team stable? Can they read regulation before it changes the business? Pure technical pedigree is not enough.</p>
+      </div>
+      <div class="card blue">
+        <h3>Layer 2 · Commercialisation</h3>
+        <p>After 2025, capital is less willing to pay for concepts. I would look at ARR, paying customers, renewal, gross margin and cash collection. Pilots are not revenue; pilot-to-paid conversion is the real signal.</p>
+      </div>
+      <div class="card gold">
+        <h3>Layer 3 · Exit</h3>
+        <p>HKEX, A-share, M&A or secondary fund transfer: the exit path has to be visible early. VIE, state capital, local return-investment requirements and fund life can all change the final result.</p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Path</th><th>How it works</th><th>Why it fits a family office</th><th>Risk</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Top-tier fund LP + co-investment rights</strong></td><td>Enter through leading managers such as Sequoia China, Hillhouse or IDG, and negotiate co-investment rights.</td><td>Professional teams filter first; the family office only spends judgment on selected names.</td><td>Good fund access is hard, and co-investment rights need negotiation.</td></tr>
+          <tr><td><strong>Secondary fund interests</strong></td><td>Buy fund interests with visible underlying assets, often at a discount.</td><td>More controlled than blind early-stage exposure; the asset base is more visible.</td><td>A discount may reflect liquidity pressure or valuation issues.</td></tr>
+          <tr><td><strong>Strategic direct investments</strong></td><td>Only invest where hotel, property, retail or asset-operation use cases are verifiable.</td><td>Sino can run business DD itself, not just rely on intermediaries.</td><td>The scope can become too wide unless use cases are tightly defined.</td></tr>
+          <tr><td><strong>Qianhai dual-currency channel</strong></td><td>Use Qianhai cross-border fund tools, QFLP/QDLP and related policy channels.</td><td>A natural entry point for Hong Kong capital into mainland technology assets.</td><td>Return-investment obligations, FX, compliance and fund duration must be checked first.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid2">
+      <div class="card red">
+        <h3>What I would not do</h3>
+        <ul>
+          <li>No standalone early-stage AI app bets without revenue, proprietary data or distribution.</li>
+          <li>No companies that talk valuation before ARR, customers and cash collection.</li>
+          <li>No government-guided funds with heavy return-investment conditions and vague exit paths.</li>
+          <li>No large single-name position in a sector where regulation is still moving.</li>
+        </ul>
+      </div>
+      <div class="card gold">
+        <h3>Bubble signals</h3>
+        <ul>
+          <li>China AI financing is increasingly concentrated in leading companies, while long-tail startups are under pressure. <span class="tag ind">secondary</span></li>
+          <li>Compute spending, model narratives and application revenue are still not fully aligned.</li>
+          <li>The advantage of Hong Kong family capital is not being earliest; it is patient capital plus real operating scenarios.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:30px;color:var(--gold2)">Trip.com Group / Ctrip: the question is not “cheap or not”, but “what risk is the discount pricing in?”</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Dimension</th><th>Current read</th><th>Meaning for a family office</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Fundamentals</strong></td>
+            <td>OTA leader across flights, hotels, packaged travel and outbound demand. Recovery in travel supports the business.</td>
+            <td>It is not a small concept stock. It belongs on a watchlist.</td>
+          </tr>
+          <tr>
+            <td><strong>Regulatory event</strong></td>
+            <td>In January 2026, SAMR opened an antitrust probe into Trip.com Group, the listed parent of Ctrip. The ADR dropped roughly 16%-18% intraday, and the Hong Kong stock fell around 6.5% on the day. <sup class="fn"><a id="r1" href="#f1">1</a></sup><sup class="fn"><a id="r2" href="#f2">2</a></sup></td>
+            <td>The discount is real, but it is not risk-free cheapness.</td>
+          </tr>
+          <tr>
+            <td><strong>Main uncertainty</strong></td>
+            <td>Fine amount, required rectification, commission/pricing model and merchant relationship are still unclear.</td>
+            <td>The share-price drop alone is not enough. The regulatory path has to be clearer.</td>
+          </tr>
+          <tr>
+            <td><strong>Practical stance</strong></td>
+            <td>Keep it on watchlist; before regulatory outcome, only small and staged exposure makes sense. Reassess if the penalty is limited and fundamentals remain intact.</td>
+            <td>More event-driven than “buy and hold without thinking”.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="callout red"><strong>My Trip.com Group / Ctrip answer now:</strong> worth watching, but I would not treat <strong>regulatory discount</strong> as guaranteed upside. Wait until the antitrust outcome, rectification cost and platform commission mechanism are clearer.</p>
+  </section>
+
+  <section id="travel" class="panel travel">
+    <div class="section-head">
+      <div class="num">Q3</div>
+      <div>
+        <h2>Travel demand: mass tourism is the backdrop; Fullerton needs HNW and cross-border logic</h2>
+        <p class="sub">At lunch I mentioned retired travellers and younger niche travellers. That direction still holds. But in the Sino / Fullerton context, the question needs to move one layer higher: <strong>national travel volume proves market recovery; it does not prove ultra-luxury hotel demand.</strong> Fullerton should look at <span class="mark-green">HNW travel</span>, <span class="mark-gold">cross-border consumption</span> and <span class="mark-gold">culture-led luxury</span>.</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card gold">
+        <h3>Mass travel: volume up does not always mean price up</h3>
+        <p>Higher domestic travel volume and spending show the market has recovered. But growth can come from short-haul, value-for-money and mass-market trips. That helps OTA, attractions and tourism platforms; it cannot be used directly to justify a Fullerton city flagship.</p>
+      </div>
+      <div class="card green">
+        <h3>HNW travel: smaller volume, closer to Fullerton</h3>
+        <p>High-net-worth guests pay for privacy, social context, cultural depth and brand identity. Fullerton’s heritage luxury and Singapore/Hong Kong language fit this better than a generic luxury-hotel story.</p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Guest layer</th><th>Data / basis</th><th>Meaning for Fullerton</th><th>Limit</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>GBA HNW base</strong></td>
+            <td>Hurun 2024: Guangdong has 298,000 households with RMB 10 mn assets; Hong Kong has 208,000. Combined: 506,000. RMB 100 mn households: 28,200 combined. <sup class="fn"><a id="r3" href="#f3">3</a></sup></td>
+            <td>This is the shared base every luxury player wants.</td>
+            <td>Guangdong + Hong Kong is not the full GBA; Hurun is household / wealth-stock methodology.</td>
+          </tr>
+          <tr>
+            <td><strong>Hong Kong-Shenzhen cross-border</strong></td>
+            <td>Northbound Hong Kong travel has increased significantly, with spending moving from F&B into leisure, family trips and stays.</td>
+            <td>Qianhai’s Hong Kong-facing position matters. Fullerton’s Hong Kong / Singapore vocabulary is easier for this market to understand.</td>
+            <td>81.91 mn trips / HKD 55.7 bn are media-estimate figures, not hard anchors.</td>
+          </tr>
+          <tr>
+            <td><strong>International / Southeast Asian Chinese guests</strong></td>
+            <td>Shenzhen recorded 2.76 mn foreign entries in 2024, second among Chinese cities. <sup class="fn"><a id="r4" href="#f4">4</a></sup></td>
+            <td>Fullerton’s Singapore identity gives it a real edge with Singapore/Malaysia, Southeast Asian Chinese and international HNW travellers.</td>
+            <td>Top source countries under the 240-hour visa-free policy still need an official source; this is not year-one cash-flow support.</td>
+          </tr>
+          <tr>
+            <td><strong>Corporate / MICE / HQ business</strong></td>
+            <td>Shenzhen’s headquarters economy, conventions and cross-border business support high-end hotel demand.</td>
+            <td>This is closer to the real source of Qianhai hotel demand than tourism alone.</td>
+            <td>Corporate agreements, membership distribution and event resources must be built operationally.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:30px;color:var(--gold2)">The three Fullerton guest circles</h3>
+    <div class="grid3">
+      <div class="card green">
+        <h3>Circle 1 · Local HNW</h3>
+        <p>Shenzhen, Guangzhou and Hong Kong high-net-worth families. This circle is not exclusive to Fullerton; Ritz-Carlton, Rosewood and Conrad can all compete for it.</p>
+      </div>
+      <div class="card blue">
+        <h3>Circle 2 · HK-Shenzhen cross-border</h3>
+        <p>Qianhai has a natural institutional and geographic story. A Hong Kong-backed Fullerton feels more approachable than a purely foreign luxury brand.</p>
+      </div>
+      <div class="card gold">
+        <h3>Circle 3 · Singapore / international</h3>
+        <p>Singapore brand plus Chinese HNW context is an upside. But I would treat it as a long-term option, not the first-year cash-flow base.</p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Correction after lunch</th><th>Sharper wording now</th></tr></thead>
+        <tbody>
+          <tr><td>Retired travellers</td><td>The direction is valid. Silver travel has policy and demographic support, but it is more mass / upper-mid market than Fullerton core demand.</td></tr>
+          <tr><td>Young niche travellers</td><td>Valid, but should also include concerts, festivals, intangible heritage, museums and immersive culture trips as 2024-2025 growth categories.</td></tr>
+          <tr><td>Trip.com Group stock</td><td>Related to travel recovery, but the current core variable is regulation, not travel demand itself.</td></tr>
+          <tr><td>Fullerton target guests</td><td>The right frame is HNW travellers, cross-border premium guests, corporate business guests and culture-led luxury guests.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="callout green"><strong>My one-line answer now:</strong> tourism recovery is real, but Fullerton should not underwrite mass tourism. It should underwrite <strong>GBA HNW, Hong Kong-Shenzhen cross-border demand and guests willing to pay for cultural narrative</strong>.</p>
+  </section>
+
+  <section id="hotel" class="panel hotel">
+    <div class="section-head">
+      <div class="num">Q4</div>
+      <div>
+        <h2>Are Shenzhen hotels saturated? Not as a city-wide answer.</h2>
+        <p class="sub">The comment that 2026 demand may be partly APEC / government-event driven is right. A one-year spike should not be capitalised into a ten-year hotel model. But the Shenzhen hotel question cannot be answered city-wide. It has to be cut by <span class="mark-gold">district</span>, <span class="mark-green">guest type</span>, <span class="mark-gold">timing</span> and <span class="mark-red">competitive pipeline</span>.</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card red">
+        <h3>Short term: APEC uplift should be treated carefully</h3>
+        <p>APEC 2026 in Shenzhen will likely lift official reception, banqueting and room demand. But that demand is concentrated around the event cycle and should not be built into the long-term base case.</p>
+      </div>
+      <div class="card green">
+        <h3>Long term: Qianhai / western Shenzhen still has a structural window</h3>
+        <p>JLL figures cited by media point to ADR 1,078, occupancy 82% and RevPAR 878 for Shenzhen high-end hotels in 2025. The official Ministry of Culture and Tourism five-star hotel survey gives a more conservative anchor: Shenzhen 2024Q2 ADR 797.74 and occupancy 61.97%. <sup class="fn"><a id="r5" href="#f5">5</a></sup><sup class="fn"><a id="r6" href="#f6">6</a></sup></p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>District</th><th>Supply view</th><th>Meaning for Fullerton</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Futian / Luohu</strong></td>
+            <td>Existing high-end stock includes Four Seasons, Ritz-Carlton, St. Regis and Grand Hyatt, with Rosewood expected later.</td>
+            <td>Not the cleanest first-entry story for Fullerton.</td>
+          </tr>
+          <tr>
+            <td><strong>Qianhai / Bao'an-Qianhai</strong></td>
+            <td>Conrad, St. Regis Bao'an and JEN form the high-end supply set, but JEN is not ultra-luxury. Culture-led luxury in Qianhai is still limited.</td>
+            <td>There is a window, but not an infinite blue ocean.</td>
+          </tr>
+          <tr>
+            <td><strong>Shekou / Prince Bay</strong></td>
+            <td>Hilton Shenzhen Shekou / Nanhai Hotel is a large asset; Ritz-Carlton Prince Bay is expected. The area has Sea World and China Merchants resources.</td>
+            <td>Useful as a buy-vs-build comparison line.</td>
+          </tr>
+          <tr>
+            <td><strong>Shenzhen Bay Super HQ</strong></td>
+            <td>Secondary sources place Waldorf Astoria Shenzhen at the CMB global HQ area, not Qianhai.</td>
+            <td>It will compete for top-tier Shenzhen business guests and should not be ignored.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Project / brand</th><th>Status</th><th>Source quality</th><th>Impact on Fullerton</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Conrad Qianhai</strong></td><td>Open; current Qianhai benchmark</td><td>ADR / occupancy need commercial data</td><td>Shows Qianhai can absorb high-end hotels, but the narrative is international business, not heritage luxury.</td></tr>
+          <tr><td><strong>St. Regis Shenzhen Bao'an</strong></td><td>Marriott official release: opened in 2025, 289 rooms and suites. <sup class="fn"><a id="r7" href="#f7">7</a></sup></td><td>Revenue-completion figures are internal and should not be cited externally</td><td>Validates western Shenzhen demand, but also raises competition.</td></tr>
+          <tr><td><strong>JEN Qianhai</strong></td><td>Shangri-La lifestyle brand</td><td>Mid-to-upscale, not ultra-luxury</td><td>Should not be counted the same way as Conrad / St. Regis / Ritz-Carlton.</td></tr>
+          <tr><td><strong>Rosewood Shenzhen</strong></td><td>Rosewood 2018 release said 2026, 300 rooms + 50 residences. <sup class="fn"><a id="r8" href="#f8">8</a></sup></td><td>Some recent media use 2027; confirmation from brand / China Resources needed</td><td>Ultra-luxury supply will increase; the entry window narrows.</td></tr>
+          <tr><td><strong>Waldorf Astoria Shenzhen</strong></td><td>Secondary sources point to 2028 and Shenzhen Bay Super HQ / CMB global HQ</td><td>Needs Hilton official confirmation</td><td>Not Qianhai supply, but it will compete for the same top-tier business guests.</td></tr>
+          <tr><td><strong>Ritz-Carlton Prince Bay</strong></td><td>Secondary media use 2026 timing</td><td>Needs Marriott / China Merchants confirmation</td><td>Shekou / Prince Bay will become a key competitive zone.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:30px;color:var(--gold2)">Why this loops back to the first Fullerton China deal</h3>
+    <div class="grid3">
+      <div class="card red">
+        <h3>The window is not permanent</h3>
+        <p>Several luxury brands may enter between 2026 and 2028. If Fullerton builds from scratch on a ten-year timeline, the market may look different at opening.</p>
+      </div>
+      <div class="card gold">
+        <h3>Differentiation matters more than “one more luxury hotel”</h3>
+        <p>If the proposition is only hardware, Ritz-Carlton, Rosewood and St. Regis can all do it. Fullerton has to be about heritage luxury, the Hong Kong-Shenzhen bridge, Sino ownership discipline and long-term operation.</p>
+      </div>
+      <div class="card blue">
+        <h3>The first step is still asset diligence</h3>
+        <p>The saturation question finally comes back to one specific asset: location, land-supply mechanism, saleable / self-held ratio, industry conditions and cash flow.</p>
+      </div>
+    </div>
+
+    <p class="callout"><strong>My one-line answer now:</strong> Shenzhen is neither fully saturated nor fully open. <strong>Qianhai / western Shenzhen still has a structural window</strong>, but competition is arriving. Fullerton has to win through <strong>asset structure and brand narrative</strong>.</p>
+  </section>
+
+  <section class="panel next-panel">
+    <div class="section-head">
+      <div class="num">Next</div>
+      <div>
+        <h2>All four questions point back to the same issue</h2>
+        <p class="sub">The airport question says the GBA is multi-centre and cross-system. The VC/PE question says a family office should care about cash flow, exit and regulation. The travel question says Fullerton should focus on HNW and cross-border demand. The hotel question says Qianhai has a window, but it will not wait forever.</p>
+      </div>
+    </div>
+
+    <div class="quote">
+      I would compress the next move into three workstreams: <strong>get the Qianhai land dossier, confirm Sino’s actual asset rights, and test whether Hilton Shenzhen Shekou / Nanhai Hotel has real buy-vs-build comparison value.</strong> Once these three are clear, the first Fullerton China deal can be discussed with much better judgment.
+    </div>
+    <div class="closing">For Mr. David Ng's reference.</div>
+  </section>
+
+  <section id="sources" class="source-list">
+    <h2>Sources</h2>
+    <ol>
+      <li id="f1">Investors.com: Trip.com Group faced a SAMR antitrust probe; ADR dropped more than 16% intraday. <a href="https://www.investors.com/news/technology/trip-com-tcom-stock-antitrust-china/">URL</a><a class="back" href="#r1">↩</a></li>
+      <li id="f2">Barron's: Trip.com Group antitrust probe; ADR down roughly 18%, Hong Kong shares down about 6.5%. <a href="https://www.barrons.com/articles/trip-com-stock-china-investigation-f5d7ca31">URL</a><a class="back" href="#r2">↩</a></li>
+      <li id="f3">Hurun Research Institute, 2024 Wealth Report: Guangdong 298,000 RMB 10 mn households; Hong Kong 208,000. <a href="https://www.hurun.net/zh-cn/info/detail?num=WH4FGWHNVOMT">URL</a><a class="back" href="#r3">↩</a></li>
+      <li id="f4">Guangdong Provincial Government portal: Shenzhen recorded 2.76 mn foreign entries in 2024, second among Chinese cities. <a href="http://www.gd.gov.cn/gdywdt/dsdt/content/post_4651237.html">URL</a><a class="back" href="#r4">↩</a></li>
+      <li id="f5">Media citation of JLL: Shenzhen high-end hotel ADR 1,078 / occupancy 82% / RevPAR 878. Secondary source; original JLL report should be obtained. <a href="https://c.m.163.com/news/a/KJQS825S0534A4SC.html">URL</a><a class="back" href="#r5">↩</a></li>
+      <li id="f6">Ministry of Culture and Tourism: 2024Q2 national star-rated hotel statistical survey. <a href="https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202409/t20240902_955009.html">URL</a><a class="back" href="#r6">↩</a></li>
+      <li id="f7">Marriott / PR Newswire: The St. Regis Shenzhen Bao'an, 289 rooms and suites. <a href="https://www.prnewswire.com/news-releases/elevating-luxury-in-shenzhen-st-regis-hotels--resorts-unveils-its-second-landmark-in-baoan-302388194.html">URL</a><a class="back" href="#r7">↩</a></li>
+      <li id="f8">Rosewood official release: Rosewood Shenzhen, 300 rooms + 50 residences. <a href="https://www.rosewoodhotels.com/sc/media/press/2018/rosewood-shenzhen-to-open-in-2026">URL</a><a class="back" href="#r8">↩</a></li>
+      <li>GBA airport group 2024 passenger throughput of 214 mn, Guangzhou Baiyun 76.37 mn, etc.: GBA portal. <a href="https://www.cnbayarea.org.cn/news/special/numbers/content/post_1279750.html">URL</a></li>
+      <li>Hong Kong Airport retaining No. 1 cargo position: Air Cargo News. <a href="https://www.aircargonews.net/top-20-cargo-airports-hong-kong-retains-top-spot/1078645.article">URL</a></li>
+      <li>Shenzhen Bao'an Airport 2024 passenger and freight data: Yicai Global. <a href="https://www.yicaiglobal.com/news/shenzhen-baoan-airport-launches-more-passenger-freight-routes-closes-gap-with-hk-airport">URL</a></li>
+      <li>36Kr: 2025 VC/PE market observations, secondary. <a href="https://eu.36kr.com/zh/p/3642043805601664">URL</a></li>
+      <li>The Paper: 2025 China AI application financing concentration, secondary. <a href="https://m.thepaper.cn/newsDetail_forward_32363294">URL</a></li>
+    </ol>
+  </section>
+</main>
+</div>
+<div id="doc-zh" class="langdoc">
+<nav class="nav">
+  <div class="brand">Miranda Li · 0618 Follow-up</div>
+  <div>
+    <a href="#zh-airport">机场</a>
+    <a href="#zh-vcpe">VC/PE</a>
+    <a href="#zh-travel">旅游</a>
+    <a href="#zh-hotel">酒店</a>
+    <a href="#zh-sources">来源</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="eyebrow">0618 Lunch · Follow-up Notes</div>
+    <h1>那天聊到的几个问题，<br><em>我回来补齐了。</em></h1>
+    <p class="lead">我没有把它写成会议纪要，而是按问题把补充资料整理出来：<strong>几个机场为什么并存、内地 VC/PE 怎么筛、携程这类机会怎么看、旅游市场与 Fullerton 客群如何对应、深圳酒店到底是不是饱和。</strong> 有些结论那天方向是对的，但回来查完资料后，口径可以更准。</p>
+    <div class="toc">
+      <a href="#zh-airport"><b>Q1 · 机场</b><span>三机场不是简单互补，而是制度、腹地、货运与需求共同作用。</span></a>
+      <a href="#zh-vcpe"><b>Q2 · VC/PE</b><span>先用头部基金过滤，再用跟投权和产业 DD 选择性出手。</span></a>
+      <a href="#zh-travel"><b>Q3 · 旅游</b><span>大众旅游是背景，Fullerton 要看 HNW、跨境和文化型奢华。</span></a>
+      <a href="#zh-hotel"><b>Q4 · 酒店</b><span>不是简单饱和，而是分区域、分客群、看窗口。</span></a>
+    </div>
+  </header>
+
+  <section id="zh-airport" class="panel airport">
+    <div class="section-head">
+      <div class="num">Q1</div>
+      <div>
+        <h2>大湾区为什么能放下三个大型机场？</h2>
+        <p class="sub">那天我答了“错位互补”，这个方向没错，但不完整。更准确地说，大湾区机场格局不是规划出来的和谐分工，而是<span class="mark-blue">一国两制的制度分隔</span> + <span class="mark-gold">三个城市腹地</span> + <span class="mark-green">香港货运护城河</span> + <span class="mark-blue">大湾区总需求体量</span>叠出来的结果。</p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead>
+          <tr><th>机场</th><th class="r">2024 旅客吞吐量</th><th>核心位置</th><th>货运/跑道</th><th>补充判断</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>广州白云 CAN</strong></td>
+            <td class="r"><strong>7,637 万</strong></td>
+            <td>珠三角北部客货运枢纽，南航主基地</td>
+            <td>货运全球第 11；四跑道</td>
+            <td>2024 大湾区旅客最高，是内地网络型枢纽。</td>
+          </tr>
+          <tr>
+            <td><strong>深圳宝安 SZX</strong></td>
+            <td class="r"><strong>约 6,000 万</strong></td>
+            <td>深圳、东莞、惠州及科技制造腹地</td>
+            <td>货运全球第 20；第三跑道 2024 投运</td>
+            <td>客货增长快，离香港最近，和 HKG 竞争比“互补”更强。</td>
+          </tr>
+          <tr>
+            <td><strong>香港赤鱲角 HKG</strong></td>
+            <td class="r"><strong>5,310 万</strong></td>
+            <td>国际枢纽，自由港，宽体机与国际航线优势</td>
+            <td><strong>货运全球第 1，约 490 万吨</strong>；三跑道系统 2024 启用</td>
+            <td>客运受内地机场追赶，但货运与自由港地位仍是护城河。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid2">
+      <div class="card blue">
+        <h3>制度隔离是最底层逻辑</h3>
+        <p>香港机场由香港民航体系管辖，广州/深圳由内地民航体系管辖。航权、监管、海关、通关、货运制度不同，三场并存首先是制度现实，不只是市场规划。这个点那天我没有讲出来。</p>
+      </div>
+      <div class="card gold">
+        <h3>“互补”之外，还有真实竞争</h3>
+        <p>深圳和广州都在追国际航线、货运和商务客，香港也感受到来自深圳/广州的压力。对外表达可以说“功能错位”，但内部判断要承认三场竞争正在变强。</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card green">
+        <h3>东海航空那句需要修正</h3>
+        <p>我当时说“东海是深圳唯一本土航司”，这句话不够严谨。深圳航空 1993 年成立，总部也在深圳，但现在属于国航体系；更准确的说法是：<strong>东海是深圳本土独立民营航司</strong>，入局晚，黄金时刻和干线资源弱，所以更偏下沉城市和差异化航线。</p>
+      </div>
+      <div class="card lilac">
+        <h3>和投资判断的关系</h3>
+        <p>三机场并存说明大湾区不是单中心市场。对酒店和高端消费也一样：香港、深圳、广州不是简单替代，而是不同客源、制度和消费场景叠加。Fullerton 若进前海，真正要抓的是港深跨境与国际化客源的交汇点。</p>
+      </div>
+    </div>
+
+    <p class="callout blue"><strong>我会把 Q1 收成一句：</strong>三机场并存不是“重复建设”，而是<strong>制度边界、货运分工、城市腹地和 2.14 亿人次需求</strong>共同支撑的结果。</p>
+  </section>
+
+  <section id="zh-vcpe" class="panel vcpe">
+    <div class="section-head">
+      <div class="num">Q2</div>
+      <div>
+        <h2>内地 VC/PE 标的怎么筛？携程值不值得看？</h2>
+        <p class="sub">这题那天没有展开。我回来想了一下，如果是家办视角，不能用“听到一个好项目就投”的方式看内地科技资产。比较稳的路径是：<span class="mark-lilac">头部基金过滤 deal flow</span>，<span class="mark-blue">家办保留跟投权</span>；真正直投，只看和<strong>地产、酒店、零售、物业运营</strong>有协同的项目。</p>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="card lilac">
+        <h3>第一层：团队</h3>
+        <p>创始人有没有从 0 到 1，再从 1 到规模化的经历；核心团队是否稳定；遇到监管变化时有没有预判能力。纯学术背景、没有商业化经验，只讲技术故事，不够。</p>
+      </div>
+      <div class="card blue">
+        <h3>第二层：商业化</h3>
+        <p>2025 年后资本不再轻易为概念买单，要看 ARR、真实客户、续约、毛利和回款。pilot 很多不代表商业化，pilot 到付费的转化率才有意义。</p>
+      </div>
+      <div class="card gold">
+        <h3>第三层：退出</h3>
+        <p>港股、A 股、并购、S 基金转让，路径要提前讲清。VIE、国资持股、返投要求、基金期限，都会影响最终退出，而不只是估值高低。</p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>可行路径</th><th>做法</th><th>适合家办的原因</th><th>风险</th></tr></thead>
+        <tbody>
+          <tr><td><strong>头部基金 LP + 跟投权</strong></td><td>做红杉中国、高瓴、IDG 等头部基金 LP，争取 co-investment right。</td><td>先让专业团队过滤，再在少数标的上用家办判断力。</td><td>好基金份额难拿，跟投权需谈判。</td></tr>
+          <tr><td><strong>S 基金/二手份额</strong></td><td>折价购买已持有优质资产的基金份额。</td><td>比盲投早期更可控，可见底层资产。</td><td>折价背后可能有流动性或估值问题。</td></tr>
+          <tr><td><strong>产业协同直投</strong></td><td>只看酒店、地产、零售、物业运营可验证场景。</td><td>Sino 自己能做业务 DD，不完全依赖中介。</td><td>范围太宽会失焦，必须有明确应用场景。</td></tr>
+          <tr><td><strong>前海双币基金通道</strong></td><td>利用前海跨境基金、QFLP/QDLP 等政策工具。</td><td>港资家办进入内地科技资产更自然。</td><td>返投、合规、外汇和期限结构要先看清。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid2">
+      <div class="card red">
+        <h3>我会明确不做的几类</h3>
+        <ul>
+          <li>不单独追早期纯 AI 应用，尤其没有收入、没有数据壁垒、靠模型套壳的项目。</li>
+          <li>不碰只讲估值、不讲 ARR/客户/回款的项目。</li>
+          <li>不参与返投条件过重、退出路径不清的政府引导基金。</li>
+          <li>不在监管未明朗的赛道用大仓位押单一公司。</li>
+        </ul>
+      </div>
+      <div class="card gold">
+        <h3>泡沫信号</h3>
+        <ul>
+          <li>AI 赛道资金高度向头部集中，长尾公司融资压力明显。<span class="tag ind">二手</span></li>
+          <li>算力投资、模型叙事和应用收入之间仍有错配。</li>
+          <li>港资家办的优势不是抢最早，而是用长期资本和产业场景筛掉噪音。</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:30px;color:var(--gold2)">携程 / Trip.com：不是“值不值得买”，而是“折价买的是什么风险”</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>维度</th><th>当前判断</th><th>对家办的含义</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>基本面</strong></td>
+            <td>OTA 龙头，覆盖机票、酒店、旅游、出境业务，平台位置强。旅游恢复和出境复苏对收入有支撑。</td>
+            <td>不是小票，不是概念股，值得进观察池。</td>
+          </tr>
+          <tr>
+            <td><strong>监管事件</strong></td>
+            <td>2026 年 1 月，SAMR 对 Trip.com / 携程展开反垄断调查，市场反应剧烈，美股盘中跌幅约 16%–18%，港股当日跌约 6.5%。<sup class="fn"><a id="zh-r1" href="#zh-f1">1</a></sup><sup class="fn"><a id="zh-r2" href="#zh-f2">2</a></sup></td>
+            <td>折价是真折价，但不是无风险便宜。</td>
+          </tr>
+          <tr>
+            <td><strong>最大不确定性</strong></td>
+            <td>处罚金额、整改方式、佣金/定价机制、商家关系是否被重塑，尚未定。</td>
+            <td>不能只看跌幅，必须等监管路径更清楚。</td>
+          </tr>
+          <tr>
+            <td><strong>可行打法</strong></td>
+            <td>放进 watchlist；监管落地前只适合小仓位/分批；若处罚有限且基本面未坏，再评估加仓。</td>
+            <td>更像事件驱动，不是长期无脑买入。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="callout red"><strong>我会这样回答携程：</strong>可以看，但不要把<strong>监管折价</strong>当成确定性收益。等反垄断结果、整改成本和平台佣金机制清楚后，再决定是事件机会，还是长期持仓。</p>
+  </section>
+
+  <section id="zh-travel" class="panel travel">
+    <div class="section-head">
+      <div class="num">Q3</div>
+      <div>
+        <h2>旅游市场：大众旅游是背景，Fullerton 要看 HNW 和跨境</h2>
+        <p class="sub">那天我讲了 60 后退休和年轻人小众游，方向是对的，但如果放到 Sino / Fullerton 的语境，还要再往上切一层：<strong>全国旅游人次说明市场大，但不能直接证明顶奢酒店需求。</strong> Fullerton 看的不是大众旅游，而是<span class="mark-green">高净值旅行</span>、<span class="mark-blue">跨境消费</span>和<span class="mark-gold">文化型奢华</span>。</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card gold">
+        <h3>大众旅游：量增价不一定增</h3>
+        <p>全国旅游人次和总花费增长，说明消费场景恢复。但人均消费可能被摊薄，很多增长来自大众化、短途化、性价比出行。它对文旅平台、OTA、景区有意义，但不能直接推导到 Fullerton 这种顶奢城市旗舰。</p>
+      </div>
+      <div class="card green">
+        <h3>HNW 旅游：量小，但和 Fullerton 直接相关</h3>
+        <p>高净值客群买的是私密服务、圈层社交、在地文化、品牌身份。Fullerton 的 heritage luxury、新加坡/香港语境，和这类客群更匹配。</p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>客群层级</th><th>数据 / 口径</th><th>对 Fullerton 的意义</th><th>限制</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>大湾区 HNW 基本盘</strong></td>
+            <td>胡润 2024：广东千万资产家庭 29.8 万户，香港 20.8 万户，合计 50.6 万户；亿元资产家庭合计 28,200 户。<sup class="fn"><a id="zh-r3" href="#zh-f3">3</a></sup></td>
+            <td>这是所有顶奢玩家都要争的基本盘。</td>
+            <td>广东+香港不等于完整大湾区；胡润为“户/总财富”口径。</td>
+          </tr>
+          <tr>
+            <td><strong>港深跨境</strong></td>
+            <td>港人北上频次显著上升，消费从餐饮扩展到休闲、家庭游、住宿。</td>
+            <td>前海的港资身份和地理位置有优势，Fullerton 的香港/新加坡语境更容易被理解。</td>
+            <td>8,191 万人次 / 557 亿港元属媒体估算，不作为硬锚。</td>
+          </tr>
+          <tr>
+            <td><strong>国际客 / 东南亚华人</strong></td>
+            <td>深圳 2024 外国人入境 276 万人次，全国城市第二。<sup class="fn"><a id="zh-r4" href="#zh-f4">4</a></sup></td>
+            <td>Fullerton 对星马、东南亚华人、新加坡家办有亲和力，是差异化加分项。</td>
+            <td>240 小时免签前五客源国未找到官方来源；第三圈不是当前现金流主力。</td>
+          </tr>
+          <tr>
+            <td><strong>企业/MICE/总部商务</strong></td>
+            <td>深圳总部经济、会展、跨境商务共同支撑高端酒店需求。</td>
+            <td>比单纯旅游更接近前海酒店的真实客源。</td>
+            <td>企业协议、会员分销和活动资源需要运营能力补足。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:30px;color:var(--gold2)">Fullerton 客群的三圈层</h3>
+    <div class="grid3">
+      <div class="card green">
+        <h3>第一圈：本地 HNW</h3>
+        <p>深圳、广州、香港的高净值家庭。这个圈层不独属于 Fullerton，丽思、瑰丽、康莱德都能争。</p>
+      </div>
+      <div class="card blue">
+        <h3>第二圈：港深跨境</h3>
+        <p>前海作为港深合作区，有天然地理和制度叙事。Fullerton 的港资背景，比纯外资品牌更容易建立亲近感。</p>
+      </div>
+      <div class="card gold">
+        <h3>第三圈：星马/国际客</h3>
+        <p>新加坡品牌 + 华人高净值语境，是 Fullerton 的加分项。但它是长期上升期权，不应当作为首年现金流主力。</p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>旅游问题的会后修正</th><th>更准确口径</th></tr></thead>
+        <tbody>
+          <tr><td>60 后退休旅游</td><td>方向成立，银发旅游确实有政策和人口支撑，但更偏大众/中高端，不是 Fullerton 主逻辑。</td></tr>
+          <tr><td>年轻人小众游</td><td>成立，但还应补演唱会/音乐节、非遗、博物馆、沉浸式文化游等 2024–2025 高增长品类。</td></tr>
+          <tr><td>携程股票</td><td>与旅游基本面相关，但当前核心变量是监管，不是旅游恢复本身。</td></tr>
+          <tr><td>Fullerton 目标客</td><td>应从“大旅游”切到 HNW traveler、跨境高端客、企业商务客、文化型奢华客。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="callout green"><strong>我会把 Q3 收成一句：</strong>旅游大盘在恢复，但 Fullerton 不做大盘；它要抓的是<strong>大湾区高净值、港深跨境和愿意为文化叙事付费的人</strong>。</p>
+  </section>
+
+  <section id="zh-hotel" class="panel hotel">
+    <div class="section-head">
+      <div class="num">Q4</div>
+      <div>
+        <h2>深圳酒店是否饱和？不能一刀切</h2>
+        <p class="sub">那天 David 说 2026 热度可能受 APEC / 政务活动影响，只限当年。我认同“短期峰值不能当长期支撑”。但深圳酒店不能只看短期活动，也不能只看全市供给，要拆成：<span class="mark-gold">区域</span>、<span class="mark-green">客群</span>、<span class="mark-blue">时间窗口</span>、<span class="mark-red">竞品管道</span>。</p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card red">
+        <h3>短期：APEC 带来的峰值要谨慎</h3>
+        <p>APEC 2026 落地深圳，全年配套活动和政务接待会拉高短期入住、宴会和接待需求。但这类需求集中在活动周期，不应被直接资本化进十年级酒店模型。</p>
+      </div>
+      <div class="card green">
+        <h3>长期：前海/深圳西部仍有结构缺口</h3>
+        <p>深圳高端酒店 2025 年 ADR 1,078、入住率 82%、RevPAR 878 为 JLL 二手转述，方向积极；文旅部官方五星口径给出深圳 2024Q2 ADR 797.74、OCC 61.97，可作保守锚。<sup class="fn"><a id="zh-r5" href="#zh-f5">5</a></sup><sup class="fn"><a id="zh-r6" href="#zh-f6">6</a></sup></p>
+      </div>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>区域</th><th>供给判断</th><th>Fullerton 含义</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>福田 / 罗湖</strong></td>
+            <td>四季、丽思、瑞吉、君悦等存量高端供给较多，未来还有瑰丽等补充。</td>
+            <td>不是 Fullerton 第一落点的最佳解释。</td>
+          </tr>
+          <tr>
+            <td><strong>前海 / 宝安前海</strong></td>
+            <td>康莱德、宝安瑞吉、JEN 构成高端供给，但 JEN 不是顶奢。前海真正文化型顶奢仍少。</td>
+            <td>有窗口，但要快判断，不是无限蓝海。</td>
+          </tr>
+          <tr>
+            <td><strong>蛇口 / 太子湾</strong></td>
+            <td>蛇口希尔顿/南海酒店体量大，太子湾丽思待开，片区有海上世界和招商资源。</td>
+            <td>可作为收购换牌 / buy-vs-build 比较线。</td>
+          </tr>
+          <tr>
+            <td><strong>深圳湾超总</strong></td>
+            <td>华尔道夫二手口径显示落点在招行全球总部，非前海。</td>
+            <td>未来会分流深圳顶奢客源，不能忽视。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tbl">
+      <table>
+        <thead><tr><th>项目 / 品牌</th><th>现状</th><th>口径</th><th>对 Fullerton 的影响</th></tr></thead>
+        <tbody>
+          <tr><td><strong>前海康莱德</strong></td><td>已开业，前海标杆</td><td>具体 ADR/OCC 需商业数据</td><td>证明前海能承载高端酒店，但其叙事偏国际商务，不是 heritage luxury。</td></tr>
+          <tr><td><strong>宝安/前海瑞吉</strong></td><td>万豪官宣 2025 开业，289 间客房及套房。<sup class="fn"><a id="zh-r7" href="#zh-f7">7</a></sup></td><td>经营完成率等属内部口径，不公开引用</td><td>验证西部高端需求，但也加速竞争。</td></tr>
+          <tr><td><strong>JEN 前海</strong></td><td>香格里拉旗下生活方式品牌</td><td>中高端，不是顶奢</td><td>不能和康莱德/瑞吉并列判断顶奢饱和。</td></tr>
+          <tr><td><strong>深圳瑰丽</strong></td><td>Rosewood 官方 2018 稿称 2026、300 间 + 50 府邸。<sup class="fn"><a id="zh-r8" href="#zh-f8">8</a></sup></td><td>最新媒体有 2027 口径，需向品牌/华润确认</td><td>顶奢供给会增强，窗口会收窄。</td></tr>
+          <tr><td><strong>华尔道夫深圳</strong></td><td>二手资料显示 2028，深圳湾超总/招行全球总部</td><td>需 Hilton 官方公告</td><td>不是前海供给，但会争深圳顶层商务客。</td></tr>
+          <tr><td><strong>太子湾丽思</strong></td><td>二手媒体口径称 2026</td><td>缺 Marriott/招商蛇口一手公告</td><td>蛇口/太子湾会变成关键竞争区。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:30px;color:var(--gold2)">为什么这会回到 Fullerton 第一单</h3>
+    <div class="grid3">
+      <div class="card red">
+        <h3>窗口不是无限长</h3>
+        <p>2026–2028 多个奢华品牌陆续入市，Fullerton 若走十年级自建，到开业时环境可能已经从缺口变成竞争。</p>
+      </div>
+      <div class="card gold">
+        <h3>差异化比“再加一家顶奢”重要</h3>
+        <p>如果只是硬件豪华，丽思、瑰丽、瑞吉都能做。Fullerton 要讲清楚 heritage luxury、港深桥梁、信和自持和长期运营。</p>
+      </div>
+      <div class="card blue">
+        <h3>第一步仍是地块底稿</h3>
+        <p>深圳酒店是否饱和，最后要落回具体资产：位置、供地方式、可售/自持比例、产业监管和现金流。</p>
+      </div>
+    </div>
+
+    <p class="callout gold"><strong>我会把 Q4 收成一句：</strong>深圳不是全市饱和，也不是全市蓝海；<strong>前海/西部还有结构性窗口</strong>，但竞品正在进场，Fullerton 必须靠<strong>资产结构和品牌叙事</strong>取胜。</p>
+  </section>
+
+  <section class="panel next-panel">
+    <div class="section-head">
+      <div class="num">Next</div>
+      <div>
+        <h2>这四个问题最后都指向同一件事</h2>
+        <p class="sub">机场问题说明大湾区是多中心、跨制度市场；VC/PE 问题说明家办要看现金流、退出和监管；旅游问题说明 Fullerton 要抓高净值和跨境；酒店问题说明前海窗口存在但不等人。</p>
+      </div>
+    </div>
+
+    <div class="quote">
+      我会把后续动作压成三件事：<strong>拿前海地块底稿、确认 Sino 内部资产权益、探询蛇口希尔顿/南海酒店是否具备 buy-vs-build 比较价值。</strong> 这三件事跑清楚，再谈 Fullerton 中国第一单，判断会稳很多。
+    </div>
+    <div class="closing">For Mr. David Ng's reference.</div>
+  </section>
+
+  <section id="zh-sources" class="source-list">
+    <h2>Sources / 资料来源</h2>
+    <ol>
+      <li id="zh-f1">Investors.com：Trip.com 面临 SAMR 反垄断调查，美股盘中跌逾 16%。<a href="https://www.investors.com/news/technology/trip-com-tcom-stock-antitrust-china/">URL</a><a class="back" href="#zh-r1">↩</a></li>
+      <li id="zh-f2">Barron's：Trip.com 反垄断调查，ADR 跌约 18%，港股跌约 6.5%。<a href="https://www.barrons.com/articles/trip-com-stock-china-investigation-f5d7ca31">URL</a><a class="back" href="#zh-r2">↩</a></li>
+      <li id="zh-f3">胡润研究院《2024胡润财富报告》：广东千万资产家庭 29.8 万户，香港 20.8 万户。<a href="https://www.hurun.net/zh-cn/info/detail?num=WH4FGWHNVOMT">URL</a><a class="back" href="#zh-r3">↩</a></li>
+      <li id="zh-f4">广东省人民政府门户：深圳 2024 年外国人入境 276 万人次，全国城市第二。<a href="http://www.gd.gov.cn/gdywdt/dsdt/content/post_4651237.html">URL</a><a class="back" href="#zh-r4">↩</a></li>
+      <li id="zh-f5">网易转述 JLL：深圳高端酒店 ADR 1078 / OCC 82% / RevPAR 878，二手，须补 JLL 原报告。<a href="https://c.m.163.com/news/a/KJQS825S0534A4SC.html">URL</a><a class="back" href="#zh-r5">↩</a></li>
+      <li id="zh-f6">文化和旅游部《2024年第二季度全国星级旅游饭店统计调查报告》附件。<a href="https://zwgk.mct.gov.cn/zfxxgkml/tjxx/202409/t20240902_955009.html">URL</a><a class="back" href="#zh-r6">↩</a></li>
+      <li id="zh-f7">Marriott / PR Newswire：The St. Regis Shenzhen Bao'an，289 间客房及套房。<a href="https://www.prnewswire.com/news-releases/elevating-luxury-in-shenzhen-st-regis-hotels--resorts-unveils-its-second-landmark-in-baoan-302388194.html">URL</a><a class="back" href="#zh-r7">↩</a></li>
+      <li id="zh-f8">Rosewood 官方公告：Rosewood Shenzhen，300 间客房 + 50 间府邸。<a href="https://www.rosewoodhotels.com/sc/media/press/2018/rosewood-shenzhen-to-open-in-2026">URL</a><a class="back" href="#zh-r8">↩</a></li>
+      <li>大湾区机场群 2024 旅客吞吐量 2.14 亿、广州白云 7,637 万等：粤港澳大湾区门户。<a href="https://www.cnbayarea.org.cn/news/special/numbers/content/post_1279750.html">URL</a></li>
+      <li>香港机场货运全球第一等：Air Cargo News。<a href="https://www.aircargonews.net/top-20-cargo-airports-hong-kong-retains-top-spot/1078645.article">URL</a></li>
+      <li>深圳宝安机场 2024 旅客与货运数据：Yicai Global。<a href="https://www.yicaiglobal.com/news/shenzhen-baoan-airport-launches-more-passenger-freight-routes-closes-gap-with-hk-airport">URL</a></li>
+      <li>36Kr：2025 VC/PE 市场相关报道，二手市场观察。<a href="https://eu.36kr.com/zh/p/3642043805601664">URL</a></li>
+      <li>澎湃新闻：2025 中国 AI 应用融资集中度报道，二手。<a href="https://m.thepaper.cn/newsDetail_forward_32363294">URL</a></li>
+    </ol>
+  </section>
+</main>
+</div>
+<script>(function(){
+function setLang(l,init){document.body.dataset.lang=l;document.querySelectorAll('#langbar button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l);});try{localStorage.setItem('docLang',l);}catch(e){}document.querySelectorAll('#doc-'+l+' .bfill').forEach(function(f){if(f.dataset.w)f.style.width=f.dataset.w+'%';});if(!init){document.querySelectorAll('#doc-'+l+' .reveal').forEach(function(el){el.classList.add('in');});}}
+document.querySelectorAll('#langbar button').forEach(function(b){b.onclick=function(){setLang(b.dataset.l);};});
+var s=null;try{s=localStorage.getItem('docLang');}catch(e){}setLang(s==='zh'?'zh':'en',true);
+})();</script>
+</body></html>
